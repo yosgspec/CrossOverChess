@@ -65,9 +65,9 @@ export class Panel {
      * @param {string} color - カラーエフェクトの色
      */
     drawMask(color: string): void;
-    /** 文字列形式で取得
-     * @param {string} - 簡易表示
+    /** マス目をテキスト形式で取得
+     * @param {boolean} isCompact - コンパクト表示
      */
-    toString(isMinimam?: boolean): any;
+    toString(isCompact?: boolean): any;
     #private;
 }

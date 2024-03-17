@@ -115,12 +115,13 @@ declare class V {
     getTextRecord(): string;
     /** 盤を描写 */
     draw(): void;
-    /** BOD形式テキストを取得
+    /** 駒配置をテキストで取得
+     * @param {"default"|"compact"|"bod"} isCompact - テキスト形式
      * @returns {string}
      */
-    get bodText(): string;
+    getText(t?: string): string;
     /** 駒配置をテキストで取得
-     * {boolean} isMinimam - 縮小表示
+     * @param {boolean} isCompact - コンパクト表示
      */
     toString(t?: boolean): string;
     /** 画像を取得
@@ -321,8 +322,8 @@ declare class U {
     capturePiece(t: any, e: any, s?: boolean, i?: boolean): void;
     /** 盤を描写 */
     draw(): void;
-    /** 文字列形式で取得
-     * @param {boolean} isMinimam - 簡易表示
+    /** 駒台をテキスト形式で取得
+     * @param {boolean} isCompact - コンパクト表示
      */
     toString(t?: boolean): string;
 }

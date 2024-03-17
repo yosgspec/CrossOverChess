@@ -123,14 +123,15 @@ export class Board {
     getTextRecord(): string;
     /** 盤を描写 */
     draw(): void;
-    /** BOD形式テキストを取得
+    /** 駒配置をテキストで取得
+     * @param {"default"|"compact"|"bod"} isCompact - テキスト形式
      * @returns {string}
      */
-    get bodText(): string;
+    getText(mode?: string): string;
     /** 駒配置をテキストで取得
-     * {boolean} isMinimam - 縮小表示
+     * @param {boolean} isCompact - コンパクト表示
      */
-    toString(isMinimam?: boolean): string;
+    toString(isCompact?: boolean): string;
     /** 画像を取得
      * @param {string} fileName - ファイル名
      * @param {string} ext - 拡張子

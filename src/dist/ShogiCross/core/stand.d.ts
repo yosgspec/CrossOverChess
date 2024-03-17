@@ -45,9 +45,9 @@ export class Stand {
     capturePiece(winnerPiece: Piece | null, loserPiece: Piece, forceCapture?: boolean, forceCantCapture?: boolean): void;
     /** 盤を描写 */
     draw(): void;
-    /** 文字列形式で取得
-     * @param {boolean} isMinimam - 簡易表示
+    /** 駒台をテキスト形式で取得
+     * @param {boolean} isCompact - コンパクト表示
      */
-    toString(isMinimam?: boolean): string;
+    toString(isCompact?: boolean): string;
 }
 import { Piece } from "./piece.js";
