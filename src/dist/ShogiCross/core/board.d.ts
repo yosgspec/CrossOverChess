@@ -9,7 +9,7 @@ export class Board {
      * @param {string} option.playPieces.pieceSet - 駒の配置パターン
      * @returns Board
      */
-    static run(canvas: any, option: any): Board;
+    static run(canvas: any, option: BoardInitOption): Board;
     /**
      * @typedef {"overflow"|"horizontal"|"vertical"|"parentOverflow"|"parentHorizontal"|"parentVertical"|null} canvasFit
      */
@@ -19,34 +19,34 @@ export class Board {
      * @param {number} players - プレイヤー人数(2 or 4)
      * @param {BoardInitOption} option - ボードの初期化オプション
      */
-    constructor(canvas: HTMLCanvasElement, playBoard: string, option: any);
+    constructor(canvas: HTMLCanvasElement, playBoard: string, option: BoardInitOption);
     canvas: HTMLCanvasElement;
     ctx: CanvasRenderingContext2D;
     pieces: {
         [k: string]: any;
     };
     players: any;
-    left: any;
-    top: any;
-    panelWidth: any;
-    panelHeight: any;
-    borderWidth: any;
-    pieceSize: any;
-    canvasBackgroundColor: any;
+    left: number;
+    top: number;
+    panelWidth: number;
+    panelHeight: number;
+    borderWidth: number;
+    pieceSize: number;
+    canvasBackgroundColor: string;
     field: any;
     xLen: any;
     yLen: any;
     width: number;
     height: number;
-    right: any;
-    bottom: any;
+    right: number;
+    bottom: number;
     stand: Stand;
-    autoDrawing: any;
-    onDrawed: any;
-    onGameOver: any;
+    autoDrawing: boolean;
+    onDrawed: (Board: any) => void;
+    onGameOver: (i: any) => void;
     /**  */
     gameAlives: Map<number, boolean>;
-    freeMode: any;
+    freeMode: boolean;
     record: any[];
     uiControl: {
         removeEvent(): void;

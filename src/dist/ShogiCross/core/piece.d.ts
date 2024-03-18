@@ -82,8 +82,8 @@ export class Piece {
     ctx: any;
     alias: string[];
     displayPtn: number;
-    game: import("./json/xhr.js").Game;
-    cost: number;
+    game: any;
+    cost: any;
     center: number;
     middle: number;
     size: number;
