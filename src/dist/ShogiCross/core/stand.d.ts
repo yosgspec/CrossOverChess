@@ -47,7 +47,8 @@ export class Stand {
     draw(): void;
     /** 駒台をテキスト形式で取得
      * @param {boolean} isCompact - コンパクト表示
+     * @param {boolean} isAlias - エイリアス表示
      */
-    toString(isCompact?: boolean): string;
+    toString(isCompact?: boolean, isAlias?: boolean): string;
 }
 import { Piece } from "./piece.js";

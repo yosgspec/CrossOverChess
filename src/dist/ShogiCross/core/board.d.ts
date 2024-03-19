@@ -1,5 +1,19 @@
 /** 盤の管理クラス */
 export class Board {
+    /** 盤面の記録
+     * @typedef {Object} Record
+     * @prop {Object} from
+     * @prop {number} from.pX
+     * @prop {number} from.pY
+     * @prop {Object} to
+     * @prop {number} to.pX
+     * @prop {number} to.pY
+     * @prop {number} deg
+     * @prop {string} pieceChar
+     * @prop {string} end
+     * @prop {string} fieldText
+     * @prop {string[][]} fieldMoved
+     */
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
@@ -44,10 +58,30 @@ export class Board {
     autoDrawing: boolean;
     onDrawed: (Board: any) => void;
     onGameOver: (i: any) => void;
-    /**  */
     gameAlives: Map<number, boolean>;
     freeMode: boolean;
-    record: any[];
+    /** ゲームの記録
+     * @type {Record[]}
+     */
+    record: {
+        from: {
+            pX: number;
+            pY: number;
+        };
+        to: {
+            pX: number;
+            pY: number;
+        };
+        deg: number;
+        pieceChar: string;
+        end: string;
+        fieldText: string;
+        fieldMoved: string[][];
+    }[];
+    /** ゲームのターン
+     * @type {number}
+     */
+    turn: number;
     uiControl: {
         removeEvent(): void;
     };
@@ -113,10 +147,14 @@ export class Board {
      * @param {Panel} option.fromPanel - 移動元のマス目
      * @param {string} option.end - オプション=成|不成|打
      */
-    addRecord(toPanel: Panel, option?: {
+    addRecord(option?: {
         fromPanel: Panel;
         end: string;
     }): void;
+    /** 記録の手を戻す */
+    undoRecord(): void;
+    /** 記録の手を進める */
+    redoRecord(): void;
     /** 棋譜をテキストで取得
      * @returns {string}
      */
@@ -125,13 +163,15 @@ export class Board {
     draw(): void;
     /** 駒配置をテキストで取得
      * @param {"default"|"compact"|"bod"} isCompact - テキスト形式
+     * @param {boolean} isAlias - エイリアス表示
      * @returns {string}
      */
-    getText(mode?: string): string;
+    getText(mode?: string, isAlias?: boolean): string;
     /** 駒配置をテキストで取得
      * @param {boolean} isCompact - コンパクト表示
+     * @param {boolean} isAlias - エイリアス表示
      */
-    toString(isCompact?: boolean): string;
+    toString(isCompact?: boolean, isAlias?: boolean): string;
     /** 画像を取得
      * @param {string} fileName - ファイル名
      * @param {string} ext - 拡張子

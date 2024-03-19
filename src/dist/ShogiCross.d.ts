@@ -1,4 +1,18 @@
 declare class _ {
+    /** 盤面の記録
+     * @typedef {Object} Record
+     * @prop {Object} from
+     * @prop {number} from.pX
+     * @prop {number} from.pY
+     * @prop {Object} to
+     * @prop {number} to.pX
+     * @prop {number} to.pY
+     * @prop {number} deg
+     * @prop {string} pieceChar
+     * @prop {string} end
+     * @prop {string} fieldText
+     * @prop {string[][]} fieldMoved
+     */
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
@@ -46,6 +60,7 @@ declare class _ {
     gameAlives: Map<number, boolean>;
     freeMode: any;
     record: any[];
+    turn: number;
     uiControl: {
         removeEvent(): void;
     };
@@ -108,7 +123,11 @@ declare class _ {
      * @param {Panel} option.fromPanel - 移動元のマス目
      * @param {string} option.end - オプション=成|不成|打
      */
-    addRecord(e: any, a?: {}): void;
+    addRecord(e?: {}): void;
+    /** 記録の手を戻す */
+    undoRecord(): void;
+    /** 記録の手を進める */
+    redoRecord(): void;
     /** 棋譜をテキストで取得
      * @returns {string}
      */
@@ -117,13 +136,15 @@ declare class _ {
     draw(): void;
     /** 駒配置をテキストで取得
      * @param {"default"|"compact"|"bod"} isCompact - テキスト形式
+     * @param {boolean} isAlias - エイリアス表示
      * @returns {string}
      */
-    getText(e?: string): string;
+    getText(e?: string, a?: boolean): string;
     /** 駒配置をテキストで取得
      * @param {boolean} isCompact - コンパクト表示
+     * @param {boolean} isAlias - エイリアス表示
      */
-    toString(e?: boolean): string;
+    toString(e?: boolean, a?: boolean): string;
     /** 画像を取得
      * @param {string} fileName - ファイル名
      * @param {string} ext - 拡張子
@@ -151,8 +172,12 @@ declare class y {
     static degChars: {
         [x: string]: string;
     };
-    /** プレイヤー表示から角度を取得 */
-    static charDegs: {};
+    /** プレイヤー表示から角度を取得
+    * @type {Object<string, number>}
+     */
+    static charDegs: {
+        [x: string]: number;
+    };
     /** サイズ変更設定値
      * @type {Object<string, number>}
      */
@@ -262,8 +287,10 @@ declare class y {
      * @param {string} color - カラーエフェクトの色
      */
     drawMask(e: any): void;
-    /** 文字列形式で取得 */
-    toString(): string;
+    /** 文字列形式で取得
+     * @param {boolean} isAlias - エイリアス表示
+     */
+    toString(e?: boolean): string;
 }
 declare const q: {
     将棋: {
@@ -1630,8 +1657,9 @@ declare class H {
     draw(): void;
     /** 駒台をテキスト形式で取得
      * @param {boolean} isCompact - コンパクト表示
+     * @param {boolean} isAlias - エイリアス表示
      */
-    toString(e?: boolean): string;
+    toString(e?: boolean, a?: boolean): string;
 }
 declare class he {
     degs: {};

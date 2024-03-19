@@ -18,8 +18,12 @@ export class Piece {
     static degChars: {
         [x: string]: string;
     };
-    /** プレイヤー表示から角度を取得 */
-    static charDegs: {};
+    /** プレイヤー表示から角度を取得
+    * @type {Object<string, number>}
+     */
+    static charDegs: {
+        [x: string]: number;
+    };
     /** サイズ変更設定値
      * @type {Object<string, number>}
      */
@@ -136,7 +140,9 @@ export class Piece {
      * @param {string} color - カラーエフェクトの色
      */
     drawMask(color: string): void;
-    /** 文字列形式で取得 */
-    toString(): string;
+    /** 文字列形式で取得
+     * @param {boolean} isAlias - エイリアス表示
+     */
+    toString(isAlias?: boolean): string;
 }
 export type PieceInitOption = import('./json').PieceInitOption;
