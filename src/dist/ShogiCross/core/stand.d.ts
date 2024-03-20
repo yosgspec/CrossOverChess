@@ -43,6 +43,10 @@ export class Stand {
      * @param {boolean} forceCantCapture - 属性を無視して捕縛しない
      */
     capturePiece(winnerPiece: Piece | null, loserPiece: Piece, forceCapture?: boolean, forceCantCapture?: boolean): void;
+    /** 持ち駒の所有権を回転
+     * @param {number} deg - 回転角 (90の倍数)
+     */
+    rotate(deg: number): void;
     /** 盤を描写 */
     draw(): void;
     /** 駒台をテキスト形式で取得

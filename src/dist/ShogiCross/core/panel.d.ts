@@ -7,11 +7,16 @@ export class Panel {
      * @param {number} middle - 描写するY座標(中心原点)
      * @param {number} width - マス目幅
      * @param {number} height - マス目高さ
-     * @param {number} borderWidth - 枠線の太さ
      * @param {number} pX - ボード上のマス目の列
      * @param {number} pY - ボード上のマス目の行
+     * @param {number} borderWidth - 枠線の太さ
      */
-    constructor(ctx: any, char: string, center: number, middle: number, width: number, height: number, borderWidth: number, pX: number, pY: number);
+    constructor(ctx: any, char: string, center: number, middle: number, width: number, height: number, pX: number, pY: number, borderWidth: number);
+    set piece(piece: Piece);
+    /** 駒オブジェクト
+     * @returns {Piece}
+     */
+    get piece(): Piece;
     ctx: any;
     center: number;
     middle: number;
@@ -21,10 +26,9 @@ export class Panel {
     top: number;
     right: number;
     bottom: number;
-    borderWidth: number;
     pX: number;
     pY: number;
-    piece: any;
+    borderWidth: number;
     /** マス目の選択状態
      * @param {boolean} value
      */

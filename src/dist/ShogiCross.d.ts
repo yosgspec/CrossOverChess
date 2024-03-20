@@ -67,10 +67,15 @@ declare class _ {
     enPassant: he;
     /** ボードを閉じる */
     close(): void;
-    /** 駒配置を回転
-     * @param {number} deg - 回転角 (90の倍数)
+    /** 角度を正規化
+     * @param {number} playeaIdOrDeg - プレイヤー番号または角度
+     * @returns {number}
      */
-    rotateField(e: any): void;
+    degNormal(e: any): number;
+    /** 盤面を回転
+     * @param {boolean} isRight - 回転方向
+     */
+    rotate(e?: boolean): void;
     /** 駒の初期配置
      * @param {number} playerId - プレイヤー番号
      * @param {string} gameName - ゲーム名(基準となる駒の配置セット)
@@ -1653,6 +1658,10 @@ declare class H {
      * @param {boolean} forceCantCapture - 属性を無視して捕縛しない
      */
     capturePiece(e: any, a: any, t?: boolean, s?: boolean): void;
+    /** 持ち駒の所有権を回転
+     * @param {number} deg - 回転角 (90の倍数)
+     */
+    rotate(e: any): void;
     /** 盤を描写 */
     draw(): void;
     /** 駒台をテキスト形式で取得
