@@ -690,7 +690,7 @@ declare namespace ae {
         }[];
         export { playPieces_10 as playPieces };
     }
-    namespace e5Shogi {
+    namespace gogoShogi {
         let name_11: string;
         export { name_11 as name };
         let variant_11: string;

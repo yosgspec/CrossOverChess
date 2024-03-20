@@ -140,7 +140,7 @@ const M = {
       { gameName: "チェス", pieceSet: "クーリエチェス(定形配置)2p" }
     ]
   },
-  e5Shogi: {
+  gogoShogi: {
     name: "5五将棋",
     variant: "将棋",
     url: "https://ja.wikipedia.org/wiki/5%E4%BA%94%E5%B0%86%E6%A3%8B",
