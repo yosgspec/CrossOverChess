@@ -11,19 +11,23 @@
 			<a href="..">RETURN</a>
 		</div>
 
+		<template id="gameLink">
+			<li><a></a></li>
+		</template>
+
 		<script type="module">
 		import {gameSoft} from "./ShogiCross.js";
 		const ui = document.getElementById("singleGames");
 		const vUi = document.createDocumentFragment();
+		const vLi = document.getElementById("gameLink").content.firstElementChild;
 
 		Object.entries(gameSoft).forEach(([key, {name}])=>{
 			if(["default", "cross"].includes(key)) return;
-			const li = document.createElement("li");
-			const a = document.createElement("a");
+			const li = vLi.cloneNode(true);
+			const a = li.firstElementChild;
 			a.href = `./${key}.html`;
 			a.textContent = name;
-			li.appendChild(a);
-			ui.appendChild(li);
+			vUi.appendChild(li);
 		});
 		ui.appendChild(vUi);
 		</script>
