@@ -5310,7 +5310,7 @@ class _ {
    * @prop {string} pieceChar
    * @prop {string} end
    * @prop {string} fieldText
-   * @prop {string[][]} fieldMoved
+   * @prop {number[][]} fieldMoved
    */
   /** ゲームを実行する
    * @param {HTMLCanvasElement}} canvas - Canvas要素
@@ -5612,7 +5612,7 @@ ${n}:${o}`)) {
       fieldText: this.getText("compact", !0),
       fieldMoved: this.field.map(
         (o) => o.map(
-          ({ piece: S }) => S?.isMoved
+          ({ piece: S }) => S?.isMoved ? 1 : 0
         )
       )
     }, 0 < r && a.splice(this.turn + 1);
@@ -5628,7 +5628,7 @@ ${n}:${o}`)) {
     const { fieldText: t, fieldMoved: s } = a[this.turn];
     this.setTextPieces(t), this.field.forEach(
       (i, r) => i.forEach(({ piece: n }, o) => {
-        n && (n.isMoved = s[r][o]);
+        n && (n.isMoved = !!s[r][o]);
       })
     );
   }
@@ -5643,12 +5643,24 @@ ${n}:${o}`)) {
   /** 棋譜をテキストで取得
    * @returns {string}
    */
-  getTextRecord() {
+  getRecordText() {
     const e = ({ pX: t }) => t == null ? "*" : (this.xLen - t).toString(36), a = ({ pY: t }) => t == null ? "*" : (t + 1).toString(36);
     return this.record.slice(1, this.turn + 1).map(
       ({ to: t, from: s, deg: i, pieceChar: r, end: n }, o) => `${o}: ${y.degChars[i]}${e(t)}${a(t)}${r}${n} (${e(s)}${a(s)})`
     ).join(`
 `);
+  }
+  /** 棋譜データを取得
+   * @returns {string}
+   */
+  getRecordJson() {
+    return JSON.stringify(this.record, null, "");
+  }
+  /** 棋譜データを入力
+   * @param {string} record - 棋譜データ
+   */
+  setRecordJson(e) {
+    this.record = JSON.parse(e), this.turn = this.record.length - 1, this.#s(0);
   }
   /** 盤を描写 */
   draw() {

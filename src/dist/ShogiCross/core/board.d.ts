@@ -12,7 +12,7 @@ export class Board {
      * @prop {string} pieceChar
      * @prop {string} end
      * @prop {string} fieldText
-     * @prop {string[][]} fieldMoved
+     * @prop {number[][]} fieldMoved
      */
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
@@ -76,7 +76,7 @@ export class Board {
         pieceChar: string;
         end: string;
         fieldText: string;
-        fieldMoved: string[][];
+        fieldMoved: number[][];
     }[];
     /** ゲームのターン
      * @type {number}
@@ -163,7 +163,15 @@ export class Board {
     /** 棋譜をテキストで取得
      * @returns {string}
      */
-    getTextRecord(): string;
+    getRecordText(): string;
+    /** 棋譜データを取得
+     * @returns {string}
+     */
+    getRecordJson(): string;
+    /** 棋譜データを入力
+     * @param {string} record - 棋譜データ
+     */
+    setRecordJson(record: string): void;
     /** 盤を描写 */
     draw(): void;
     /** 駒配置をテキストで取得
