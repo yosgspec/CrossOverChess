@@ -169,15 +169,15 @@ export class Board {
     /** 棋譜をテキストで取得
      * @returns {string}
      */
-    getRecordText(): string;
+    getTextRecord(): string;
     /** 棋譜データを取得
      * @returns {string}
      */
-    getRecordJson(): string;
+    getJsonRecord(): string;
     /** 棋譜データを入力
      * @param {string} record - 棋譜データ
      */
-    setRecordJson(record: string): void;
+    setJsonRecord(record: string): void;
     /** 盤を描写 */
     draw(): void;
     /** 駒配置をテキストで取得

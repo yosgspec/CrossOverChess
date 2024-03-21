@@ -86,6 +86,10 @@ export type BoardInitOption = {
      */
     players: 2 | 4;
     /**
+     * - 駒台の使用有無
+     */
+    useStand: boolean;
+    /**
      * - Canvas幅
      */
     canvasWidth: number;
@@ -129,10 +133,6 @@ export type BoardInitOption = {
      * - 駒の影の描写有無
      */
     isDrawShadow: boolean;
-    /**
-     * - 駒台の使用有無
-     */
-    useStand: boolean;
     /**
      * - 背景色(デフォルト無色)
      */
