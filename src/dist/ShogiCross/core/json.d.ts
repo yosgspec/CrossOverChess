@@ -71,6 +71,21 @@ export type Game = {
  */
 export type BoardInitOption = {
     /**
+     * - ボードタイプ
+     */
+    playBoard: string;
+    /**
+     * - 駒セット
+     */
+    playPieces: {
+        gameName: string;
+        pieceSet: string;
+    };
+    /**
+     * - プレイヤー人数(2 or 4)
+     */
+    players: 2 | 4;
+    /**
      * - Canvas幅
      */
     canvasWidth: number;
@@ -81,7 +96,7 @@ export type BoardInitOption = {
     /**
      * - Canvasサイズの自動調整
      */
-    canvasFit: canvasFit;
+    canvasFit: "overflow" | "horizontal" | "vertical" | "parentOverflow" | "parentHorizontal" | "parentVertical";
     /**
      * - 描写するX座標
      */
@@ -99,6 +114,10 @@ export type BoardInitOption = {
      */
     panelHeight: number;
     /**
+     * - 枠線太さ
+     */
+    borderWidth: number;
+    /**
      * - 駒の大きさ
      */
     pieceSize: number;
@@ -110,10 +129,6 @@ export type BoardInitOption = {
      * - 駒の影の描写有無
      */
     isDrawShadow: boolean;
-    /**
-     * - 枠線太さ
-     */
-    borderWidth: number;
     /**
      * - 駒台の使用有無
      */

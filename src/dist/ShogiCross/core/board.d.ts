@@ -17,29 +17,20 @@ export class Board {
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
-     * @param {string} option.playBoard - ボードタイプ
-     * @param {Object} option.playPieces - 駒セット
-     * @param {string} option.playPieces.gameName - ゲーム名(基準となる駒の配置セット)
-     * @param {string} option.playPieces.pieceSet - 駒の配置パターン
      * @returns Board
      */
     static run(canvas: any, option: BoardInitOption): Board;
     /**
-     * @typedef {"overflow"|"horizontal"|"vertical"|"parentOverflow"|"parentHorizontal"|"parentVertical"|null} canvasFit
-     */
-    /**
      * @param {HTMLCanvasElement} canvas - Canvas要素
-     * @param {string} playBoard - ボードタイプ
-     * @param {number} players - プレイヤー人数(2 or 4)
      * @param {BoardInitOption} option - ボードの初期化オプション
      */
-    constructor(canvas: HTMLCanvasElement, playBoard: string, option: BoardInitOption);
+    constructor(canvas: HTMLCanvasElement, option: BoardInitOption);
     canvas: HTMLCanvasElement;
     ctx: CanvasRenderingContext2D;
     pieces: {
         [k: string]: any;
     };
-    players: any;
+    players: 2 | 4;
     left: number;
     top: number;
     panelWidth: number;

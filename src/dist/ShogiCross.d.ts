@@ -1,4 +1,4 @@
-declare class _ {
+declare class ee {
     /**
      * @typedef {Object} Record - 盤面の記録
      * @prop {Object} from
@@ -16,23 +16,14 @@ declare class _ {
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
-     * @param {string} option.playBoard - ボードタイプ
-     * @param {Object} option.playPieces - 駒セット
-     * @param {string} option.playPieces.gameName - ゲーム名(基準となる駒の配置セット)
-     * @param {string} option.playPieces.pieceSet - 駒の配置パターン
      * @returns Board
      */
-    static run(e: any, a: any): _;
-    /**
-     * @typedef {"overflow"|"horizontal"|"vertical"|"parentOverflow"|"parentHorizontal"|"parentVertical"|null} canvasFit
-     */
+    static run(e: any, a: any): ee;
     /**
      * @param {HTMLCanvasElement} canvas - Canvas要素
-     * @param {string} playBoard - ボードタイプ
-     * @param {number} players - プレイヤー人数(2 or 4)
      * @param {BoardInitOption} option - ボードの初期化オプション
      */
-    constructor(e: any, a: any, t: any);
+    constructor(e: any, a: any);
     canvas: any;
     ctx: any;
     pieces: {
@@ -53,7 +44,7 @@ declare class _ {
     height: number;
     right: any;
     bottom: any;
-    stand: H;
+    stand: J;
     autoDrawing: any;
     onDrawed: any;
     onGameOver: any;
@@ -305,7 +296,7 @@ declare class y {
      */
     toString(e?: boolean): string;
 }
-declare const q: {
+declare const V: {
     将棋: {
         backgroundColor: string;
         borderColor: string;
@@ -1345,7 +1336,7 @@ declare namespace ae {
         export { playPieces_44 as playPieces };
     }
 }
-declare namespace z {
+declare namespace H {
     namespace 将棋 {
         let english: string;
         let fontColor: string;
@@ -1625,7 +1616,7 @@ declare namespace z {
         export { position_6 as position };
     }
 }
-declare class H {
+declare class J {
     /** 駒台への角度ごとの表示順
      * @type {number[]}
      */
@@ -1700,4 +1691,4 @@ declare class he {
      */
     isTarget(e: any, a: any): boolean;
 }
-export { _ as Board, y as Piece, q as boards, M as canvasFont, j as canvasImage, ae as gameSoft, z as games };
+export { ee as Board, y as Piece, V as boards, M as canvasFont, j as canvasImage, ae as gameSoft, H as games };
