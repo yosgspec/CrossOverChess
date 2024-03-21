@@ -4367,28 +4367,28 @@ const M = {
   楚: -24,
   帥: -28
 }, te = "./json/ShogiCross/";
-function O(p) {
+function P(p) {
   const e = new XMLHttpRequest();
   return e.open("GET", `${te}${p}.json`, !1), e.send(), e.status === 200 ? JSON.parse(e.responseText) : {};
 }
-const P = {
-  canvasFont: O("canvasFont"),
-  gameSoft: O("gameSoft"),
-  games: O("games"),
-  boards: O("boards"),
-  panels: O("panels"),
-  pieces: O("pieces"),
-  pieceRange: O("pieceRange"),
-  pieceCost: O("pieceCost")
+const O = {
+  canvasFont: P("canvasFont"),
+  gameSoft: P("gameSoft"),
+  games: P("games"),
+  boards: P("boards"),
+  panels: P("panels"),
+  pieces: P("pieces"),
+  pieceRange: P("pieceRange"),
+  pieceCost: P("pieceCost")
 };
-Object.assign(M, P.canvasFont);
-Object.assign(ae, P.gameSoft);
-Object.assign(H, P.games);
-Object.assign(V, P.boards);
-Object.assign(D, P.panels);
-Object.assign(T, P.pieces);
-Object.assign(Z, P.pieceRange);
-Object.assign(Q, P.pieceCost);
+Object.assign(M, O.canvasFont);
+Object.assign(ae, O.gameSoft);
+Object.assign(H, O.games);
+Object.assign(V, O.boards);
+Object.assign(D, O.panels);
+Object.assign(T, O.pieces);
+Object.assign(Z, O.pieceRange);
+Object.assign(Q, O.pieceCost);
 const se = () => [
   .../* @__PURE__ */ new Set([
     ...Object.values(D).map(({ displayText: p }) => p).join("") + Object.values(T).map(({ display: p }) => p ? p.join("") : "").join("")
@@ -5129,7 +5129,7 @@ class W {
    * @param {string} text - BOD形式のテキスト
    * @returns {string}
    */
-  static convSetText(e) {
+  static convTextPieces(e) {
     const a = [], t = [];
     e.split(/\r|\n|\r\n/).forEach((r) => {
       [...W.#r.keys()].some((n) => new RegExp(`^${n}`).test(r)) ? t.push(r) : a.push(r.slice(1));
@@ -5155,7 +5155,7 @@ ${i}`;
   /** BOD形式テキストを取得
    * @returns {string}
    */
-  static getText(e) {
+  static getTextPieces(e) {
     const { field: a, xLen: t, players: s, stand: i } = e;
     let r = ` ${[...Array(t).keys()].map((u) => ` ${W.#d(t - u)}`).join("")}
 +${Array(t).fill("---").join("")}+
@@ -5459,7 +5459,7 @@ class ee {
    */
   setTextPieces(e) {
     const { field: a, pieces: t, xLen: s, yLen: i } = this, r = "持駒：";
-    0 < e.indexOf(r) && (e = W.convSetText(e));
+    0 < e.indexOf(r) && (e = W.convTextPieces(e));
     const l = [e].concat(
       [..."┏━┯┓┗┷┛┃│┠─┼┨―"],
       Object.values(y.degChars).map((o) => `
@@ -5595,7 +5595,7 @@ ${n}:${l}`)) {
       deg: n.deg,
       pieceChar: n.char,
       end: i,
-      fieldText: this.getText("compact", !0),
+      fieldText: this.getTextPieces("compact", !0),
       fieldMoved: this.field.map(
         (l) => l.map(
           ({ piece: S }) => S?.isMoved ? 1 : 0
@@ -5662,8 +5662,8 @@ ${n}:${l}`)) {
    * @param {boolean} isAlias - エイリアス表示
    * @returns {string}
    */
-  getText(e = "default", a = !1) {
-    return e === "bod" ? W.getText(this) : this.toString(e === "compact", a);
+  getTextPieces(e = "default", a = !1) {
+    return e === "bod" ? W.getTextPieces(this) : this.toString(e === "compact", a);
   }
   /** 駒配置をテキストで取得
    * @param {boolean} isCompact - コンパクト表示

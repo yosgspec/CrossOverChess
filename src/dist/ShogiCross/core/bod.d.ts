@@ -47,21 +47,21 @@ export class Bod {
      * @param {Piece} piece - 駒
      * @returns {string}
      */
-    static "__#10@#getPieceText"(piece: Piece): string;
+    static "__#10@#getTextPiece"(piece: Piece): string;
     /** 駒台のBOD表記
      * @param {Stand} stand - 駒台
      * @param {number} deg - 角度
      * @returns {string}
      */
-    static "__#10@#getStandText"(stand: Stand, deg?: number): string;
+    static "__#10@#getTextStand"(stand: Stand, deg?: number): string;
     /** BOD形式のテキストをボードで扱えるよう変換
      * @param {string} text - BOD形式のテキスト
      * @returns {string}
      */
-    static convSetText(text: string): string;
+    static convTextPieces(text: string): string;
     /** BOD形式テキストを取得
      * @returns {string}
      */
-    static getText(board: any): string;
+    static getTextPieces(board: any): string;
 }
 import { Piece } from "./piece.js";

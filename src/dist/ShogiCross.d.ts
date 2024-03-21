@@ -143,7 +143,7 @@ declare class ee {
      * @param {boolean} isAlias - エイリアス表示
      * @returns {string}
      */
-    getText(e?: string, a?: boolean): string;
+    getTextPieces(e?: string, a?: boolean): string;
     /** 駒配置をテキストで取得
      * @param {boolean} isCompact - コンパクト表示
      * @param {boolean} isAlias - エイリアス表示
