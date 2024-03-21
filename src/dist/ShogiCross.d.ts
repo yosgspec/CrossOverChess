@@ -1,17 +1,17 @@
 declare class _ {
-    /** 盤面の記録
-     * @typedef {Object} Record
+    /**
+     * @typedef {Object} Record - 盤面の記録
      * @prop {Object} from
-     * @prop {number} from.pX
-     * @prop {number} from.pY
+     * @prop {number} from.pX - 移動元の列
+     * @prop {number} from.pY - 移動元の行
      * @prop {Object} to
-     * @prop {number} to.pX
-     * @prop {number} to.pY
-     * @prop {number} deg
-     * @prop {string} pieceChar
-     * @prop {string} end
-     * @prop {string} fieldText
-     * @prop {number[][]} fieldMoved
+     * @prop {number} to.pX - 移動先の列
+     * @prop {number} to.pY - 移動先の行
+     * @prop {number} deg - 駒の角度
+     * @prop {string} pieceChar - 駒の一文字表記
+     * @prop {string} end - 棋譜表示の末尾に記載する文字
+     * @prop {string} fieldText - 駒配置のテキスト
+     * @prop {number[][]} fieldMoved - 駒の移動済み判定
      */
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
