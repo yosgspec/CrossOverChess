@@ -85,14 +85,10 @@ export class Piece {
     get zoom(): number;
     ctx: any;
     alias: string[];
-    displayPtn: number;
     game: any;
     cost: any;
     center: number;
     middle: number;
-    size: number;
-    useRankSize: boolean;
-    isDrawShadow: boolean;
     isMoved: boolean;
     isSelected: boolean;
     /** 駒をクローン

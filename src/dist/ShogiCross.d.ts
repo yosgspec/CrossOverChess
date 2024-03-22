@@ -236,14 +236,10 @@ declare class y {
     get zoom(): number;
     ctx: any;
     alias: string[];
-    displayPtn: any;
     game: any;
     cost: any;
     center: number;
     middle: number;
-    size: any;
-    useRankSize: any;
-    isDrawShadow: any;
     isMoved: any;
     isSelected: boolean;
     /** 駒をクローン

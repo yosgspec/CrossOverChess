@@ -4709,7 +4709,7 @@ class y {
       isDrawShadow: l = y.isDrawShadow,
       isMoved: S = !1
     } = t;
-    Object.assign(this, a), this.ctx = e, this.display ??= [""], this.imgSrc ??= null, this.alias = [...this.alias ?? ""], this.displayPtn = s, this.game = H[this.gameName], this.cost = Q[this.char] ?? 1, this.center = 0, this.middle = 0, this.deg = i, this.size = r, this.useRankSize = n, this.isDrawShadow = l, this.isRotateImg ??= !0, this.isMoved = S, this.isSelected = !1, this.attr ??= [];
+    Object.assign(this, a), this.ctx = e, this.display ??= [""], this.imgSrc ??= null, this.alias = [...this.alias ?? ""], this.displayPtn ??= s, this.game = H[this.gameName], this.cost = Q[this.char] ?? 1, this.center = 0, this.middle = 0, this.deg ??= i, this.size ??= r, this.useRankSize ??= n, this.isDrawShadow ??= l, this.isRotateImg ??= !0, this.isMoved = S, this.isSelected = !1, this.attr ??= [];
     try {
       Object.entries(this.range).forEach(([o, d]) => {
         Array.isArray(d) || (this.range[o] = Z[d].map((m) => [...m]));
