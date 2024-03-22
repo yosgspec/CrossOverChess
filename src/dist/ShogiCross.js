@@ -1,4 +1,4 @@
-const M = {
+const L = {
   fonts: [
     ["Noto Serif JP", 900],
     ["Noto Emoji", 400],
@@ -4367,34 +4367,34 @@ const M = {
   楚: -24,
   帥: -28
 }, te = "./json/ShogiCross/";
-function P(p) {
+function O(p) {
   const e = new XMLHttpRequest();
   return e.open("GET", `${te}${p}.json`, !1), e.send(), e.status === 200 ? JSON.parse(e.responseText) : {};
 }
-const O = {
-  canvasFont: P("canvasFont"),
-  gameSoft: P("gameSoft"),
-  games: P("games"),
-  boards: P("boards"),
-  panels: P("panels"),
-  pieces: P("pieces"),
-  pieceRange: P("pieceRange"),
-  pieceCost: P("pieceCost")
+const M = {
+  canvasFont: O("canvasFont"),
+  gameSoft: O("gameSoft"),
+  games: O("games"),
+  boards: O("boards"),
+  panels: O("panels"),
+  pieces: O("pieces"),
+  pieceRange: O("pieceRange"),
+  pieceCost: O("pieceCost")
 };
-Object.assign(M, O.canvasFont);
-Object.assign(ae, O.gameSoft);
-Object.assign(H, O.games);
-Object.assign(V, O.boards);
-Object.assign(D, O.panels);
-Object.assign(T, O.pieces);
-Object.assign(Z, O.pieceRange);
-Object.assign(Q, O.pieceCost);
+Object.assign(L, M.canvasFont);
+Object.assign(ae, M.gameSoft);
+Object.assign(H, M.games);
+Object.assign(V, M.boards);
+Object.assign(D, M.panels);
+Object.assign(T, M.pieces);
+Object.assign(Z, M.pieceRange);
+Object.assign(Q, M.pieceCost);
 const se = () => [
   .../* @__PURE__ */ new Set([
     ...Object.values(D).map(({ displayText: p }) => p).join("") + Object.values(T).map(({ display: p }) => p ? p.join("") : "").join("")
   ])
 ].sort().join("");
-Object.assign(M, {
+Object.assign(L, {
   /** 読み込み済みであるか? */
   imported: !1,
   /** 読み込むフォントの一覧(","区切り)
@@ -4408,8 +4408,8 @@ Object.assign(M, {
     if (this.imported)
       return;
     const p = "https://fonts.googleapis.com/css2?family=", e = se(), a = (/* @__PURE__ */ new Date()).getTime().toString();
-    return this.names = M.fonts.map((t) => `"${t[0]}${a}"`).join(",") + ",serif", Promise.all(
-      M.fonts.map(async ([t, s]) => {
+    return this.names = L.fonts.map((t) => `"${t[0]}${a}"`).join(",") + ",serif", Promise.all(
+      L.fonts.map(async ([t, s]) => {
         const i = t.replace(/ /g, "+"), r = `${p}${i}:wght@${s}&text=${e}`, n = await fetch(r);
         if (!n.ok)
           return;
@@ -4550,7 +4550,7 @@ class le {
       const o = S ? S * Math.PI / 180 : 0;
       e.rotate(o);
       const d = Math.min(this.width, this.height) * 0.6;
-      e.font = `${d}px ${M.names}`;
+      e.font = `${d}px ${L.names}`;
       const m = e.measureText(l).width, u = d / 2 * 0.8;
       e.fillText(l, -m / 2, u), e.restore();
     }
@@ -4818,7 +4818,7 @@ class y {
     let s, i, r;
     this.hasAttr("promoted") ? (s = a.promoteFontColor ?? a.fontColor ?? "#000000", i = a.promoteBackgroundColor ?? a.backgroundColor ?? "#FFFFFF", r = a.promoteBorderColor ?? a.borderColor ?? "#FF3300") : (s = a.fontColor ?? "#000000", i = a.backgroundColor ?? "#FFFFFF", r = a.borderColor ?? "#777777"), e.strokeStyle = r, e.fillStyle = i, e.lineWidth = 8 * t, this.drawPieceShadow(t), e.save(), this.makePath(t), e.stroke(), e.fill(), e.fillStyle = s;
     const n = [..."" + this.display[this.displayPtn]], l = 40 * t;
-    e.font = `${l}px ${M.names}`, e.textAlign = "center", n.forEach((S, o) => {
+    e.font = `${l}px ${L.names}`, e.textAlign = "center", n.forEach((S, o) => {
       const d = n.length === 1 ? l / 2 : o * l;
       e.fillText(S, 0, d);
     }), e.restore();
@@ -4929,17 +4929,17 @@ function me(p, e, a, t) {
           for (let X = h - 1; X <= h + 1; X++) {
             if (c[k][X] !== N || X === h && k === C)
               continue;
-            let L = b || 0, F = E || 0;
+            let F = b || 0, P = E || 0;
             const [I, G] = [X - h, k - C];
             for (let K = a, Y = t; ; ) {
               K += I, Y += G;
               const R = K + x, $ = Y + v;
-              if (!n(R, $) || !A && F === 0)
+              if (!n(R, $) || !A && P === 0)
                 break;
-              const z = L === 0;
-              z && o(B, R, $, g, z) ? (F--, m(g, R, $)) : b < 1 && F--;
+              const z = F === 0;
+              z && o(B, R, $, g, z) ? (P--, m(g, R, $)) : b < 1 && P--;
               const U = s[$][R];
-              if (U.piece && (L--, z || l(U)))
+              if (U.piece && (F--, z || l(U)))
                 break;
             }
           }
@@ -5346,27 +5346,28 @@ class ee {
       onDrawed: w,
       onGameOver: x = (k) => alert(`プレイヤー${k + 1}の敗北です。`),
       freeMode: v = !1
-    } = a, N = M.importAsync(), b = j.importAsync();
+    } = a, N = L.importAsync(), b = j.importAsync();
     this.canvas = e;
     const E = e.getContext("2d");
     if (E.clearRect(0, 0, e.width, e.height), this.ctx = E, this.pieces = y.getPieces(E, {
       size: f,
       useRankSize: c,
       isDrawShadow: g
-    }), s.forEach(({ gameName: k, pieceSet: X = "default" }, L) => {
-      if (k)
-        try {
-          board.putStartPieces(L, k, X);
-        } catch {
-        }
     }), Object.assign(this, V[t]), ![2, 4].includes(i))
       throw Error(`players=${i}, players need 2 or 4.`);
     this.players = i, this.left = o, this.top = d, this.panelWidth = m, this.panelHeight = u, this.borderWidth = B, this.pieceSize = f, this.canvasBackgroundColor = h, this.field = this.field.map(
-      (k, X) => [...k].map((L, F) => {
-        const I = o + m * (F + 1), G = d + u * (X + 1);
-        return new le(E, L, I, G, m, u, F, X, B);
+      (k, X) => [...k].map((F, P) => {
+        const I = o + m * (P + 1), G = d + u * (X + 1);
+        return new le(E, F, I, G, m, u, P, X, B);
       })
-    ), this.xLen = this.field[0].length, this.yLen = this.field.length, this.width = this.panelWidth * (this.xLen + 1), this.height = this.panelHeight * (this.yLen + 1), this.right = o + this.width, this.bottom = d + this.height, this.stand = new J(this), e.width = n ?? (r ? this.stand.right : this.right) + 5, e.height = l ?? this.bottom + 5;
+    ), this.xLen = this.field[0].length, this.yLen = this.field.length, s.forEach(({ gameName: k, pieceSet: X }, F) => {
+      if (k)
+        try {
+          this.putStartPieces(F, k, X);
+        } catch (P) {
+          console.error(P);
+        }
+    }), this.width = this.panelWidth * (this.xLen + 1), this.height = this.panelHeight * (this.yLen + 1), this.right = o + this.width, this.bottom = d + this.height, this.stand = new J(this), e.width = n ?? (r ? this.stand.right : this.right) + 5, e.height = l ?? this.bottom + 5;
     const { style: A } = e;
     S === "overflow" ? (A.maxWidth === "" && (A.maxWidth = "97vw"), A.maxHeight === "" && (A.maxHeight = "97vh")) : S === "horizontal" ? A.width === "" && (A.width = "97vw") : S === "vertical" ? A.height === "" && (A.height = "97vh") : S === "parentOverflow" ? (A.maxWidth === "" && (A.maxWidth = "100%"), A.maxHeight === "" && (A.maxHeight = "100%")) : S === "parentHorizontal" ? A.width === "" && (A.width = "100%") : S === "parentVertical" && A.height === "" && (A.height = "100%"), this.autoDrawing = C, C && (N.then(() => this.draw()), b.then(() => this.draw()), this.draw()), this.onDrawed = w, this.onGameOver = x, this.gameAlives = new Map(
       [...Array(this.players).keys()].map((k) => [this.degNormal(k), !0])
@@ -5696,7 +5697,7 @@ export {
   ee as Board,
   y as Piece,
   V as boards,
-  M as canvasFont,
+  L as canvasFont,
   j as canvasImage,
   ae as gameSoft,
   H as games

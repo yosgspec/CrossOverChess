@@ -473,7 +473,7 @@ declare const V: {
         field: string[];
     };
 };
-declare namespace M {
+declare namespace L {
     let fonts: (string | number)[][];
 }
 declare namespace j {
@@ -1691,4 +1691,4 @@ declare class he {
      */
     isTarget(e: any, a: any): boolean;
 }
-export { ee as Board, y as Piece, V as boards, M as canvasFont, j as canvasImage, ae as gameSoft, H as games };
+export { ee as Board, y as Piece, V as boards, L as canvasFont, j as canvasImage, ae as gameSoft, H as games };
