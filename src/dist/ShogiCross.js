@@ -4931,15 +4931,15 @@ function me(p, e, a, t) {
               continue;
             let F = b || 0, P = E || 0;
             const [I, G] = [X - h, k - C];
-            for (let K = a, Y = t; ; ) {
-              K += I, Y += G;
-              const R = K + x, $ = Y + v;
+            for (let U = a, K = t; ; ) {
+              U += I, K += G;
+              const R = U + x, $ = K + v;
               if (!n(R, $) || !A && P === 0)
                 break;
               const z = F === 0;
               z && o(B, R, $, g, z) ? (P--, m(g, R, $)) : b < 1 && P--;
-              const U = s[$][R];
-              if (U.piece && (F--, z || l(U)))
+              const Y = s[$][R];
+              if (Y.piece && (F--, z || l(Y)))
                 break;
             }
           }
@@ -5641,13 +5641,13 @@ ${n}:${l}`)) {
    * @returns {string}
    */
   getJsonRecord() {
-    return JSON.stringify(this.record, null, "");
+    return encodeURI(JSON.stringify(this.record, null, ""));
   }
   /** 棋譜データを入力
    * @param {string} record - 棋譜データ
    */
   setJsonRecord(e) {
-    this.record = JSON.parse(e), this.turn = this.record.length - 1, this.#s(0);
+    this.record = JSON.parse(decodeURI(e)), this.turn = this.record.length - 1, this.#s(0);
   }
   /** 盤を描写 */
   draw() {
