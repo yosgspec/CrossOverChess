@@ -4709,7 +4709,7 @@ class y {
       isDrawShadow: l = y.isDrawShadow,
       isMoved: S = !1
     } = t;
-    Object.assign(this, a), this.ctx = e, this.display ??= [""], this.imgSrc ??= null, this.alias = [...this.alias ?? ""], this.displayPtn ??= s, this.game = H[this.gameName], this.cost = Q[this.char] ?? 1, this.center = 0, this.middle = 0, this.deg ??= i, this.size ??= r, this.useRankSize ??= n, this.isDrawShadow ??= l, this.isRotateImg ??= !0, this.isMoved = S, this.isSelected = !1, this.attr ??= [];
+    Object.assign(this, a), this.ctx = e, this.display ??= [""], this.imgSrc ??= null, this.alias = [...this.alias ?? ""], this.displayPtn ??= s, this.game = H[this.gameName], this.cost = Q[this.char] ?? 1, this.center = 0, this.middle = 0, this.deg ||= i, this.size ??= r, this.useRankSize ??= n, this.isDrawShadow ??= l, this.isRotateImg ??= !0, this.isMoved = S, this.isSelected = !1, this.attr ??= [];
     try {
       Object.entries(this.range).forEach(([o, d]) => {
         Array.isArray(d) || (this.range[o] = Z[d].map((m) => [...m]));
@@ -5343,9 +5343,9 @@ class ee {
       borderWidth: B = Math.min(m, u) / 30,
       backgroundColor: h = "#00000000",
       autoDrawing: C = !0,
-      onDrawed: w,
-      onGameOver: x = (k) => alert(`プレイヤー${k + 1}の敗北です。`),
-      freeMode: v = !1
+      freeMode: w = !1,
+      onDrawed: x,
+      onGameOver: v = (k) => alert(`プレイヤー${k + 1}の敗北です。`)
     } = a, N = L.importAsync(), b = j.importAsync();
     this.canvas = e;
     const E = e.getContext("2d");
@@ -5369,9 +5369,9 @@ class ee {
         }
     }), this.width = this.panelWidth * (this.xLen + 1), this.height = this.panelHeight * (this.yLen + 1), this.right = o + this.width, this.bottom = d + this.height, this.stand = new J(this), e.width = n ?? (r ? this.stand.right : this.right) + 5, e.height = l ?? this.bottom + 5;
     const { style: A } = e;
-    S === "overflow" ? (A.maxWidth === "" && (A.maxWidth = "97vw"), A.maxHeight === "" && (A.maxHeight = "97vh")) : S === "horizontal" ? A.width === "" && (A.width = "97vw") : S === "vertical" ? A.height === "" && (A.height = "97vh") : S === "parentOverflow" ? (A.maxWidth === "" && (A.maxWidth = "100%"), A.maxHeight === "" && (A.maxHeight = "100%")) : S === "parentHorizontal" ? A.width === "" && (A.width = "100%") : S === "parentVertical" && A.height === "" && (A.height = "100%"), this.autoDrawing = C, C && (N.then(() => this.draw()), b.then(() => this.draw()), this.draw()), this.onDrawed = w, this.onGameOver = x, this.gameAlives = new Map(
+    S === "overflow" ? (A.maxWidth === "" && (A.maxWidth = "97vw"), A.maxHeight === "" && (A.maxHeight = "97vh")) : S === "horizontal" ? A.width === "" && (A.width = "97vw") : S === "vertical" ? A.height === "" && (A.height = "97vh") : S === "parentOverflow" ? (A.maxWidth === "" && (A.maxWidth = "100%"), A.maxHeight === "" && (A.maxHeight = "100%")) : S === "parentHorizontal" ? A.width === "" && (A.width = "100%") : S === "parentVertical" && A.height === "" && (A.height = "100%"), this.autoDrawing = C, C && (N.then(() => this.draw()), b.then(() => this.draw()), this.draw()), this.onDrawed = x, this.onGameOver = v, this.gameAlives = new Map(
       [...Array(this.players).keys()].map((k) => [this.degNormal(k), !0])
-    ), this.freeMode = v, this.record = [], this.turn = 0, this.uiControl = ge(this), this.enPassant = new he();
+    ), this.freeMode = w, this.record = [], this.turn = 0, this.uiControl = ge(this), this.enPassant = new he();
   }
   /** ボードを閉じる */
   close() {

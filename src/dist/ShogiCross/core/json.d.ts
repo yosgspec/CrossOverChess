@@ -142,6 +142,10 @@ export type BoardInitOption = {
      */
     autoDrawing: boolean;
     /**
+     * - フリーモード有効化/無効化
+     */
+    freeMode: boolean;
+    /**
      * - 描写イベント
      */
     onDrawed: (Board: any) => void;
@@ -149,10 +153,6 @@ export type BoardInitOption = {
      * - ゲームオーバーイベント
      */
     onGameOver: (i: any) => void;
-    /**
-     * - フリーモード有効化/無効化
-     */
-    freeMode: boolean;
 };
 /**
  * - マス目の初期化オプション
