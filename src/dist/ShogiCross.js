@@ -556,7 +556,7 @@ const L = {
       { gameName: "チャトランガ", pieceSet: "p4" }
     ]
   }
-}, H = {
+}, J = {
   将棋: {
     english: "Shogi",
     fontColor: "#000000",
@@ -1286,7 +1286,7 @@ const L = {
       }
     }
   }
-}, V = {
+}, H = {
   将棋: {
     backgroundColor: "#EECC88",
     borderColor: "#333333",
@@ -4383,8 +4383,8 @@ const M = {
 };
 Object.assign(L, M.canvasFont);
 Object.assign(ae, M.gameSoft);
-Object.assign(H, M.games);
-Object.assign(V, M.boards);
+Object.assign(J, M.games);
+Object.assign(H, M.boards);
 Object.assign(D, M.panels);
 Object.assign(T, M.pieces);
 Object.assign(Z, M.pieceRange);
@@ -4709,7 +4709,7 @@ class y {
       isDrawShadow: l = y.isDrawShadow,
       isMoved: S = !1
     } = t;
-    Object.assign(this, a), this.ctx = e, this.display ??= [""], this.imgSrc ??= null, this.alias = [...this.alias ?? ""], this.displayPtn ??= s, this.game = H[this.gameName], this.cost = Q[this.char] ?? 1, this.center = 0, this.middle = 0, this.deg ||= i, this.size ??= r, this.useRankSize ??= n, this.isDrawShadow ??= l, this.isRotateImg ??= !0, this.isMoved = S, this.isSelected = !1, this.attr ??= [];
+    Object.assign(this, a), this.ctx = e, this.display ??= [""], this.imgSrc ??= null, this.alias = [...this.alias ?? ""], this.displayPtn ??= s, this.game = J[this.gameName], this.cost = Q[this.char] ?? 1, this.center = 0, this.middle = 0, this.deg ||= i, this.size ??= r, this.useRankSize ??= n, this.isDrawShadow ??= l, this.isRotateImg ??= !0, this.isMoved = S, this.isSelected = !1, this.attr ??= [];
     try {
       Object.entries(this.range).forEach(([o, d]) => {
         Array.isArray(d) || (this.range[o] = Z[d].map((m) => [...m]));
@@ -4931,15 +4931,15 @@ function me(p, e, a, t) {
               continue;
             let F = E || 0, P = x || 0;
             const [I, G] = [b - h, k - C];
-            for (let U = a, K = t; ; ) {
-              U += I, K += G;
-              const R = U + N, $ = K + v;
+            for (let K = a, Y = t; ; ) {
+              K += I, Y += G;
+              const R = K + N, $ = Y + v;
               if (!n(R, $) || !A && P === 0)
                 break;
               const z = F === 0;
               z && o(B, R, $, g, z) ? (P--, m(g, R, $)) : E < 1 && P--;
-              const Y = s[$][R];
-              if (Y.piece && (F--, z || l(Y)))
+              const q = s[$][R];
+              if (q.piece && (F--, z || l(q)))
                 break;
             }
           }
@@ -5173,7 +5173,7 @@ ${i}`;
 ` + m;
   }
 }
-class J {
+class U {
   /** 駒台への角度ごとの表示順
    * @type {number[]}
    */
@@ -5188,7 +5188,7 @@ class J {
   }
   /** 駒台を初期化にする */
   clear() {
-    this.stocks = new Map(J.#e.map((e) => [e, []]));
+    this.stocks = new Map(U.#e.map((e) => [e, []]));
   }
   /** 持ち駒からボード上に配置する
    * @param {Panal} toPanell - 配置先のパネル
@@ -5260,19 +5260,19 @@ ${n}持駒：${n}`);
     return i + r;
   }
 }
-const ue = Object.keys(y.degChars), q = () => ({
+const ue = Object.keys(y.degChars), V = () => ({
   panel: null,
   piece: null
 });
 class he {
   constructor() {
-    this.degs = {}, ue.forEach((e) => this.degs[e] = q());
+    this.degs = {}, ue.forEach((e) => this.degs[e] = V());
   }
   /** アンパッサン情報をクリア
    * @param {number} deg - アンパッサンされうる陣営の角度
    */
   clear(e) {
-    this.degs[e] = q();
+    this.degs[e] = V();
   }
   /** アンパッサン対象と成りうるマス情報を記録
    * @param {Panel} panel - アンパッサン対象と成りうるマス目
@@ -5353,7 +5353,9 @@ class ee {
       size: f,
       useRankSize: c,
       isDrawShadow: g
-    }), Object.assign(this, V[t]), ![2, 4].includes(i))
+    }), !H[t])
+      throw Error(`playBoard=${t}, Unknown board name.`);
+    if (Object.assign(this, H[t]), ![2, 4].includes(i))
       throw Error(`players=${i}, players need 2 or 4.`);
     this.players = i, this.left = o, this.top = d, this.panelWidth = m, this.panelHeight = u, this.borderWidth = B, this.pieceSize = f, this.canvasBackgroundColor = h, this.field = this.field.map(
       (k, b) => [...k].map((F, P) => {
@@ -5367,7 +5369,7 @@ class ee {
         } catch (P) {
           console.error(P);
         }
-    }), this.width = this.panelWidth * (this.xLen + 1), this.height = this.panelHeight * (this.yLen + 1), this.right = o + this.width, this.bottom = d + this.height, this.stand = new J(this), e.width = n ?? (r ? this.stand.right : this.right) + 5, e.height = l ?? this.bottom + 5;
+    }), this.width = this.panelWidth * (this.xLen + 1), this.height = this.panelHeight * (this.yLen + 1), this.right = o + this.width, this.bottom = d + this.height, this.stand = new U(this), e.width = n ?? (r ? this.stand.right : this.right) + 5, e.height = l ?? this.bottom + 5;
     const { style: A } = e;
     S === "overflow" ? (A.maxWidth === "" && (A.maxWidth = "97vw"), A.maxHeight === "" && (A.maxHeight = "97vh")) : S === "horizontal" ? A.width === "" && (A.width = "97vw") : S === "vertical" ? A.height === "" && (A.height = "97vh") : S === "parentOverflow" ? (A.maxWidth === "" && (A.maxWidth = "100%"), A.maxHeight === "" && (A.maxHeight = "100%")) : S === "parentHorizontal" ? A.width === "" && (A.width = "100%") : S === "parentVertical" && A.height === "" && (A.height = "100%"), this.autoDrawing = C, C && (X.then(() => this.draw()), E.then(() => this.draw()), this.draw()), this.onDrawed = N, this.onGameOver = v, this.gameAlives = new Map(
       [...Array(this.players).keys()].map((k) => [this.degNormal(k), !0])
@@ -5430,7 +5432,7 @@ class ee {
   putStartPieces(e, a, t = "default") {
     const { pieces: s } = this, i = this.degNormal(e);
     this.#e(i);
-    const r = H[a].position[this.xLen][t];
+    const r = J[a].position[this.xLen][t];
     if (!r)
       throw Error(`games["${a}"].position["${this.xLen}"]["${t}"]is null.`);
     r.forEach((n, l) => {
@@ -5689,17 +5691,17 @@ ${n}:${l}`)) {
    * @param {string} ext - 拡張子
    * @returns {Promise<void>}
    */
-  async downloadImage(e, a) {
-    await oe(this.canvas, e, a);
+  async downloadImage(e = "shogicross", a, t) {
+    await oe(this.canvas, e, a, t);
   }
 }
 export {
   ee as Board,
   y as Piece,
-  V as boards,
+  H as boards,
   L as canvasFont,
   j as canvasImage,
   ae as gameSoft,
-  H as games
+  J as games
 };
 //# sourceMappingURL=ShogiCross.js.map

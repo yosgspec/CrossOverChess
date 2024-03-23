@@ -196,7 +196,7 @@ export class Board {
      * @param {string} ext - 拡張子
      * @returns {Promise<void>}
      */
-    downloadImage(fileName: string, ext: string): Promise<void>;
+    downloadImage(fileName: string, ext: string, urlType: any): Promise<void>;
     #private;
 }
 export type BoardInitOption = import('./json').BoardInitOption;

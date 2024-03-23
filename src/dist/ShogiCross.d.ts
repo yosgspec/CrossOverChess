@@ -44,7 +44,7 @@ declare class ee {
     height: number;
     right: any;
     bottom: any;
-    stand: J;
+    stand: U;
     autoDrawing: any;
     onDrawed: any;
     onGameOver: any;
@@ -154,7 +154,7 @@ declare class ee {
      * @param {string} ext - 拡張子
      * @returns {Promise<void>}
      */
-    downloadImage(e: any, a: any): Promise<void>;
+    downloadImage(e: string, a: any, t: any): Promise<void>;
     #private;
 }
 declare class y {
@@ -292,7 +292,7 @@ declare class y {
      */
     toString(e?: boolean): string;
 }
-declare const V: {
+declare const H: {
     将棋: {
         backgroundColor: string;
         borderColor: string;
@@ -1332,7 +1332,7 @@ declare namespace ae {
         export { playPieces_44 as playPieces };
     }
 }
-declare namespace H {
+declare namespace J {
     namespace 将棋 {
         let english: string;
         let fontColor: string;
@@ -1612,7 +1612,7 @@ declare namespace H {
         export { position_6 as position };
     }
 }
-declare class J {
+declare class U {
     /** 駒台への角度ごとの表示順
      * @type {number[]}
      */
@@ -1687,4 +1687,4 @@ declare class he {
      */
     isTarget(e: any, a: any): boolean;
 }
-export { ee as Board, y as Piece, V as boards, L as canvasFont, j as canvasImage, ae as gameSoft, H as games };
+export { ee as Board, y as Piece, H as boards, L as canvasFont, j as canvasImage, ae as gameSoft, J as games };
