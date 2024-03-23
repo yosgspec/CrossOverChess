@@ -5533,7 +5533,7 @@ class ee {
         (s) => s.some(
           ({ piece: i }) => i && i.deg === e && i.hasAttr("king")
         )
-      ) || (this.gameAlives.set(e, !1), this.onGameOver(this, t)));
+      ) || (this.gameAlives.set(e, !1), this.onGameOver && this.onGameOver(this, t)));
     });
   }
   /** プロモーション処理
