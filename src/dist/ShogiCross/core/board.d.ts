@@ -48,7 +48,7 @@ export class Board {
     stand: Stand;
     autoDrawing: boolean;
     onDrawed: (Board: any) => void;
-    onGameOver: (i: any) => void;
+    onGameOver: (e: any, i: any) => void;
     gameAlives: Map<number, boolean>;
     freeMode: boolean;
     /** ゲームの記録

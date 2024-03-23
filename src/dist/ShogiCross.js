@@ -4900,10 +4900,10 @@ function me(p, e, a, t) {
   }
   function d(c, g, B, h, C) {
     for (const w of g)
-      for (let x = 0; x < c.length; x++)
-        for (let v = 0; v < c[x].length; v++) {
-          const [N, b] = [v + a - h, x + t - C];
-          if (!(!n(N, b) || o(B, 0 | N, 0 | b, "", !1) || c[x][v] !== w))
+      for (let N = 0; N < c.length; N++)
+        for (let v = 0; v < c[N].length; v++) {
+          const [X, E] = [v + a - h, N + t - C];
+          if (!(!n(X, E) || o(B, 0 | X, 0 | E, "", !1) || c[N][v] !== w))
             return !0;
         }
     return !1;
@@ -4914,30 +4914,30 @@ function me(p, e, a, t) {
   }
   function u(c, [g, { isAttack: B }], { oX: h, oY: C, isOwn: w }) {
     if (w)
-      for (const [x, { child: v = [] } = {}] of ce)
-        for (let N = 0; N < c.length; N++)
-          for (let b = 0; b < c[N].length; b++) {
-            const [E, A] = [b + a - h, N + t - C];
-            !n(E, A) || !o(B, E, A, g) || c[N][b] !== x || d(c, v, !1, h, C) || m(g, E, A);
+      for (const [N, { child: v = [] } = {}] of ce)
+        for (let X = 0; X < c.length; X++)
+          for (let E = 0; E < c[X].length; E++) {
+            const [x, A] = [E + a - h, X + t - C];
+            !n(x, A) || !o(B, x, A, g) || c[X][E] !== N || d(c, v, !1, h, C) || m(g, x, A);
           }
   }
-  function f(c, [g, { isAttack: B }], { oX: h, oY: C, isOwn: w, offsetX: x, offsetY: v }) {
-    if (!(!w && !o(!1, a + x, t + v)))
-      for (const [N, { jmps: b = 0, moves: E = 0 } = {}] of _) {
-        const A = !E || E === 0;
+  function f(c, [g, { isAttack: B }], { oX: h, oY: C, isOwn: w, offsetX: N, offsetY: v }) {
+    if (!(!w && !o(!1, a + N, t + v)))
+      for (const [X, { jmps: E = 0, moves: x = 0 } = {}] of _) {
+        const A = !x || x === 0;
         for (let k = C - 1; k <= C + 1; k++)
-          for (let X = h - 1; X <= h + 1; X++) {
-            if (c[k][X] !== N || X === h && k === C)
+          for (let b = h - 1; b <= h + 1; b++) {
+            if (c[k][b] !== X || b === h && k === C)
               continue;
-            let F = b || 0, P = E || 0;
-            const [I, G] = [X - h, k - C];
+            let F = E || 0, P = x || 0;
+            const [I, G] = [b - h, k - C];
             for (let U = a, K = t; ; ) {
               U += I, K += G;
-              const R = U + x, $ = K + v;
+              const R = U + N, $ = K + v;
               if (!n(R, $) || !A && P === 0)
                 break;
               const z = F === 0;
-              z && o(B, R, $, g, z) ? (P--, m(g, R, $)) : b < 1 && P--;
+              z && o(B, R, $, g, z) ? (P--, m(g, R, $)) : E < 1 && P--;
               const Y = s[$][R];
               if (Y.piece && (F--, z || l(Y)))
                 break;
@@ -5328,7 +5328,7 @@ class ee {
     const {
       playBoard: t,
       playPieces: s = [],
-      players: i = s.some(({ gameName: k }, X) => 1 < X && k) ? 4 : 2,
+      players: i = s.some(({ gameName: k }, b) => 1 < b && k) ? 4 : 2,
       useStand: r = !1,
       canvasWidth: n = void 0,
       canvasHeight: l = void 0,
@@ -5344,32 +5344,32 @@ class ee {
       backgroundColor: h = "#00000000",
       autoDrawing: C = !0,
       freeMode: w = !1,
-      onDrawed: x,
-      onGameOver: v = (k) => alert(`プレイヤー${k + 1}の敗北です。`)
-    } = a, N = L.importAsync(), b = j.importAsync();
+      onDrawed: N,
+      onGameOver: v = (k, b) => alert(`プレイヤー${b + 1}の敗北です。`)
+    } = a, X = L.importAsync(), E = j.importAsync();
     this.canvas = e;
-    const E = e.getContext("2d");
-    if (E.clearRect(0, 0, e.width, e.height), this.ctx = E, this.pieces = y.getPieces(E, {
+    const x = e.getContext("2d");
+    if (x.clearRect(0, 0, e.width, e.height), this.ctx = x, this.pieces = y.getPieces(x, {
       size: f,
       useRankSize: c,
       isDrawShadow: g
     }), Object.assign(this, V[t]), ![2, 4].includes(i))
       throw Error(`players=${i}, players need 2 or 4.`);
     this.players = i, this.left = o, this.top = d, this.panelWidth = m, this.panelHeight = u, this.borderWidth = B, this.pieceSize = f, this.canvasBackgroundColor = h, this.field = this.field.map(
-      (k, X) => [...k].map((F, P) => {
-        const I = o + m * (P + 1), G = d + u * (X + 1);
-        return new le(E, F, I, G, m, u, P, X, B);
+      (k, b) => [...k].map((F, P) => {
+        const I = o + m * (P + 1), G = d + u * (b + 1);
+        return new le(x, F, I, G, m, u, P, b, B);
       })
-    ), this.xLen = this.field[0].length, this.yLen = this.field.length, s.forEach(({ gameName: k, pieceSet: X }, F) => {
+    ), this.xLen = this.field[0].length, this.yLen = this.field.length, s.forEach(({ gameName: k, pieceSet: b }, F) => {
       if (k)
         try {
-          this.putStartPieces(F, k, X);
+          this.putStartPieces(F, k, b);
         } catch (P) {
           console.error(P);
         }
     }), this.width = this.panelWidth * (this.xLen + 1), this.height = this.panelHeight * (this.yLen + 1), this.right = o + this.width, this.bottom = d + this.height, this.stand = new J(this), e.width = n ?? (r ? this.stand.right : this.right) + 5, e.height = l ?? this.bottom + 5;
     const { style: A } = e;
-    S === "overflow" ? (A.maxWidth === "" && (A.maxWidth = "97vw"), A.maxHeight === "" && (A.maxHeight = "97vh")) : S === "horizontal" ? A.width === "" && (A.width = "97vw") : S === "vertical" ? A.height === "" && (A.height = "97vh") : S === "parentOverflow" ? (A.maxWidth === "" && (A.maxWidth = "100%"), A.maxHeight === "" && (A.maxHeight = "100%")) : S === "parentHorizontal" ? A.width === "" && (A.width = "100%") : S === "parentVertical" && A.height === "" && (A.height = "100%"), this.autoDrawing = C, C && (N.then(() => this.draw()), b.then(() => this.draw()), this.draw()), this.onDrawed = x, this.onGameOver = v, this.gameAlives = new Map(
+    S === "overflow" ? (A.maxWidth === "" && (A.maxWidth = "97vw"), A.maxHeight === "" && (A.maxHeight = "97vh")) : S === "horizontal" ? A.width === "" && (A.width = "97vw") : S === "vertical" ? A.height === "" && (A.height = "97vh") : S === "parentOverflow" ? (A.maxWidth === "" && (A.maxWidth = "100%"), A.maxHeight === "" && (A.maxHeight = "100%")) : S === "parentHorizontal" ? A.width === "" && (A.width = "100%") : S === "parentVertical" && A.height === "" && (A.height = "100%"), this.autoDrawing = C, C && (X.then(() => this.draw()), E.then(() => this.draw()), this.draw()), this.onDrawed = N, this.onGameOver = v, this.gameAlives = new Map(
       [...Array(this.players).keys()].map((k) => [this.degNormal(k), !0])
     ), this.freeMode = w, this.record = [], this.turn = 0, this.uiControl = ge(this), this.enPassant = new he();
   }
@@ -5531,7 +5531,7 @@ class ee {
         (s) => s.some(
           ({ piece: i }) => i && i.deg === e && i.hasAttr("king")
         )
-      ) || (this.gameAlives.set(e, !1), this.onGameOver(t)));
+      ) || (this.gameAlives.set(e, !1), this.onGameOver(this, t)));
     });
   }
   /** プロモーション処理
