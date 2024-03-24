@@ -167,9 +167,10 @@ export class Board {
     /** 記録の手を進める */
     redoRecord(): void;
     /** 棋譜をテキストで取得
+     * @param {boolean} isNumOnly - 座標を数字で表現
      * @returns {string}
      */
-    getTextRecord(): string;
+    getTextRecord(isNumOnly?: boolean): string;
     /** 棋譜データを取得
      * @returns {string}
      */
@@ -181,11 +182,11 @@ export class Board {
     /** 盤を描写 */
     draw(): void;
     /** 駒配置をテキストで取得
-     * @param {"default"|"compact"|"bod"} isCompact - テキスト形式
+     * @param {"default"|"compact"|"bod"} mode - テキスト形式
      * @param {boolean} isAlias - エイリアス表示
      * @returns {string}
      */
-    getTextPieces(mode?: string, isAlias?: boolean): string;
+    getTextPieces(mode?: "default" | "compact" | "bod", isAlias?: boolean): string;
     /** 駒配置をテキストで取得
      * @param {boolean} isCompact - コンパクト表示
      * @param {boolean} isAlias - エイリアス表示

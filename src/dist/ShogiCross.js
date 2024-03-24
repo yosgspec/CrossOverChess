@@ -4736,7 +4736,7 @@ class y {
     const { promo: a } = this;
     if (!a)
       throw Error(`promo=${e}, Not plomote piece.`);
-    if (!a in a)
+    if (!a[e])
       throw Error(`promo=${e}, Plomote key is missing.`);
     if (this.hasAttr("promoted"))
       throw Error(`promo=${e}, Promoted piece.`);
@@ -5630,12 +5630,13 @@ ${n}:${l}`)) {
     this.#s(1);
   }
   /** 棋譜をテキストで取得
+   * @param {boolean} isNumOnly - 座標を数字で表現
    * @returns {string}
    */
-  getTextRecord() {
-    const e = ({ pX: t }) => t == null ? "*" : (this.xLen - t).toString(36), a = ({ pY: t }) => t == null ? "*" : (t + 1).toString(36);
+  getTextRecord(e = !1) {
+    const a = ({ pX: s }) => s == null ? "*" : (this.xLen - s).toString(e ? 10 : 36), t = ({ pY: s }) => s == null ? "*" : (s + 1).toString(e ? 10 : 36);
     return this.record.slice(1, this.turn + 1).map(
-      ({ to: t, from: s, deg: i, pieceChar: r, end: n }, l) => `${l}: ${y.degChars[i]}${e(t)}${a(t)}${r}${n} (${e(s)}${a(s)})`
+      ({ to: s, from: i, deg: r, pieceChar: n, end: l }, S) => `${S + 1}: ${y.degChars[r]}${a(s)}${e ? "," : ""}${t(s)}${n}${l} (${a(i)}${e ? "," : ""}${t(i)})`
     ).join(`
 `);
   }
@@ -5661,7 +5662,7 @@ ${n}:${l}`)) {
     }), this.onDrawed && this.onDrawed(this);
   }
   /** 駒配置をテキストで取得
-   * @param {"default"|"compact"|"bod"} isCompact - テキスト形式
+   * @param {"default"|"compact"|"bod"} mode - テキスト形式
    * @param {boolean} isAlias - エイリアス表示
    * @returns {string}
    */
