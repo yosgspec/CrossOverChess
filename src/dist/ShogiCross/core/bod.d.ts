@@ -65,3 +65,4 @@ export class Bod {
     static getTextPieces(board: any): string;
 }
 import { Piece } from "./piece.js";
+import { Stand } from "./stand.js";

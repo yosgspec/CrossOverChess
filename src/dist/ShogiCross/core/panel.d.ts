@@ -75,3 +75,4 @@ export class Panel {
     toString(isCompact?: boolean): any;
     #private;
 }
+import { Piece } from "./piece.js";

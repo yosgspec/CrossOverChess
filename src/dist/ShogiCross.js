@@ -4459,116 +4459,6 @@ async function oe(p, e = "image", a = "png", t = "base64") {
     await new Promise((n) => p.toBlob(n), s)
   ) : r = p.toDataURL(s), i.href = r, i.download = `${e}.${a}`, i.click(), t === "blob" && URL.revokeObjectURL(i.href);
 }
-class le {
-  #e;
-  #t;
-  #a;
-  /** 駒オブジェクト
-   * @returns {Piece}
-   */
-  get piece() {
-    return this.#e;
-  }
-  set piece(e) {
-    this.#e = e, e && (e.center = this.center, e.middle = this.middle);
-  }
-  /**
-   * @param {any} ctx - Canvas描画コンテキスト
-   * @param {string} char - マス目を示す文字
-   * @param {number} center - 描写するX座標(中心原点)
-   * @param {number} middle - 描写するY座標(中心原点)
-   * @param {number} width - マス目幅
-   * @param {number} height - マス目高さ
-   * @param {number} pX - ボード上のマス目の列
-   * @param {number} pY - ボード上のマス目の行
-   * @param {number} borderWidth - 枠線の太さ
-   */
-  constructor(e, a, t, s, i, r, n, l, S) {
-    Object.assign(this, D[a]), this.ctx = e, this.center = t, this.middle = s, this.width = i, this.height = r, this.left = t - i / 2, this.top = s - r / 2, this.right = t + i / 2, this.bottom = s + r / 2, this.pX = n, this.pY = l, this.borderWidth = S, this.selectColor ??= "#FF000066", this.targetColor ??= "#00FF0066", this.attr ??= [], this.piece = null, this.isSelected = !1, this.clearTarget();
-  }
-  /** マス目の選択状態
-   * @param {boolean} value
-   */
-  set isSelected(e) {
-    this.#t = this.hasAttr("keepOut") ? !1 : e;
-  }
-  get isSelected() {
-    return this.#t;
-  }
-  /** マス目の移動可能判定
-   * @param {boolean} value
-   */
-  get isTarget() {
-    return 0 < this.#a.length;
-  }
-  /** マス目の移動先情報をクリア */
-  clearTarget() {
-    this.#a = [];
-  }
-  /** マス目の移動先情報を追加
-   * @param {string} rangeName - 移動先情報
-   */
-  addTarget(e) {
-    this.#a.push(e);
-  }
-  /** マス目が移動先情報を持っているか判定
-   * @param {string} rangeName - 移動先情報
-   * @returns {boolean}
-   */
-  hasTarget(e) {
-    return this.#a.includes(e);
-  }
-  /** 属性の存在を確認
-   * @param {string} attrName - 属性名
-   * @returns {boolean}
-   */
-  hasAttr(e) {
-    return this.attr.includes(e);
-  }
-  /** 座標がマス目に含まれるか判定
-   * @param {number} x - X座標
-   * @param {number} y - Y座標
-   */
-  checkRangeMouse(e, a) {
-    return this.left <= e && e < this.right && this.top <= a && a < this.bottom;
-  }
-  /** マス目/マスク/駒を描写 */
-  draw() {
-    const { selectColor: e, targetColor: a } = this;
-    this.imgSrc && j.imported ? this.drawImage() : this.drawPanel(), this.isSelected && this.drawMask(e), this.isTarget && this.drawMask(a), this.piece?.draw();
-  }
-  /** マス目画像を描写 */
-  drawImage() {
-    const { ctx: e } = this, a = this.imgSrc, t = j.images[a];
-    t && (e.save(), e.translate(this.left, this.top), e.drawImage(t, 0, 0, this.width, this.height), e.restore());
-  }
-  /** マス目を描写 */
-  drawPanel() {
-    const { ctx: e, left: a, top: t, center: s, middle: i, width: r, height: n, displayText: l, textRotate: S } = this;
-    if (e.fillStyle = this.backgroundColor, e.strokeStyle = this.borderColor, e.lineWidth = this.borderWidth, e.save(), e.translate(a, t), e.fillRect(0, 0, r, n), this.intersect ? (e.lineWidth = this.borderWidth, e.beginPath(), e.moveTo(r / 2, 0), e.lineTo(r / 2, n), e.moveTo(0, n / 2), e.lineTo(r, n / 2), e.closePath(), e.stroke()) : e.strokeRect(0, 0, r, n), e.lineWidth = this.borderWidth / 2, e.beginPath(), this.borderSlashLeft && (e.moveTo(0, 0), e.lineTo(r, n)), this.borderSlashRight && (e.moveTo(r, 0), e.lineTo(0, n)), e.closePath(), e.stroke(), e.restore(), l) {
-      e.save(), e.translate(s, i), e.fillStyle = this.borderColor;
-      const o = S ? S * Math.PI / 180 : 0;
-      e.rotate(o);
-      const d = Math.min(this.width, this.height) * 0.6;
-      e.font = `${d}px ${L.names}`;
-      const m = e.measureText(l).width, u = d / 2 * 0.8;
-      e.fillText(l, -m / 2, u), e.restore();
-    }
-  }
-  /** マス目にマスクを描写
-   * @param {string} color - カラーエフェクトの色
-   */
-  drawMask(e) {
-    const { ctx: a } = this;
-    a.fillStyle = e, a.fillRect(this.left, this.top, this.width, this.height);
-  }
-  /** マス目をテキスト形式で取得
-   * @param {boolean} isCompact - コンパクト表示
-   */
-  toString(e = !1) {
-    return e ? `｜${this.text.slice(-1).replace(/　/g, "・")}` : this.text;
-  }
-}
 class y {
   /** 描写サイズ
    * @type {number}
@@ -4836,6 +4726,116 @@ class y {
   toString(e = !1) {
     const { displayPtn: a } = this, t = !e || a === 0 ? this.char : this.alias[a - 1];
     return y.degChars[this.deg] + t;
+  }
+}
+class le {
+  #e;
+  #t;
+  #a;
+  /** 駒オブジェクト
+   * @returns {Piece}
+   */
+  get piece() {
+    return this.#e;
+  }
+  set piece(e) {
+    this.#e = e, e && (e.center = this.center, e.middle = this.middle);
+  }
+  /**
+   * @param {any} ctx - Canvas描画コンテキスト
+   * @param {string} char - マス目を示す文字
+   * @param {number} center - 描写するX座標(中心原点)
+   * @param {number} middle - 描写するY座標(中心原点)
+   * @param {number} width - マス目幅
+   * @param {number} height - マス目高さ
+   * @param {number} pX - ボード上のマス目の列
+   * @param {number} pY - ボード上のマス目の行
+   * @param {number} borderWidth - 枠線の太さ
+   */
+  constructor(e, a, t, s, i, r, n, l, S) {
+    Object.assign(this, D[a]), this.ctx = e, this.center = t, this.middle = s, this.width = i, this.height = r, this.left = t - i / 2, this.top = s - r / 2, this.right = t + i / 2, this.bottom = s + r / 2, this.pX = n, this.pY = l, this.borderWidth = S, this.selectColor ??= "#FF000066", this.targetColor ??= "#00FF0066", this.attr ??= [], this.piece = null, this.isSelected = !1, this.clearTarget();
+  }
+  /** マス目の選択状態
+   * @param {boolean} value
+   */
+  set isSelected(e) {
+    this.#t = this.hasAttr("keepOut") ? !1 : e;
+  }
+  get isSelected() {
+    return this.#t;
+  }
+  /** マス目の移動可能判定
+   * @param {boolean} value
+   */
+  get isTarget() {
+    return 0 < this.#a.length;
+  }
+  /** マス目の移動先情報をクリア */
+  clearTarget() {
+    this.#a = [];
+  }
+  /** マス目の移動先情報を追加
+   * @param {string} rangeName - 移動先情報
+   */
+  addTarget(e) {
+    this.#a.push(e);
+  }
+  /** マス目が移動先情報を持っているか判定
+   * @param {string} rangeName - 移動先情報
+   * @returns {boolean}
+   */
+  hasTarget(e) {
+    return this.#a.includes(e);
+  }
+  /** 属性の存在を確認
+   * @param {string} attrName - 属性名
+   * @returns {boolean}
+   */
+  hasAttr(e) {
+    return this.attr.includes(e);
+  }
+  /** 座標がマス目に含まれるか判定
+   * @param {number} x - X座標
+   * @param {number} y - Y座標
+   */
+  checkRangeMouse(e, a) {
+    return this.left <= e && e < this.right && this.top <= a && a < this.bottom;
+  }
+  /** マス目/マスク/駒を描写 */
+  draw() {
+    const { selectColor: e, targetColor: a } = this;
+    this.imgSrc && j.imported ? this.drawImage() : this.drawPanel(), this.isSelected && this.drawMask(e), this.isTarget && this.drawMask(a), this.piece?.draw();
+  }
+  /** マス目画像を描写 */
+  drawImage() {
+    const { ctx: e } = this, a = this.imgSrc, t = j.images[a];
+    t && (e.save(), e.translate(this.left, this.top), e.drawImage(t, 0, 0, this.width, this.height), e.restore());
+  }
+  /** マス目を描写 */
+  drawPanel() {
+    const { ctx: e, left: a, top: t, center: s, middle: i, width: r, height: n, displayText: l, textRotate: S } = this;
+    if (e.fillStyle = this.backgroundColor, e.strokeStyle = this.borderColor, e.lineWidth = this.borderWidth, e.save(), e.translate(a, t), e.fillRect(0, 0, r, n), this.intersect ? (e.lineWidth = this.borderWidth, e.beginPath(), e.moveTo(r / 2, 0), e.lineTo(r / 2, n), e.moveTo(0, n / 2), e.lineTo(r, n / 2), e.closePath(), e.stroke()) : e.strokeRect(0, 0, r, n), e.lineWidth = this.borderWidth / 2, e.beginPath(), this.borderSlashLeft && (e.moveTo(0, 0), e.lineTo(r, n)), this.borderSlashRight && (e.moveTo(r, 0), e.lineTo(0, n)), e.closePath(), e.stroke(), e.restore(), l) {
+      e.save(), e.translate(s, i), e.fillStyle = this.borderColor;
+      const o = S ? S * Math.PI / 180 : 0;
+      e.rotate(o);
+      const d = Math.min(this.width, this.height) * 0.6;
+      e.font = `${d}px ${L.names}`;
+      const m = e.measureText(l).width, u = d / 2 * 0.8;
+      e.fillText(l, -m / 2, u), e.restore();
+    }
+  }
+  /** マス目にマスクを描写
+   * @param {string} color - カラーエフェクトの色
+   */
+  drawMask(e) {
+    const { ctx: a } = this;
+    a.fillStyle = e, a.fillRect(this.left, this.top, this.width, this.height);
+  }
+  /** マス目をテキスト形式で取得
+   * @param {boolean} isCompact - コンパクト表示
+   */
+  toString(e = !1) {
+    return e ? `｜${this.text.slice(-1).replace(/　/g, "・")}` : this.text;
   }
 }
 const Se = [
