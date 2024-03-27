@@ -14,14 +14,14 @@
 <li>その他バリエーション等</li>
 </ul>
 <a id="md:駒情報" class="tsd-anchor"></a><h3><a href="#md:駒情報"><a href="doc/pieces/README.md">駒情報</a></a></h3><p>実装済の駒の定義一覧。</p>
-<a id="md:webアプリ" class="tsd-anchor"></a><h2><a href="#md:webアプリ">Webアプリ</a></h2><p>様々な将棋類の駒を並べるだけの将棋盤のようなツール</p>
+<a id="md:webアプリ" class="tsd-anchor"></a><h2><a href="#md:webアプリ">Webアプリ</a></h2><p>様々な将棋類の駒を並べるだけの将棋盤のようなツール。</p>
 <a id="md:実装" class="tsd-anchor"></a><h3><a href="#md:実装">実装</a></h3><ul>
 <li><a href="http://shogicross.yosgspec.com">ShogiCross App</a></li>
 <li><a href="http://shogicross.yosgspec.com/dist">単品ゲーム集</a></li>
 <li><a href="http://shogicross.yosgspec.com/playBoard.html">将棋類紹介</a></li>
 <li><a href="http://shogicross.yosgspec.com/pieceViewer.html">将棋駒Viewer</a></li>
 </ul>
-<a id="md:ライブラリ" class="tsd-anchor"></a><h3><a href="#md:ライブラリ">ライブラリ</a></h3><p>任意のページへ設置。駒やボードの追加も対応。</p>
+<a id="md:ライブラリ" class="tsd-anchor"></a><h3><a href="#md:ライブラリ">ライブラリ</a></h3><p>任意のページへ設置できる。駒やボードの追加も対応。</p>
 <ul>
 <li><a href="http://shogicross.yosgspec.com/doc">ドキュメント</a></li>
 <li><a href="http://shogicross.yosgspec.com/doc/#getStarted">ダウンロード</a></li>
@@ -47,12 +47,12 @@
 </li>
 <li><p>視覚的にわかりやすい駒データ定義</p>
 </li>
-<li><p>Webページに簡単設置(<a href="https://codepen.io/yosgspec/pen/bGJqNJr">CodePen</a>)</p>
+<li><p>Webページに簡単設置(<a href="https://codepen.io/yosgspec/pen/bGJqNJr">CodePen</a>、<a href="https://shogicross.yosgspec.com/doc/#gameSoft">コード付サンプル</a>)</p>
 <ul>
 <li><details>
 <summary>サンプルコード</summary>
 
-<pre><code class="language-html"><span class="hl-0">&lt;</span><span class="hl-1">canvas</span><span class="hl-2"> </span><span class="hl-3">id</span><span class="hl-2">=</span><span class="hl-4">&quot;shogi&quot;</span><span class="hl-0">&gt;&lt;/</span><span class="hl-1">canvas</span><span class="hl-0">&gt;</span><br/><span class="hl-0">&lt;</span><span class="hl-1">script</span><span class="hl-5"> </span><span class="hl-3">src</span><span class="hl-5">=</span><span class="hl-4">&quot;https://cdn.jsdelivr.net/gh/yosgspec/ShogiCross@main/src/dist/ShogiCross.iife.min.js&quot;</span><span class="hl-0">&gt;&lt;/</span><span class="hl-1">script</span><span class="hl-0">&gt;</span><br/><span class="hl-0">&lt;</span><span class="hl-1">script</span><span class="hl-0">&gt;</span><br/><span class="hl-6">var</span><span class="hl-5"> </span><span class="hl-7">shogi</span><span class="hl-5"> </span><span class="hl-2">=</span><span class="hl-5"> </span><span class="hl-7">ShogiCross</span><span class="hl-5">.</span><span class="hl-7">Board</span><span class="hl-5">.</span><span class="hl-8">run</span><span class="hl-5">(</span><br/><span class="hl-5">    </span><span class="hl-7">document</span><span class="hl-5">.</span><span class="hl-8">getElementById</span><span class="hl-5">(</span><span class="hl-9">&quot;shogi&quot;</span><span class="hl-5">),</span><br/><span class="hl-5">    </span><span class="hl-7">ShogiCross</span><span class="hl-5">.</span><span class="hl-7">gameSoft</span><span class="hl-5">.</span><span class="hl-7">shogi</span><span class="hl-5">);</span><br/><span class="hl-0">&lt;/</span><span class="hl-1">script</span><span class="hl-0">&gt;</span>
+<pre><code class="language-html"><span class="hl-0">&lt;</span><span class="hl-1">canvas</span><span class="hl-2"> </span><span class="hl-3">id</span><span class="hl-2">=</span><span class="hl-4">&quot;shogiCross&quot;</span><span class="hl-0">&gt;&lt;/</span><span class="hl-1">canvas</span><span class="hl-0">&gt;</span><br/><span class="hl-0">&lt;</span><span class="hl-1">script</span><span class="hl-5"> </span><span class="hl-3">type</span><span class="hl-5">=</span><span class="hl-4">&quot;module&quot;</span><span class="hl-0">&gt;</span><br/><span class="hl-5">    </span><span class="hl-6">import</span><span class="hl-5"> {</span><span class="hl-7">Board</span><span class="hl-5">, </span><span class="hl-7">gameSoft</span><span class="hl-5">} </span><span class="hl-6">from</span><span class="hl-5"> </span><span class="hl-8">&quot;https://cdn.jsdelivr.net/gh/yosgspec/ShogiCross@0.5/src/dist/ShogiCross.min.js&quot;</span><span class="hl-5">;</span><br/><span class="hl-5">    </span><span class="hl-9">const</span><span class="hl-5"> </span><span class="hl-10">canvas</span><span class="hl-5"> </span><span class="hl-2">=</span><span class="hl-5"> </span><span class="hl-7">document</span><span class="hl-5">.</span><span class="hl-11">getElementById</span><span class="hl-5">(</span><span class="hl-8">&quot;shogiCross&quot;</span><span class="hl-5">);</span><br/><span class="hl-5">    </span><span class="hl-9">const</span><span class="hl-5"> </span><span class="hl-10">board</span><span class="hl-5"> </span><span class="hl-2">=</span><span class="hl-5"> </span><span class="hl-7">Board</span><span class="hl-5">.</span><span class="hl-11">run</span><span class="hl-5">(</span><span class="hl-7">canvas</span><span class="hl-5">, </span><span class="hl-7">gameSoft</span><span class="hl-5">.</span><span class="hl-7">shogi</span><span class="hl-5">);</span><br/><span class="hl-0">&lt;/</span><span class="hl-1">script</span><span class="hl-0">&gt;</span>
 </code><button>Copy</button></pre>
 </details></li>
 </ul>
@@ -71,7 +71,7 @@
 </ul>
 <p>本来は楷書体が適切だと考えるが文字の網羅性と扱いやすさからNotoフォントで統一。</p>
 <a id="md:使用ライブラリ" class="tsd-anchor"></a><h2><a href="#md:使用ライブラリ">使用ライブラリ</a></h2><p>Webアプリの本体についてはVanilla.jsで実装。</p>
-<p>ビルドツールとして下記を採用。いずれも最適化のためのもので必須ではない。</p>
+<p>ビルドツールとして下記を採用。いずれも最適化のためのもので使わなくても動く。</p>
 <table>
 <thead>
 <tr>
@@ -96,6 +96,10 @@
 <td align="left">型定義ファイル(.d.ts)生成</td>
 </tr>
 <tr>
+<td align="left"><a href="https://typedoc.org">TypeDoc</a></td>
+<td align="left">.d.ts(JSDoc)ドキュメント生成</td>
+</tr>
+<tr>
 <td align="left"><a href="https://github.com/cthackers/adm-zip/wiki/ADM-ZIP">ADM-ZIP</a></td>
 <td align="left">ZIPファイル生成</td>
 </tr>
@@ -104,12 +108,8 @@
 <td align="left">画像ファイル最適化</td>
 </tr>
 <tr>
-<td align="left"><a href="https://github.com/documentationjs/documentation">documentation.js</a></td>
-<td align="left">JSDocドキュメント生成</td>
-</tr>
-<tr>
 <td align="left"><a href="https://www.jsdelivr.com/github">jsDelivr</a></td>
-<td align="left">CDNリンクの取得</td>
+<td align="left">CDNリンク取得</td>
 </tr>
 </tbody></table>
 <a id="md:ライセンス" class="tsd-anchor"></a><h2><a href="#md:ライセンス"><a href="LICENSE">ライセンス</a></a></h2><p>CC0-1.0。コードの引用再利用ご自由に。</p>
