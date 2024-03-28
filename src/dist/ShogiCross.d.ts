@@ -130,13 +130,15 @@ declare class ee {
      */
     getTextRecord(e?: boolean): string;
     /** 棋譜データを取得
+     * @param {boolean} isEncode - エンコード有無
      * @returns {string}
      */
-    getJsonRecord(): string;
+    getJsonRecord(e?: boolean): string;
     /** 棋譜データを入力
      * @param {string} record - 棋譜データ
+     * @param {number} turn - 手数
      */
-    setJsonRecord(e: any): void;
+    setJsonRecord(e: any, a?: number): void;
     /** 盤を描写 */
     draw(): void;
     /** 駒配置をテキストで取得
@@ -473,7 +475,7 @@ declare const H: {
 declare namespace L {
     let fonts: (string | number)[][];
 }
-declare namespace j {
+declare namespace F {
     let imported: boolean;
     let images: {
         [x: string]: new (width?: number, height?: number) => HTMLImageElement;
@@ -1688,4 +1690,4 @@ declare class he {
      */
     isTarget(e: any, a: any): boolean;
 }
-export { ee as Board, y as Piece, H as boards, L as canvasFont, j as canvasImage, ae as gameSoft, J as games };
+export { ee as Board, y as Piece, H as boards, L as canvasFont, F as canvasImage, ae as gameSoft, J as games };

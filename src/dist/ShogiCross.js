@@ -4433,7 +4433,7 @@ function ie(p) {
 }
 const re = [...new Set(
   Object.values(D).flatMap(({ imgSrc: p }) => p ?? []).concat(Object.values(T).flatMap(({ imgSrc: p }) => p ?? []))
-)], j = {
+)], F = {
   /** 読み込み済みであるか? */
   imported: !1,
   /** 読み込んだ画像データ
@@ -4666,11 +4666,11 @@ class y {
   /** 駒/マスクを描写 */
   async draw() {
     const e = "#FF000055";
-    this.imgSrc && j.imported ? (this.drawImage(), this.isSelected && this.drawMaskImage(e)) : (this.drawPiece(), this.isSelected && this.drawMask(e));
+    this.imgSrc && F.imported ? (this.drawImage(), this.isSelected && this.drawMaskImage(e)) : (this.drawPiece(), this.isSelected && this.drawMask(e));
   }
   /** 駒画像を描写 */
   drawImage() {
-    const { ctx: e, size: a } = this, t = this.imgSrc[this.displayPtn], s = j.images[t];
+    const { ctx: e, size: a } = this, t = this.imgSrc[this.displayPtn], s = F.images[t];
     if (!s)
       return;
     e.save(), e.translate(this.center, this.middle), this.isRotateImg && e.rotate(this.rad);
@@ -4804,11 +4804,11 @@ class le {
   /** マス目/マスク/駒を描写 */
   draw() {
     const { selectColor: e, targetColor: a } = this;
-    this.imgSrc && j.imported ? this.drawImage() : this.drawPanel(), this.isSelected && this.drawMask(e), this.isTarget && this.drawMask(a), this.piece?.draw();
+    this.imgSrc && F.imported ? this.drawImage() : this.drawPanel(), this.isSelected && this.drawMask(e), this.isTarget && this.drawMask(a), this.piece?.draw();
   }
   /** マス目画像を描写 */
   drawImage() {
-    const { ctx: e } = this, a = this.imgSrc, t = j.images[a];
+    const { ctx: e } = this, a = this.imgSrc, t = F.images[a];
     t && (e.save(), e.translate(this.left, this.top), e.drawImage(t, 0, 0, this.width, this.height), e.restore());
   }
   /** マス目を描写 */
@@ -4929,17 +4929,17 @@ function me(p, e, a, t) {
           for (let b = h - 1; b <= h + 1; b++) {
             if (c[k][b] !== X || b === h && k === C)
               continue;
-            let F = E || 0, P = x || 0;
+            let j = E || 0, P = x || 0;
             const [I, G] = [b - h, k - C];
             for (let K = a, Y = t; ; ) {
               K += I, Y += G;
               const R = K + N, $ = Y + v;
               if (!n(R, $) || !A && P === 0)
                 break;
-              const z = F === 0;
+              const z = j === 0;
               z && o(B, R, $, g, z) ? (P--, m(g, R, $)) : E < 1 && P--;
               const q = s[$][R];
-              if (q.piece && (F--, z || l(q)))
+              if (q.piece && (j--, z || l(q)))
                 break;
             }
           }
@@ -5346,7 +5346,7 @@ class ee {
       freeMode: w = !1,
       onDrawed: N,
       onGameOver: v = (k, b) => alert(`プレイヤー${b + 1}の敗北です。`)
-    } = a, X = L.importAsync(), E = j.importAsync();
+    } = a, X = L.importAsync(), E = F.importAsync();
     this.canvas = e;
     const x = e.getContext("2d");
     if (x.clearRect(0, 0, e.width, e.height), this.ctx = x, this.pieces = y.getPieces(x, {
@@ -5358,14 +5358,14 @@ class ee {
     if (Object.assign(this, H[t]), ![2, 4].includes(i))
       throw Error(`players=${i}, players need 2 or 4.`);
     this.players = i, this.left = o, this.top = d, this.panelWidth = m, this.panelHeight = u, this.borderWidth = B, this.pieceSize = f, this.canvasBackgroundColor = h, this.field = this.field.map(
-      (k, b) => [...k].map((F, P) => {
+      (k, b) => [...k].map((j, P) => {
         const I = o + m * (P + 1), G = d + u * (b + 1);
-        return new le(x, F, I, G, m, u, P, b, B);
+        return new le(x, j, I, G, m, u, P, b, B);
       })
-    ), this.xLen = this.field[0].length, this.yLen = this.field.length, s.forEach(({ gameName: k, pieceSet: b }, F) => {
+    ), this.xLen = this.field[0].length, this.yLen = this.field.length, s.forEach(({ gameName: k, pieceSet: b }, j) => {
       if (k)
         try {
-          this.putStartPieces(F, k, b);
+          this.putStartPieces(j, k, b);
         } catch (P) {
           console.error(P);
         }
@@ -5641,16 +5641,19 @@ ${n}:${l}`)) {
 `);
   }
   /** 棋譜データを取得
+   * @param {boolean} isEncode - エンコード有無
    * @returns {string}
    */
-  getJsonRecord() {
-    return encodeURI(JSON.stringify(this.record, null, ""));
+  getJsonRecord(e = !1) {
+    const a = JSON.stringify(this.record, null, "");
+    return e ? encodeURI(a) : a;
   }
   /** 棋譜データを入力
    * @param {string} record - 棋譜データ
+   * @param {number} turn - 手数
    */
-  setJsonRecord(e) {
-    this.record = JSON.parse(decodeURI(e)), this.turn = this.record.length - 1, this.#s(0);
+  setJsonRecord(e, a = this.record.length - 1) {
+    this.record = JSON.parse(decodeURI(e)), this.turn = a, this.#s(0);
   }
   /** 盤を描写 */
   draw() {
@@ -5701,7 +5704,7 @@ export {
   y as Piece,
   H as boards,
   L as canvasFont,
-  j as canvasImage,
+  F as canvasImage,
   ae as gameSoft,
   J as games
 };

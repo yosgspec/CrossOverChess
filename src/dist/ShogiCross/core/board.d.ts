@@ -172,13 +172,15 @@ export class Board {
      */
     getTextRecord(isNumOnly?: boolean): string;
     /** 棋譜データを取得
+     * @param {boolean} isEncode - エンコード有無
      * @returns {string}
      */
-    getJsonRecord(): string;
+    getJsonRecord(isEncode?: boolean): string;
     /** 棋譜データを入力
      * @param {string} record - 棋譜データ
+     * @param {number} turn - 手数
      */
-    setJsonRecord(record: string): void;
+    setJsonRecord(record: string, turn?: number): void;
     /** 盤を描写 */
     draw(): void;
     /** 駒配置をテキストで取得
