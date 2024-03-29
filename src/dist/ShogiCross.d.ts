@@ -18,12 +18,16 @@ declare class ee {
      * @param {BoardInitOption} option - ボードの初期化オプション
      * @returns Board
      */
-    static run(e: any, a: any): ee;
+    static run(e: any, t: any): ee;
     /**
      * @param {HTMLCanvasElement} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
      */
-    constructor(e: any, a: any);
+    constructor(e: any, t: any);
+    name: any;
+    variant: any;
+    url: any;
+    desc: any;
     canvas: any;
     ctx: any;
     pieces: {
@@ -44,7 +48,7 @@ declare class ee {
     height: number;
     right: any;
     bottom: any;
-    stand: U;
+    stand: Y;
     autoDrawing: any;
     onDrawed: any;
     onGameOver: any;
@@ -52,10 +56,15 @@ declare class ee {
     freeMode: any;
     record: any[];
     turn: number;
-    uiControl: {
+    mouseControl: {
         removeEvent(): void;
     };
-    enPassant: he;
+    playerControl: any;
+    enPassant: fe;
+    /** 操作パネルを構築
+     * @param {string[]} compList - 表示するコントロールの一覧
+     */
+    makePlayerControl(e: any): any;
     /** ボードを閉じる */
     close(): void;
     /** 角度を正規化
@@ -72,7 +81,7 @@ declare class ee {
      * @param {string} gameName - ゲーム名(基準となる駒の配置セット)
      * @param {string} pieceSet - 駒の配置パターン
      */
-    putStartPieces(e: any, a: any, t?: string): void;
+    putStartPieces(e: any, t: any, a?: string): void;
     /** 駒の配置
      * @param {string} piece - 駒の表現文字
      * @param {number} pX - X方向配置位置(マス目基準)
@@ -82,7 +91,7 @@ declare class ee {
      * @param {number} option.displayPtn - 表示文字列を変更(1〜)
      * @param {boolean} option.isMoved - 初回移動済みか否か
      */
-    putNewPiece(e: any, a: any, t: any, s: any, i?: {}): void;
+    putNewPiece(e: any, t: any, a: any, s: any, r?: {}): void;
     /** 文字列から駒を配置
      * {string} text - 駒配置を表す文字列
      */
@@ -93,14 +102,14 @@ declare class ee {
      * @param {number} offsetDeg - 補正角度
      * @returns {number}
      */
-    getRow(e: any, a: any, t: any, s?: number): number;
+    getRow(e: any, t: any, a: any, s?: number): number;
     /** 角度基準のマス目の列を取得する
      * @param {Panel} panel - マス目
      * @param {number} deg - 角度
      * @param {number} offsetDeg - 補正角度
      * @returns {number}
      */
-    getCol(e: any, a: any, t: any, s?: number): number;
+    getCol(e: any, t: any, a: any, s?: number): number;
     /** プロモーションエリア内であるか判別
      * @param {Panel} panel - マス目
      */
@@ -112,7 +121,7 @@ declare class ee {
      * @param {Panel} fromPanel - 移動元のマス目
      * @param {Panel} toPanel - 選択中のマス目
      */
-    movePiece(e: any, a: any): void;
+    movePiece(e: any, t: any): void;
     /** 棋譜を追記
      * @param {Panel} toPanel - 移動先のマス目
      * @param {Object} option - オプション
@@ -138,7 +147,7 @@ declare class ee {
      * @param {string} record - 棋譜データ
      * @param {number} turn - 手数
      */
-    setJsonRecord(e: any, a?: number): void;
+    setJsonRecord(e: any, t: any): void;
     /** 盤を描写 */
     draw(): void;
     /** 駒配置をテキストで取得
@@ -146,21 +155,21 @@ declare class ee {
      * @param {boolean} isAlias - エイリアス表示
      * @returns {string}
      */
-    getTextPieces(e?: string, a?: boolean): string;
+    getTextPieces(e?: string, t?: boolean): string;
     /** 駒配置をテキストで取得
      * @param {boolean} isCompact - コンパクト表示
      * @param {boolean} isAlias - エイリアス表示
      */
-    toString(e?: boolean, a?: boolean): string;
+    toString(e?: boolean, t?: boolean): string;
     /** 画像を取得
      * @param {string} fileName - ファイル名
      * @param {string} ext - 拡張子
      * @returns {Promise<void>}
      */
-    downloadImage(e: string, a: any, t: any): Promise<void>;
+    downloadImage(e: any, t: any, a: any): Promise<void>;
     #private;
 }
-declare class y {
+declare class A {
     /** 描写サイズ
      * @type {number}
      */
@@ -195,14 +204,14 @@ declare class y {
      * @param {any} ctx - Canvas描画コンテキスト
      * @param {Piece|PieceInitOption} option - 駒の初期化オプション
      */
-    static getPieces(e: any, a?: {}): {
+    static getPieces(e: any, t?: {}): {
         [k: string]: any;
     };
     /** 文字列から駒を取得
      * @param {Piece|PieceInitOption} piece - 駒
      * @param {string} text - 駒文字列
      */
-    static stringToPiece(e: any, a: any): any;
+    static stringToPiece(e: any, t: any): any;
     /** 駒の一覧をリストで取得 */
     static piecesToList(e: any): [string, any][];
     /**
@@ -216,7 +225,7 @@ declare class y {
      * @param {boolean} option.isDrawShadow - 駒の影の描写有無
      * @param {boolean} option.isMoved - 初回移動済みか否か
      */
-    constructor(e: any, a: any, t?: {});
+    constructor(e: any, t: any, a?: {});
     /** 駒の段階別価値を取得 */
     get rank(): "KR" | "SR" | "R" | "UC" | "C";
     /** 駒の角度(deg/rad)
@@ -248,7 +257,7 @@ declare class y {
     /** 駒をクローン
      * @returns Piece
      */
-    clone(): y;
+    clone(): A;
     /** 駒を表返す */
     turnFront(): void;
     /** プロモーション
@@ -265,7 +274,7 @@ declare class y {
      * @param {number} x - X座標
      * @param {number} y - Y座標
      */
-    checkRangeMouse(e: any, a: any): boolean;
+    checkRangeMouse(e: any, t: any): boolean;
     /** 移動範囲を回転して取得 */
     getRange(): any;
     /** 駒/マスクを描写 */
@@ -295,7 +304,7 @@ declare class y {
      */
     toString(e?: boolean): string;
 }
-declare const H: {
+declare const U: {
     将棋: {
         backgroundColor: string;
         borderColor: string;
@@ -472,10 +481,10 @@ declare const H: {
         field: string[];
     };
 };
-declare namespace L {
+declare namespace $ {
     let fonts: (string | number)[][];
 }
-declare namespace F {
+declare namespace G {
     let imported: boolean;
     let images: {
         [x: string]: new (width?: number, height?: number) => HTMLImageElement;
@@ -485,7 +494,7 @@ declare namespace F {
      */
     function importAsync(): Promise<void>;
 }
-declare namespace ae {
+declare namespace te {
     namespace shogi {
         let name: string;
         let variant: string;
@@ -1335,7 +1344,7 @@ declare namespace ae {
         export { playPieces_44 as playPieces };
     }
 }
-declare namespace J {
+declare namespace K {
     namespace 将棋 {
         let english: string;
         let fontColor: string;
@@ -1615,7 +1624,7 @@ declare namespace J {
         export { position_6 as position };
     }
 }
-declare class U {
+declare class Y {
     /** 駒台への角度ごとの表示順
      * @type {number[]}
      */
@@ -1644,7 +1653,7 @@ declare class U {
      * @param {number} option.deg - 角度
      * @param {number} option.i - 配置する持ち駒のインデックス
      */
-    releasePiece(e: any, a?: {}): void;
+    releasePiece(e: any, t?: {}): void;
     /** 駒台に追加する
      * @param {Piece} piece - 追加する駒
      */
@@ -1655,7 +1664,7 @@ declare class U {
      * @param {boolean} forceCapture - 属性を無視して捕縛する
      * @param {boolean} forceCantCapture - 属性を無視して捕縛しない
      */
-    capturePiece(e: any, a: any, t?: boolean, s?: boolean): void;
+    capturePiece(e: any, t: any, a?: boolean, s?: boolean): void;
     /** 持ち駒の所有権を回転
      * @param {number} deg - 回転角 (90の倍数)
      */
@@ -1666,9 +1675,9 @@ declare class U {
      * @param {boolean} isCompact - コンパクト表示
      * @param {boolean} isAlias - エイリアス表示
      */
-    toString(e?: boolean, a?: boolean): string;
+    toString(e?: boolean, t?: boolean): string;
 }
-declare class he {
+declare class fe {
     degs: {};
     /** アンパッサン情報をクリア
      * @param {number} deg - アンパッサンされうる陣営の角度
@@ -1678,7 +1687,7 @@ declare class he {
      * @param {Panel} panel - アンパッサン対象と成りうるマス目
      * @param {Piece} piece - アンパッサン対象と成りうる駒
      */
-    setTarget(e: any, a: any): void;
+    setTarget(e: any, t: any): void;
     /** アンパッサン対象と成りうる駒情報を記録
      * @param {Panel} toPanel - アンパッサン対象か確認するマス目
      */
@@ -1688,6 +1697,6 @@ declare class he {
      * @param {Piece} piece - アンパッサン対象と成りうる駒
      * @returns {boolean}
      */
-    isTarget(e: any, a: any): boolean;
+    isTarget(e: any, t: any): boolean;
 }
-export { ee as Board, y as Piece, H as boards, L as canvasFont, F as canvasImage, ae as gameSoft, J as games };
+export { ee as Board, A as Piece, U as boards, $ as canvasFont, G as canvasImage, te as gameSoft, K as games };

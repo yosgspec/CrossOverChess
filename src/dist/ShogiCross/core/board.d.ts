@@ -25,6 +25,10 @@ export class Board {
      * @param {BoardInitOption} option - ボードの初期化オプション
      */
     constructor(canvas: HTMLCanvasElement, option: BoardInitOption);
+    name: any;
+    variant: any;
+    url: any;
+    desc: any;
     canvas: HTMLCanvasElement;
     ctx: CanvasRenderingContext2D;
     pieces: {
@@ -88,10 +92,15 @@ export class Board {
      * @type {number}
      */
     turn: number;
-    uiControl: {
+    mouseControl: {
         removeEvent(): void;
     };
+    playerControl: any;
     enPassant: EnPassant;
+    /** 操作パネルを構築
+     * @param {string[]} compList - 表示するコントロールの一覧
+     */
+    makePlayerControl(compList: string[]): any;
     /** ボードを閉じる */
     close(): void;
     /** 角度を正規化
@@ -180,7 +189,7 @@ export class Board {
      * @param {string} record - 棋譜データ
      * @param {number} turn - 手数
      */
-    setJsonRecord(record: string, turn?: number): void;
+    setJsonRecord(record: string, turn: number): void;
     /** 盤を描写 */
     draw(): void;
     /** 駒配置をテキストで取得

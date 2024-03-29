@@ -146,6 +146,10 @@ export type BoardInitOption = {
      */
     freeMode: boolean;
     /**
+     * - デフォルトのプレイヤーを使用する
+     */
+    useDefaultPlayer: boolean;
+    /**
      * - 描写イベント
      */
     onDrawed: (Board: any) => void;
