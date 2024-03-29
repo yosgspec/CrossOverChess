@@ -142,9 +142,9 @@ export type BoardInitOption = {
      */
     autoDrawing: boolean;
     /**
-     * - フリーモード有効化/無効化
+     * - 移動モード
      */
-    freeMode: boolean;
+    moveMode: "normal" | "free" | "viewOnly";
     /**
      * - デフォルトのプレイヤーを使用する
      */

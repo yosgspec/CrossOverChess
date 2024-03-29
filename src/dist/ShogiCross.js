@@ -5064,6 +5064,131 @@ class ue {
     this.component.remove();
   }
 }
+class Y {
+  /** 駒台への角度ごとの表示順
+   * @type {number[]}
+   */
+  static #e = [180, 90, 270, 0];
+  /**
+   * @param {Board} ボード
+   */
+  constructor(e) {
+    this.board = e;
+    const { top: t, right: a, bottom: s, width: r, height: i, panelWidth: n, panelHeight: o, xLen: d, yLen: l } = e;
+    this.clear(), this.left = a * 1.02, this.top = t, this.width = r / 2, this.height = i, this.right = this.left + this.width, this.bottom = s, this.pitchWidth = n / 2, this.pitchHeight = o, this.xLen = d, this.yLen = l;
+  }
+  /** 駒台を初期化にする */
+  clear() {
+    this.stocks = new Map(Y.#e.map((e) => [e, []]));
+  }
+  /** 持ち駒からボード上に配置する
+   * @param {Panal} toPanell - 配置先のパネル
+   * @param {Object} option - オプション
+   * @param {number} option.deg - 角度
+   * @param {number} option.i - 配置する持ち駒のインデックス
+   */
+  releasePiece(e, t = {}) {
+    const { board: a } = this;
+    if (a.moveMode === "viewOnly" || e.hasAttr("keepOut"))
+      return;
+    const { deg: s, i: r } = t, i = this.stocks.get(s);
+    e.piece = i[r], i[r].center = e.center, i[r].middle = e.middle, a.addRecord({ toPanel: e, end: "打" }), i.splice(r, 1);
+  }
+  /** 駒台に追加する
+   * @param {Piece} piece - 追加する駒
+   */
+  add(e) {
+    const t = this.stocks.get(e.deg);
+    e.turnFront(), t.push(e), t.sort((a, s) => Math.sign(a.id - s.id));
+  }
+  /** 駒を持ち駒にする
+   * @param {Piece|null} winnerPiece - 移動する駒
+   * @param {Piece} loserPiece - 捕縛される駒
+   * @param {boolean} forceCapture - 属性を無視して捕縛する
+   * @param {boolean} forceCantCapture - 属性を無視して捕縛しない
+   */
+  capturePiece(e, t, a = !1, s = !1) {
+    s || !t || !(a || e.hasAttr("capture")) || t.hasAttr("king") || t.hasAttr("cantCapture") || (t.deg = e.deg, t.isMoved = !0, this.add(t));
+  }
+  /** 持ち駒の所有権を回転
+   * @param {number} deg - 回転角 (90の倍数)
+   */
+  rotate(e) {
+    [...this.stocks].forEach(([t, a]) => {
+      const s = this.board.degNormal(t + e);
+      a.forEach((r) => r.deg = s), this.stocks.set(s, a);
+    });
+  }
+  /** 盤を描写 */
+  draw() {
+    const { board: e, left: t, top: a, width: s, height: r, pitchWidth: i, pitchHeight: n } = this, { ctx: o, xLen: d, yLen: l } = e;
+    o.fillStyle = e.backgroundColor, o.strokeStyle = e.borderColor, o.lineWidth = e.borderWidth, o.save(), o.translate(t, a), o.fillRect(0, 0, s, r), o.strokeRect(0, 0, s, r), o.restore(), [...this.stocks.values()].forEach((S, g) => {
+      let u = 0;
+      S = S.slice(-l / 4 * d);
+      for (let B = 0 | l / 4 * g; B < l / 4 * (g + 1); B++)
+        for (let c = 0; c < d; c++) {
+          const m = t + i * (c + 1), f = a + n * (B + 1), h = S[u++];
+          if (h == null)
+            break;
+          h.center = m, h.middle = f, h.draw();
+        }
+    });
+  }
+  /** 駒台をテキスト形式で取得
+   * @param {boolean} isCompact - コンパクト表示
+   * @param {boolean} isAlias - エイリアス表示
+   */
+  toString(e = !1, t = !1) {
+    const { xLen: a } = this.board, s = [...this.stocks.values()].flat().filter((n) => n);
+    let r = 0 < s.length ? `
+` + "―".repeat(a * 2) + `
+` : "", i = s.map((n) => n.toString(t)).join("");
+    if (!e) {
+      r = "";
+      for (const n of Object.values(A.degChars))
+        i = i.replace(n, `
+${n}持駒：${n}`);
+    }
+    return r + i;
+  }
+}
+const he = Object.keys(A.degChars), V = () => ({
+  panel: null,
+  piece: null
+});
+class fe {
+  constructor() {
+    this.degs = {}, he.forEach((e) => this.degs[e] = V());
+  }
+  /** アンパッサン情報をクリア
+   * @param {number} deg - アンパッサンされうる陣営の角度
+   */
+  clear(e) {
+    this.degs[e] = V();
+  }
+  /** アンパッサン対象と成りうるマス情報を記録
+   * @param {Panel} panel - アンパッサン対象と成りうるマス目
+   * @param {Piece} piece - アンパッサン対象と成りうる駒
+   */
+  setTarget(e, t) {
+    e.hasTarget("start") && t.hasAttr("enPassant") && (this.degs[t.deg].panel = e);
+  }
+  /** アンパッサン対象と成りうる駒情報を記録
+   * @param {Panel} toPanel - アンパッサン対象か確認するマス目
+   */
+  setMoved(e) {
+    const { piece: t } = e, a = this.degs[t.deg];
+    t && e === a.panel ? a.piece = t : this.clear(t.deg);
+  }
+  /** アンパッサン対象のマスか確認する
+   * @param {Panel} panel - アンパッサン対象と成りうるマス目
+   * @param {Piece} piece - アンパッサン対象と成りうる駒
+   * @returns {boolean}
+   */
+  isTarget(e, t) {
+    return !e || !e.piece ? !0 : e.piece.hasAttr("enPassant") ? e.piece === this.degs[e.piece.deg].piece : !1;
+  }
+}
 class W {
   /** 角度から駒の文字表示
    * @type {Map<number, string>}
@@ -5215,130 +5340,6 @@ ${r}`;
 ` + g;
   }
 }
-class Y {
-  /** 駒台への角度ごとの表示順
-   * @type {number[]}
-   */
-  static #e = [180, 90, 270, 0];
-  /**
-   * @param {Board} ボード
-   */
-  constructor(e) {
-    this.board = e;
-    const { top: t, right: a, bottom: s, width: r, height: i, panelWidth: n, panelHeight: o, xLen: d, yLen: l } = e;
-    this.clear(), this.left = a * 1.02, this.top = t, this.width = r / 2, this.height = i, this.right = this.left + this.width, this.bottom = s, this.pitchWidth = n / 2, this.pitchHeight = o, this.xLen = d, this.yLen = l;
-  }
-  /** 駒台を初期化にする */
-  clear() {
-    this.stocks = new Map(Y.#e.map((e) => [e, []]));
-  }
-  /** 持ち駒からボード上に配置する
-   * @param {Panal} toPanell - 配置先のパネル
-   * @param {Object} option - オプション
-   * @param {number} option.deg - 角度
-   * @param {number} option.i - 配置する持ち駒のインデックス
-   */
-  releasePiece(e, t = {}) {
-    if (e.hasAttr("keepOut"))
-      return;
-    const { deg: a, i: s } = t, { board: r } = this, i = this.stocks.get(a);
-    e.piece = i[s], i[s].center = e.center, i[s].middle = e.middle, r.addRecord({ toPanel: e, end: "打" }), i.splice(s, 1);
-  }
-  /** 駒台に追加する
-   * @param {Piece} piece - 追加する駒
-   */
-  add(e) {
-    const t = this.stocks.get(e.deg);
-    e.turnFront(), t.push(e), t.sort((a, s) => Math.sign(a.id - s.id));
-  }
-  /** 駒を持ち駒にする
-   * @param {Piece|null} winnerPiece - 移動する駒
-   * @param {Piece} loserPiece - 捕縛される駒
-   * @param {boolean} forceCapture - 属性を無視して捕縛する
-   * @param {boolean} forceCantCapture - 属性を無視して捕縛しない
-   */
-  capturePiece(e, t, a = !1, s = !1) {
-    s || !t || !(a || e.hasAttr("capture")) || t.hasAttr("king") || t.hasAttr("cantCapture") || (t.deg = e.deg, t.isMoved = !0, this.add(t));
-  }
-  /** 持ち駒の所有権を回転
-   * @param {number} deg - 回転角 (90の倍数)
-   */
-  rotate(e) {
-    [...this.stocks].forEach(([t, a]) => {
-      const s = this.board.degNormal(t + e);
-      a.forEach((r) => r.deg = s), this.stocks.set(s, a);
-    });
-  }
-  /** 盤を描写 */
-  draw() {
-    const { board: e, left: t, top: a, width: s, height: r, pitchWidth: i, pitchHeight: n } = this, { ctx: o, xLen: d, yLen: l } = e;
-    o.fillStyle = e.backgroundColor, o.strokeStyle = e.borderColor, o.lineWidth = e.borderWidth, o.save(), o.translate(t, a), o.fillRect(0, 0, s, r), o.strokeRect(0, 0, s, r), o.restore(), [...this.stocks.values()].forEach((S, g) => {
-      let u = 0;
-      S = S.slice(-l / 4 * d);
-      for (let B = 0 | l / 4 * g; B < l / 4 * (g + 1); B++)
-        for (let c = 0; c < d; c++) {
-          const m = t + i * (c + 1), f = a + n * (B + 1), h = S[u++];
-          if (h == null)
-            break;
-          h.center = m, h.middle = f, h.draw();
-        }
-    });
-  }
-  /** 駒台をテキスト形式で取得
-   * @param {boolean} isCompact - コンパクト表示
-   * @param {boolean} isAlias - エイリアス表示
-   */
-  toString(e = !1, t = !1) {
-    const { xLen: a } = this.board, s = [...this.stocks.values()].flat().filter((n) => n);
-    let r = 0 < s.length ? `
-` + "―".repeat(a * 2) + `
-` : "", i = s.map((n) => n.toString(t)).join("");
-    if (!e) {
-      r = "";
-      for (const n of Object.values(A.degChars))
-        i = i.replace(n, `
-${n}持駒：${n}`);
-    }
-    return r + i;
-  }
-}
-const he = Object.keys(A.degChars), V = () => ({
-  panel: null,
-  piece: null
-});
-class fe {
-  constructor() {
-    this.degs = {}, he.forEach((e) => this.degs[e] = V());
-  }
-  /** アンパッサン情報をクリア
-   * @param {number} deg - アンパッサンされうる陣営の角度
-   */
-  clear(e) {
-    this.degs[e] = V();
-  }
-  /** アンパッサン対象と成りうるマス情報を記録
-   * @param {Panel} panel - アンパッサン対象と成りうるマス目
-   * @param {Piece} piece - アンパッサン対象と成りうる駒
-   */
-  setTarget(e, t) {
-    e.hasTarget("start") && t.hasAttr("enPassant") && (this.degs[t.deg].panel = e);
-  }
-  /** アンパッサン対象と成りうる駒情報を記録
-   * @param {Panel} toPanel - アンパッサン対象か確認するマス目
-   */
-  setMoved(e) {
-    const { piece: t } = e, a = this.degs[t.deg];
-    t && e === a.panel ? a.piece = t : this.clear(t.deg);
-  }
-  /** アンパッサン対象のマスか確認する
-   * @param {Panel} panel - アンパッサン対象と成りうるマス目
-   * @param {Piece} piece - アンパッサン対象と成りうる駒
-   * @returns {boolean}
-   */
-  isTarget(e, t) {
-    return !e || !e.piece ? !0 : e.piece.hasAttr("enPassant") ? e.piece === this.degs[e.piece.deg].piece : !1;
-  }
-}
 class ee {
   /**
    * @typedef {Object} Record - 盤面の記録
@@ -5389,7 +5390,7 @@ class ee {
       borderWidth: k = Math.min(m, f) / 30,
       backgroundColor: E = "#00000000",
       autoDrawing: b = !0,
-      freeMode: x = !1,
+      moveMode: x = "normal",
       usePlayerControl: v = !0,
       onDrawed: j,
       onGameOver: F = (N, X) => alert(`プレイヤー${X + 1}の敗北です。`)
@@ -5422,7 +5423,7 @@ class ee {
     const { style: C } = e;
     u === "overflow" ? (C.maxWidth === "" && (C.maxWidth = "97vw"), C.maxHeight === "" && (C.maxHeight = "97vh")) : u === "horizontal" ? C.width === "" && (C.width = "97vw") : u === "vertical" ? C.height === "" && (C.height = "97vh") : u === "parentOverflow" ? (C.maxWidth === "" && (C.maxWidth = "100%"), C.maxHeight === "" && (C.maxHeight = "100%")) : u === "parentHorizontal" ? C.width === "" && (C.width = "100%") : u === "parentVertical" && C.height === "" && (C.height = "100%"), this.autoDrawing = b, b && (R.then(() => this.draw()), z.then(() => this.draw()), this.draw()), this.onDrawed = j, this.onGameOver = F, this.gameAlives = new Map(
       [...Array(this.players).keys()].map((N) => [this.degNormal(N), !0])
-    ), this.freeMode = x, this.record = [], this.turn = 0, this.mouseControl = ge(this), v && (this.playerControl = this.makePlayerControl(), this.playerControl.add()), this.enPassant = new fe();
+    ), this.moveMode = x, this.record = [], this.turn = 0, this.mouseControl = ge(this), v && (this.playerControl = this.makePlayerControl(), this.playerControl.add()), this.enPassant = new fe();
   }
   /** 操作パネルを構築
    * @param {string[]} compList - 表示するコントロールの一覧
@@ -5432,7 +5433,7 @@ class ee {
   }
   /** ボードを閉じる */
   close() {
-    this.mouseControl.removeEvent(), this.playerControl?.remove();
+    this.mouseControl?.removeEvent(), this.playerControl?.remove();
   }
   /** 角度を正規化
    * @param {number} playeaIdOrDeg - プレイヤー番号または角度
@@ -5598,7 +5599,7 @@ class ee {
    * @param {boolean} forcePromo - 成りを強制する
    */
   #t(e, t, a, s) {
-    const { freeMode: r } = this, { piece: i } = t;
+    const { moveMode: r } = this, { piece: i } = t;
     if (!i.promo || i.hasAttr("promoted") || !a) {
       this.addRecord({ fromPanel: e, toPanel: t });
       return;
@@ -5612,7 +5613,7 @@ ${n}:${o}`)) {
           this.addRecord({ fromPanel: e, toPanel: t, end: "成" }), i.promotion(n);
           return;
         }
-    while (!r && s);
+    while (r !== "free" && s);
     this.addRecord({ fromPanel: e, toPanel: t, end: "不成" });
   }
   /** 駒を移動
@@ -5620,8 +5621,8 @@ ${n}:${o}`)) {
    * @param {Panel} toPanel - 選択中のマス目
    */
   movePiece(e, t) {
-    const { stand: a, freeMode: s, enPassant: r } = this;
-    if (!e || t.hasAttr("keepOut") || t.piece === e.piece || t.piece?.deg === e.piece.deg || !s && !t.isTarget)
+    const { stand: a, moveMode: s, enPassant: r } = this;
+    if (!e || s === "viewOnly" || t.hasAttr("keepOut") || t.piece === e.piece || t.piece?.deg === e.piece.deg || s !== "free" && !t.isTarget)
       return;
     let { canPromo: i, forcePromo: n } = this.checkCanPromo(e);
     a.capturePiece(

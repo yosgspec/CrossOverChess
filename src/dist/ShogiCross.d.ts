@@ -53,7 +53,7 @@ declare class ee {
     onDrawed: any;
     onGameOver: any;
     gameAlives: Map<number, boolean>;
-    freeMode: any;
+    moveMode: any;
     record: any[];
     turn: number;
     mouseControl: {
@@ -1628,7 +1628,7 @@ declare class Y {
     /** 駒台への角度ごとの表示順
      * @type {number[]}
      */
-    static "__#7@#e": number[];
+    static "__#6@#e": number[];
     /**
      * @param {Board} ボード
      */

@@ -54,7 +54,7 @@ export class Board {
     onDrawed: (Board: any) => void;
     onGameOver: (e: any, i: any) => void;
     gameAlives: Map<number, boolean>;
-    freeMode: boolean;
+    moveMode: "normal" | "viewOnly" | "free";
     /** ゲームの記録
      * @type {Record[]}
      */
