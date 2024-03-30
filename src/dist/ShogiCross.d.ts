@@ -91,7 +91,7 @@ declare class ee {
      * @param {number} option.displayPtn - 表示文字列を変更(1〜)
      * @param {boolean} option.isMoved - 初回移動済みか否か
      */
-    putNewPiece(e: any, t: any, a: any, s: any, i?: {}): void;
+    putNewPiece(e: any, t: any, a: any, s: any, r?: {}): void;
     /** 文字列から駒を配置
      * {string} text - 駒配置を表す文字列
      */
