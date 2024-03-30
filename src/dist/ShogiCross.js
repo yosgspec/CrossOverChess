@@ -5712,7 +5712,7 @@ class te {
     ]);
     t ??= [...a.keys(), "textRecord"];
     const s = Date.now().toString();
-    this.component = document.createElement("div"), this.component.id = s, this.component.style.display = "flex", this.component.style.maxWidth = e.canvas.width, this.component.innerHTML = `${[...a].filter(([i]) => t.includes(i)).map(
+    this.component = document.createElement("div"), this.component.id = s, this.component.style.display = "flex", this.component.style.maxWidth = e.canvas.width + "px", this.component.innerHTML = `${[...a].filter(([i]) => t.includes(i)).map(
       ([i, { title: r, text: n }]) => `<button id="${i}${s}" title="${r}" style="font-family:${O.names};">${n}</button>`
     ).join("")}${t.includes("textRecord") ? `<select id="textRecord${s}" style="flex-grow:1; font-family:${O.names};"><option></option></select>` : ""}`;
     for (const [i, { onclick: r }] of a)
