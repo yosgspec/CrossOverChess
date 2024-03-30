@@ -1,7 +1,7 @@
 /** 盤の管理クラス */
 export class Board {
     /**
-     * @typedef {Object} Record - 盤面の記録
+     * @typedef {Object} Record - 局面の記録
      * @prop {Object} from
      * @prop {number} from.pX - 移動元の列
      * @prop {number} from.pY - 移動元の行
@@ -175,7 +175,47 @@ export class Board {
     undoRecord(): void;
     /** 記録の手を進める */
     redoRecord(): void;
-    /** 棋譜をテキストで取得
+    /** 記録の手を移動
+     * @param {number} turn - 手数
+     */
+    moveRecord(turn: number): void;
+    /** 局面の記録を文字列に変換
+     * @param {Record} record - 局面の記録
+     * @param {number} turn - 手数
+     * @param {boolean} isNumOnly - 座標を数字で表現
+     * @returns {string}
+     */
+    record2String(record: {
+        from: {
+            pX: number;
+            pY: number;
+        };
+        to: {
+            pX: number;
+            pY: number;
+        };
+        /**
+         * - 駒の角度
+         */
+        deg: number;
+        /**
+         * - 駒の一文字表記
+         */
+        pieceChar: string;
+        /**
+         * - 棋譜表示の末尾に記載する文字
+         */
+        end: string;
+        /**
+         * - 駒配置のテキスト
+         */
+        fieldText: string;
+        /**
+         * - 駒の移動済み判定
+         */
+        fieldMoved: number[][];
+    }, turn: number, isNumOnly?: boolean): string;
+    /** 表示用の棋譜を取得
      * @param {boolean} isNumOnly - 座標を数字で表現
      * @returns {string}
      */

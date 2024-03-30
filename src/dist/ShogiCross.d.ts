@@ -1,6 +1,6 @@
 declare class ee {
     /**
-     * @typedef {Object} Record - 盤面の記録
+     * @typedef {Object} Record - 局面の記録
      * @prop {Object} from
      * @prop {number} from.pX - 移動元の列
      * @prop {number} from.pY - 移動元の行
@@ -48,7 +48,7 @@ declare class ee {
     height: number;
     right: any;
     bottom: any;
-    stand: Y;
+    stand: K;
     autoDrawing: any;
     onDrawed: any;
     onGameOver: any;
@@ -60,7 +60,7 @@ declare class ee {
         removeEvent(): void;
     };
     playerControl: any;
-    enPassant: fe;
+    enPassant: he;
     /** 操作パネルを構築
      * @param {string[]} compList - 表示するコントロールの一覧
      */
@@ -91,7 +91,7 @@ declare class ee {
      * @param {number} option.displayPtn - 表示文字列を変更(1〜)
      * @param {boolean} option.isMoved - 初回移動済みか否か
      */
-    putNewPiece(e: any, t: any, a: any, s: any, r?: {}): void;
+    putNewPiece(e: any, t: any, a: any, s: any, i?: {}): void;
     /** 文字列から駒を配置
      * {string} text - 駒配置を表す文字列
      */
@@ -133,7 +133,18 @@ declare class ee {
     undoRecord(): void;
     /** 記録の手を進める */
     redoRecord(): void;
-    /** 棋譜をテキストで取得
+    /** 記録の手を移動
+     * @param {number} turn - 手数
+     */
+    moveRecord(e: any): void;
+    /** 局面の記録を文字列に変換
+     * @param {Record} record - 局面の記録
+     * @param {number} turn - 手数
+     * @param {boolean} isNumOnly - 座標を数字で表現
+     * @returns {string}
+     */
+    record2String(e: any, t: any, a?: boolean): string;
+    /** 表示用の棋譜を取得
      * @param {boolean} isNumOnly - 座標を数字で表現
      * @returns {string}
      */
@@ -481,7 +492,7 @@ declare const U: {
         field: string[];
     };
 };
-declare namespace $ {
+declare namespace O {
     let fonts: (string | number)[][];
 }
 declare namespace G {
@@ -494,7 +505,7 @@ declare namespace G {
      */
     function importAsync(): Promise<void>;
 }
-declare namespace te {
+declare namespace ae {
     namespace shogi {
         let name: string;
         let variant: string;
@@ -1344,7 +1355,7 @@ declare namespace te {
         export { playPieces_44 as playPieces };
     }
 }
-declare namespace K {
+declare namespace Y {
     namespace 将棋 {
         let english: string;
         let fontColor: string;
@@ -1624,7 +1635,7 @@ declare namespace K {
         export { position_6 as position };
     }
 }
-declare class Y {
+declare class K {
     /** 駒台への角度ごとの表示順
      * @type {number[]}
      */
@@ -1677,7 +1688,7 @@ declare class Y {
      */
     toString(e?: boolean, t?: boolean): string;
 }
-declare class fe {
+declare class he {
     degs: {};
     /** アンパッサン情報をクリア
      * @param {number} deg - アンパッサンされうる陣営の角度
@@ -1699,4 +1710,4 @@ declare class fe {
      */
     isTarget(e: any, t: any): boolean;
 }
-export { ee as Board, A as Piece, U as boards, $ as canvasFont, G as canvasImage, te as gameSoft, K as games };
+export { ee as Board, A as Piece, U as boards, O as canvasFont, G as canvasImage, ae as gameSoft, Y as games };

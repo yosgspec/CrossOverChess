@@ -14,7 +14,7 @@ import {boards, games} from "./json.js";
 /** 盤の管理クラス */
 export class Board{
 	/**
-	 * @typedef {Object} Record - 盤面の記録
+	 * @typedef {Object} Record - 局面の記録
 	 * @prop {Object} from
 	 * @prop {number} from.pX - 移動元の列
 	 * @prop {number} from.pY - 移動元の行
@@ -137,13 +137,13 @@ export class Board{
 		const {style} = canvas;
 		if(canvasFit === "overflow"){
 			if(style.maxWidth === "") style.maxWidth = "97vw";
-			if(style.maxHeight === "") style.maxHeight = "97vh";
+			if(style.maxHeight === "") style.maxHeight = "92vh";
 		}
 		else if(canvasFit === "horizontal"){
 			if(style.width === "") style.width = "97vw";
 		}
 		else if(canvasFit === "vertical"){
-			if(style.height === "") style.height = "97vh";
+			if(style.height === "") style.height = "92vh";
 		}
 		else if(canvasFit === "parentOverflow"){
 			if(style.maxWidth === "") style.maxWidth = "100%";
@@ -191,7 +191,8 @@ export class Board{
 	 * @param {string[]} compList - 表示するコントロールの一覧
 	 */
 	makePlayerControl(compList){
-		return this.playerControl = new PlayerControl(this, compList);
+		this.playerControl = new PlayerControl(this, compList);
+		return this.playerControl;
 	}
 
 	/** ボードを閉じる */
@@ -575,25 +576,49 @@ ${char}:${name}`)){
 		this.#switchRecord(1);
 	}
 
-	/** 棋譜をテキストで取得
+	/** 記録の手を移動
+	 * @param {number} turn - 手数
+	 */
+	moveRecord(turn){
+		this.turn = turn;
+		this.#switchRecord(0);
+	}
+
+	/** 局面の記録を文字列に変換
+	 * @param {Record} record - 局面の記録
+	 * @param {number} turn - 手数
+	 * @param {boolean} isNumOnly - 座標を数字で表現
+	 * @returns {string}
+	 */
+	record2String(record, turn, isNumOnly=false){
+		const {to, from, deg, pieceChar, end} = record;
+		if(!pieceChar) return "";
+
+		const getPX = ({pX})=> (this.xLen-pX).toString(isNumOnly? 10: 36);
+		const getPY = ({pY})=> (pY+1).toString(isNumOnly? 10: 36);
+		const numSep = isNumOnly? ",": "";
+		return `${
+			turn}: ${
+			Piece.degChars[deg]}${
+			getPX(to)}${
+			numSep}${
+			getPY(to)}${
+			pieceChar}${
+			end}${
+			!from.pX? "": ` (${
+				getPX(from)}${
+				numSep}${
+				getPY(from)
+			})`}`;
+	}
+
+	/** 表示用の棋譜を取得
 	 * @param {boolean} isNumOnly - 座標を数字で表現
 	 * @returns {string}
 	 */
 	getTextRecord(isNumOnly=false){
-		const getPX = ({pX})=> pX == null? "*": (this.xLen-pX).toString(isNumOnly? 10: 36);
-		const getPY = ({pY})=> pY == null? "*": (pY+1).toString(isNumOnly? 10: 36);
-		return this.record.slice(1, this.turn+1).map(
-			({to, from, deg, pieceChar, end}, i)=>`${
-				i+1}: ${
-				Piece.degChars[deg]}${
-				getPX(to)}${
-				isNumOnly? ",": ""}${
-				getPY(to)}${
-				pieceChar}${
-				end} (${
-				getPX(from)}${
-				isNumOnly? ",": ""}${
-				getPY(from)})`
+		return this.record.slice(1, this.turn+1).map((record, i)=>
+			this.record2String(record, i+1, isNumOnly)
 		).join("\n");
 	}
 
@@ -601,7 +626,7 @@ ${char}:${name}`)){
 	 * @param {boolean} isEncode - エンコード有無
 	 * @returns {string}
 	 */
-	getJsonRecord(isEncode=false){
+	getJsonRecord(isEncode=true){
 		const jsonRecord = JSON.stringify(this.record, null, "");
 		return isEncode? encodeURI(jsonRecord): jsonRecord;
 	}
@@ -612,8 +637,7 @@ ${char}:${name}`)){
 	 */
 	setJsonRecord(record, turn){
 		this.record = JSON.parse(decodeURI(record));
-		this.turn = turn ?? this.record.length-1;
-		this.#switchRecord(0);
+		this.moveRecord(turn ?? this.record.length-1);
 	}
 
 	/** 盤を描写 */

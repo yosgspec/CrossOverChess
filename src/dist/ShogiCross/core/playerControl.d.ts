@@ -1,5 +1,6 @@
 /** 操作パネル */
 export class PlayerControl {
+    static buttonTexts: string;
     /**
      * @param {Board} board ボード
      * @param {string[]} compList 表示するコントロールの一覧
