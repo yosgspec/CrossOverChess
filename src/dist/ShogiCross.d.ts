@@ -495,7 +495,7 @@ declare const U: {
 declare namespace O {
     let fonts: (string | number)[][];
 }
-declare namespace G {
+declare namespace z {
     let imported: boolean;
     let images: {
         [x: string]: new (width?: number, height?: number) => HTMLImageElement;
@@ -1639,7 +1639,7 @@ declare class K {
     /** 駒台への角度ごとの表示順
      * @type {number[]}
      */
-    static "__#6@#e": number[];
+    static "__#7@#e": number[];
     /**
      * @param {Board} ボード
      */
@@ -1710,4 +1710,4 @@ declare class he {
      */
     isTarget(e: any, t: any): boolean;
 }
-export { ee as Board, A as Piece, U as boards, O as canvasFont, G as canvasImage, ae as gameSoft, Y as games };
+export { ee as Board, A as Piece, U as boards, O as canvasFont, z as canvasImage, ae as gameSoft, Y as games };

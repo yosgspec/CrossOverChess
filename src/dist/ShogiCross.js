@@ -4397,7 +4397,7 @@ function ie(p) {
 }
 const re = [...new Set(
   Object.values(H).flatMap(({ imgSrc: p }) => p ?? []).concat(Object.values(J).flatMap(({ imgSrc: p }) => p ?? []))
-)], G = {
+)], z = {
   /** 読み込み済みであるか? */
   imported: !1,
   /** 読み込んだ画像データ
@@ -4630,11 +4630,11 @@ class A {
   /** 駒/マスクを描写 */
   async draw() {
     const e = "#FF000055";
-    this.imgSrc && G.imported ? (this.drawImage(), this.isSelected && this.drawMaskImage(e)) : (this.drawPiece(), this.isSelected && this.drawMask(e));
+    this.imgSrc && z.imported ? (this.drawImage(), this.isSelected && this.drawMaskImage(e)) : (this.drawPiece(), this.isSelected && this.drawMask(e));
   }
   /** 駒画像を描写 */
   drawImage() {
-    const { ctx: e, size: t } = this, a = this.imgSrc[this.displayPtn], s = G.images[a];
+    const { ctx: e, size: t } = this, a = this.imgSrc[this.displayPtn], s = z.images[a];
     if (!s)
       return;
     e.save(), e.translate(this.center, this.middle), this.isRotateImg && e.rotate(this.rad);
@@ -4768,11 +4768,11 @@ class le {
   /** マス目/マスク/駒を描写 */
   draw() {
     const { selectColor: e, targetColor: t } = this;
-    this.imgSrc && G.imported ? this.drawImage() : this.drawPanel(), this.isSelected && this.drawMask(e), this.isTarget && this.drawMask(t), this.piece?.draw();
+    this.imgSrc && z.imported ? this.drawImage() : this.drawPanel(), this.isSelected && this.drawMask(e), this.isTarget && this.drawMask(t), this.piece?.draw();
   }
   /** マス目画像を描写 */
   drawImage() {
-    const { ctx: e } = this, t = this.imgSrc, a = G.images[t];
+    const { ctx: e } = this, t = this.imgSrc, a = z.images[t];
     a && (e.save(), e.translate(this.left, this.top), e.drawImage(a, 0, 0, this.width, this.height), e.restore());
   }
   /** マス目を描写 */
@@ -4893,17 +4893,17 @@ function me(p, e, t, a) {
           for (let $ = h - 1; $ <= h + 1; $++) {
             if (c[R][$] !== x || $ === h && R === y)
               continue;
-            let z = E || 0, M = v || 0;
+            let G = E || 0, M = v || 0;
             const [C, N] = [$ - h, R - y];
             for (let X = t, D = a; ; ) {
               X += C, D += N;
               const P = X + k, T = D + b;
               if (!n(P, T) || !F && M === 0)
                 break;
-              const I = z === 0;
+              const I = G === 0;
               I && o(f, P, T, g, I) ? (M--, m(g, P, T)) : E < 1 && M--;
               const q = s[T][P];
-              if (q.piece && (z--, I || l(q)))
+              if (q.piece && (G--, I || l(q)))
                 break;
             }
           }
@@ -5318,7 +5318,7 @@ class ee {
       onGameOver: R = (N, X) => alert(`プレイヤー${X + 1}の敗北です。`)
     } = t;
     this.name = a, this.variant = s, this.url = r, this.desc = i;
-    const $ = O.importAsync(), z = G.importAsync();
+    const $ = O.importAsync(), G = z.importAsync();
     this.canvas = e;
     const M = e.getContext("2d");
     if (M.clearRect(0, 0, e.width, e.height), this.ctx = M, this.pieces = A.getPieces(M, {
@@ -5343,7 +5343,7 @@ class ee {
         }
     }), this.width = this.panelWidth * (this.xLen + 1), this.height = this.panelHeight * (this.yLen + 1), this.right = B + this.width, this.bottom = c + this.height, this.stand = new K(this), e.width = S ?? (o ? this.stand.right : this.right) + 5, e.height = m ?? this.bottom + 5;
     const { style: C } = e;
-    u === "overflow" ? (C.maxWidth === "" && (C.maxWidth = "97vw"), C.maxHeight === "" && (C.maxHeight = "92vh")) : u === "horizontal" ? C.width === "" && (C.width = "97vw") : u === "vertical" ? C.height === "" && (C.height = "92vh") : u === "parentOverflow" ? (C.maxWidth === "" && (C.maxWidth = "100%"), C.maxHeight === "" && (C.maxHeight = "100%")) : u === "parentHorizontal" ? C.width === "" && (C.width = "100%") : u === "parentVertical" && C.height === "" && (C.height = "100%"), this.autoDrawing = x, x && ($.then(() => this.draw()), z.then(() => this.draw()), this.draw()), this.onDrawed = F, this.onGameOver = R, this.gameAlives = new Map(
+    u === "overflow" ? (C.maxWidth === "" && (C.maxWidth = "97vw"), C.maxHeight === "" && (C.maxHeight = "92vh")) : u === "horizontal" ? C.width === "" && (C.width = "97vw") : u === "vertical" ? C.height === "" && (C.height = "92vh") : u === "parentOverflow" ? (C.maxWidth === "" && (C.maxWidth = "100%"), C.maxHeight === "" && (C.maxHeight = "100%")) : u === "parentHorizontal" ? C.width === "" && (C.width = "100%") : u === "parentVertical" && C.height === "" && (C.height = "100%"), this.autoDrawing = x, x && ($.then(() => this.draw()), G.then(() => this.draw()), this.draw()), this.onDrawed = F, this.onGameOver = R, this.gameAlives = new Map(
       [...Array(this.players).keys()].map((N) => [this.degNormal(N), !0])
     ), this.moveMode = E, this.record = [], this.turn = 0, this.mouseControl = ge(this), v && (this.playerControl = this.makePlayerControl(), this.playerControl.add()), this.enPassant = new he();
   }
@@ -5697,6 +5697,11 @@ ${n}:${l}`)) {
 }
 class te {
   static buttonTexts = "<>🔄🔁📷";
+  /** 要素のサイズをCanvasに合わせて変更 */
+  #e() {
+    const { canvas: e } = this.board, t = window.getComputedStyle(e);
+    this.component.style.maxWidth = parseFloat(t.width) + "px";
+  }
   /**
    * @param {Board} board ボード
    * @param {string[]} compList 表示するコントロールの一覧
@@ -5712,7 +5717,7 @@ class te {
     ]);
     t ??= [...a.keys(), "textRecord"];
     const s = Date.now().toString();
-    this.component = document.createElement("div"), this.component.id = s, this.component.style.display = "flex", this.component.style.maxWidth = e.canvas.width + "px", this.component.innerHTML = `${[...a].filter(([i]) => t.includes(i)).map(
+    this.component = document.createElement("div"), this.component.id = s, this.component.style.display = "flex", this.#e(), window.addEventListener("resize", () => this.#e()), this.component.innerHTML = `${[...a].filter(([i]) => t.includes(i)).map(
       ([i, { title: n, text: l }]) => `<button id="${i}${s}" title="${n}" style="font-family:${O.names};">${l}</button>`
     ).join("")}${t.includes("textRecord") ? `<select id="textRecord${s}" style="flex-grow:1; font-family:${O.names};"><option></option></select>` : ""}`;
     for (const [i, { onclick: n }] of a)
@@ -5738,7 +5743,7 @@ class te {
   }
   /** 操作パネルを破棄 */
   remove() {
-    this.component.remove();
+    this.component.remove(), window.removeEventListener("resize", () => this.#e);
   }
 }
 const fe = () => [
@@ -5782,7 +5787,7 @@ export {
   A as Piece,
   U as boards,
   O as canvasFont,
-  G as canvasImage,
+  z as canvasImage,
   ae as gameSoft,
   Y as games
 };

@@ -15,5 +15,6 @@ export class PlayerControl {
     add(): void;
     /** 操作パネルを破棄 */
     remove(): void;
+    #private;
 }
 import { Board } from "./board.js";
