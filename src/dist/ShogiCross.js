@@ -5624,7 +5624,7 @@ ${n}:${l}`)) {
     if (!n)
       return "";
     const d = ({ pX: m }) => (this.xLen - m).toString(a ? 10 : 36), o = ({ pY: m }) => (m + 1).toString(a ? 10 : 36), S = a ? "," : "";
-    return `${t}: ${A.degChars[i]}${d(s)}${S}${o(s)}${n}${l}${r.pX ? ` (${d(r)}${S}${o(r)})` : ""}`;
+    return `${t}: ${A.degChars[i]}${d(s)}${S}${o(s)}${n}${l}${r.pX === void 0 ? "" : ` (${d(r)}${S}${o(r)})`}`;
   }
   /** 表示用の棋譜を取得
    * @param {boolean} isNumOnly - 座標を数字で表現
