@@ -1,3 +1,69 @@
+/**
+ * @typedef {Object} ShogiCrossData - ShogiCrossデータ
+ * @prop {CanvasFont} canvasFont - Canvas用のGoogleフォント情報
+ * @prop {Object<string, GameSoft>} gameSoft - ゲーム情報(ボード+駒)のプリセット
+ * @prop {Object<string, Game>} games - ゲームの種類に共通する駒情報や駒配置情報
+ * @prop {Object<string, BoardInitOption>} boards - ボードの構成情報
+ * @prop {Object<string, PanelInitOption} panels - ボード中のマス目情報
+ * @prop {Object<string, PieceInitOption>} pieces - 駒情報
+ * @prop {Object<string, PieceRange>} pieceRange - 駒の移動範囲
+ * @prop {Object<string, number>} pieceCost - 駒の価値
+ */
+/** ゲームデータを拡張する
+ * @param {ShogiCrossData} data - 拡張データ
+ */
+export function extendData(data: ShogiCrossData): void;
+/**
+ * - ShogiCrossデータ
+ */
+export type ShogiCrossData = {
+    /**
+     * - Canvas用のGoogleフォント情報
+     */
+    canvasFont: CanvasFont;
+    /**
+     * - ゲーム情報(ボード+駒)のプリセット
+     */
+    gameSoft: {
+        [x: string]: GameSoft;
+    };
+    /**
+     * - ゲームの種類に共通する駒情報や駒配置情報
+     */
+    games: {
+        [x: string]: Game;
+    };
+    /**
+     * - ボードの構成情報
+     */
+    boards: {
+        [x: string]: BoardInitOption;
+    };
+    /**
+     * - ボード中のマス目情報
+     */
+    panels: {
+        [x: string]: PanelInitOption;
+    };
+    /**
+     * - 駒情報
+     */
+    pieces: {
+        [x: string]: PieceInitOption;
+    };
+    /**
+     * - 駒の移動範囲
+     */
+    pieceRange: {
+        [x: string]: PieceRange;
+    };
+    /**
+     * - 駒の価値
+     */
+    pieceCost: {
+        [x: string]: number;
+    };
+};
 export type CanvasFont = {
     /**
      * - {fontName: フォント名, fontWeight: フォントの太さ}

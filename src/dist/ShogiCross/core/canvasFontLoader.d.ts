@@ -1,2 +1,2 @@
 export { canvasFont };
-import { canvasFont } from "./json.js";
+import { canvasFont } from "./data.js";

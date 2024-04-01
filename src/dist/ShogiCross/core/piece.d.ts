@@ -141,4 +141,4 @@ export class Piece {
      */
     toString(isAlias?: boolean): string;
 }
-export type PieceInitOption = import('./json').PieceInitOption;
+export type PieceInitOption = import('./data').PieceInitOption;

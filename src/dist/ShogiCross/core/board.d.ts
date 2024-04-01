@@ -251,7 +251,7 @@ export class Board {
     downloadImage(fileName: string, ext: string, urlType: any): Promise<void>;
     #private;
 }
-export type BoardInitOption = import('./json').BoardInitOption;
+export type BoardInitOption = import('./data').BoardInitOption;
 import { Stand } from "./stand.js";
 import { EnPassant } from "./enPassant.js";
 import { Panel } from "./panel.js";
