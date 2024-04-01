@@ -5605,8 +5605,8 @@ ${n}:${l}`)) {
    */
   record2String(e, t, a = !1) {
     const { to: s, from: r, deg: i, pieceChar: n, end: l } = e;
-    if (!n)
-      return "";
+    if (t === 0)
+      return "0: 開始局面";
     const d = ({ pX: m }) => (this.xLen - m).toString(a ? 10 : 36), o = ({ pY: m }) => (m + 1).toString(a ? 10 : 36), S = a ? "," : "";
     return `${t}: ${A.degChars[i]}${d(s)}${S}${o(s)}${n}${l}${r.pX === void 0 ? "" : ` (${d(r)}${S}${o(r)})`}`;
   }
@@ -5615,8 +5615,8 @@ ${n}:${l}`)) {
    * @returns {string}
    */
   getTextRecord(e = !1) {
-    return this.record.slice(1, this.turn + 1).map(
-      (t, a) => this.record2String(t, a + 1, e)
+    return this.record.slice(0, this.turn + 1).map(
+      (t, a) => this.record2String(t, a, e)
     ).join(`
 `);
   }
