@@ -3,21 +3,21 @@ on:
   push:
     branches:
       - actions
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: checkout
-          uses: actions/checkout@v3
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
 
-        - name: setup-node
-          uses: actions/setup-node@v3
-          with:
-            node-version: 20
-            cache: npm
+      - name: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: npm
 
-        - name: npm-install
-          run: npm install
+      - name: npm-install
+        run: npm install
 
-        - name: app-build
-          run: npm run build
+      - name: app-build
+        run: npm run build
