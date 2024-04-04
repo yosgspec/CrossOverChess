@@ -12,6 +12,7 @@ declare class Q {
      * @prop {string} end - 棋譜表示の末尾に記載する文字
      * @prop {string} fieldText - 駒配置のテキスト
      * @prop {number[][]} fieldMoved - 駒の移動済み判定
+     * @prop {string|null} comment - 棋譜コメント
      */
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
@@ -129,6 +130,11 @@ declare class Q {
      * @param {string} option.end - オプション=成|不成|打
      */
     addRecord(e?: {}): void;
+    /** 棋譜コメントを追記
+     * @param {string} comment - 棋譜コメント
+     * @param {number} shiftTurn - ずらす手数
+     */
+    addRecordComment(e: any, t?: number): void;
     /** 記録の手を戻す */
     undoRecord(): void;
     /** 記録の手を進める */
@@ -167,6 +173,11 @@ declare class Q {
      * @returns {string}
      */
     getTextPieces(e?: string, t?: boolean): string;
+    /** 棋譜コメントを取得
+     * @param {number} shiftTurn - ずらす手数
+     * @returns {string}
+     */
+    getRecordComment(e?: number): string;
     /** 駒配置をテキストで取得
      * @param {boolean} isCompact - コンパクト表示
      * @param {boolean} isAlias - エイリアス表示

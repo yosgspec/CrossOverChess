@@ -5274,6 +5274,7 @@ class _ {
    * @prop {string} end - 棋譜表示の末尾に記載する文字
    * @prop {string} fieldText - 駒配置のテキスト
    * @prop {number[][]} fieldMoved - 駒の移動済み判定
+   * @prop {string|null} comment - 棋譜コメント
    */
   /** ゲームを実行する
    * @param {HTMLCanvasElement}} canvas - Canvas要素
@@ -5530,7 +5531,7 @@ class _ {
 ${i.char}:${i.name}
 　↓
 ${n}:${l}`)) {
-          this.addRecord({ fromPanel: e, toPanel: t, end: "成" }), i.promotion(n);
+          i.promotion(n), this.addRecord({ fromPanel: e, toPanel: t, end: "成" });
           return;
         }
     while (r !== "free" && s);
@@ -5581,6 +5582,13 @@ ${n}:${l}`)) {
         )
       )
     }, 0 < i && t.splice(this.turn + 1);
+  }
+  /** 棋譜コメントを追記
+   * @param {string} comment - 棋譜コメント
+   * @param {number} shiftTurn - ずらす手数
+   */
+  addRecordComment(e, t = 0) {
+    this.record[this.turn + t].comment = e;
   }
   /** 記録の参照手数を切り替える
    * @param {number} - 切り替えたい手数の差分
@@ -5665,6 +5673,13 @@ ${n}:${l}`)) {
    */
   getTextPieces(e = "default", t = !1) {
     return e === "bod" ? W.getTextPieces(this) : this.toString(e === "compact", t);
+  }
+  /** 棋譜コメントを取得
+   * @param {number} shiftTurn - ずらす手数
+   * @returns {string}
+   */
+  getRecordComment(e = 0) {
+    return this.record[this.turn + e] ?? "";
   }
   /** 駒配置をテキストで取得
    * @param {boolean} isCompact - コンパクト表示

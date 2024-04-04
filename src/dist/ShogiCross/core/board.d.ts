@@ -13,6 +13,7 @@ export class Board {
      * @prop {string} end - 棋譜表示の末尾に記載する文字
      * @prop {string} fieldText - 駒配置のテキスト
      * @prop {number[][]} fieldMoved - 駒の移動済み判定
+     * @prop {string|null} comment - 棋譜コメント
      */
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
@@ -87,6 +88,10 @@ export class Board {
          * - 駒の移動済み判定
          */
         fieldMoved: number[][];
+        /**
+         * - 棋譜コメント
+         */
+        comment: string | null;
     }[];
     /** ゲームのターン
      * @type {number}
@@ -171,6 +176,11 @@ export class Board {
         fromPanel: Panel;
         end: string;
     }): void;
+    /** 棋譜コメントを追記
+     * @param {string} comment - 棋譜コメント
+     * @param {number} shiftTurn - ずらす手数
+     */
+    addRecordComment(comment: string, shiftTurn?: number): void;
     /** 記録の手を戻す */
     undoRecord(): void;
     /** 記録の手を進める */
@@ -214,6 +224,10 @@ export class Board {
          * - 駒の移動済み判定
          */
         fieldMoved: number[][];
+        /**
+         * - 棋譜コメント
+         */
+        comment: string | null;
     }, turn: number, isNumOnly?: boolean): string;
     /** 表示用の棋譜を取得
      * @param {boolean} isNumOnly - 座標を数字で表現
@@ -238,6 +252,11 @@ export class Board {
      * @returns {string}
      */
     getTextPieces(mode?: "default" | "compact" | "bod", isAlias?: boolean): string;
+    /** 棋譜コメントを取得
+     * @param {number} shiftTurn - ずらす手数
+     * @returns {string}
+     */
+    getRecordComment(shiftTurn?: number): string;
     /** 駒配置をテキストで取得
      * @param {boolean} isCompact - コンパクト表示
      * @param {boolean} isAlias - エイリアス表示
