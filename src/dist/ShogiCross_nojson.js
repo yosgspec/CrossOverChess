@@ -4998,7 +4998,7 @@ class U {
     if (a.moveMode === "viewOnly" || e.hasAttr("keepOut"))
       return;
     const { deg: s, i: r } = t, i = this.stocks.get(s);
-    e.piece = i[r], i[r].center = e.center, i[r].middle = e.middle, a.addRecord({ toPanel: e, end: "打" }), i.splice(r, 1);
+    e.piece = i[r], i[r].center = e.center, i[r].middle = e.middle, i.splice(r, 1), a.addRecord({ toPanel: e, end: "打" });
   }
   /** 駒台に追加する
    * @param {Piece} piece - 追加する駒
