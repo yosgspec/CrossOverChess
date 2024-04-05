@@ -49,7 +49,7 @@ declare class Q {
     height: number;
     right: any;
     bottom: any;
-    stand: U;
+    stand: Y;
     autoDrawing: any;
     onDrawed: any;
     onGameOver: any;
@@ -1367,7 +1367,7 @@ declare namespace ee {
         export { playPieces_44 as playPieces };
     }
 }
-declare namespace J {
+declare namespace U {
     namespace 将棋 {
         let english: string;
         let fontColor: string;
@@ -1792,7 +1792,7 @@ declare const z: {
         attr: string[];
     };
 };
-declare namespace V {
+declare namespace J {
     let 女: number;
     let 獅: number;
     let 后: number;
@@ -1891,7 +1891,7 @@ declare namespace V {
     let 楚: number;
     let 帥: number;
 }
-declare namespace q {
+declare namespace V {
     export let 〇: string[];
     let 歩_1: string[];
     export { 歩_1 as 歩 };
@@ -4995,7 +4995,7 @@ declare namespace G {
         export { range_174 as range };
     }
 }
-declare class U {
+declare class Y {
     /** 駒台への角度ごとの表示順
      * @type {number[]}
      */
@@ -5070,4 +5070,4 @@ declare class ue {
      */
     isTarget(e: any, t: any): boolean;
 }
-export { Q as Board, A as Piece, H as boards, O as canvasFont, T as canvasImage, ae as extendData, ee as gameSoft, J as games, z as panels, V as pieceCost, q as pieceRange, G as pieces };
+export { Q as Board, A as Piece, H as boards, O as canvasFont, T as canvasImage, ae as extendData, ee as gameSoft, U as games, z as panels, J as pieceCost, V as pieceRange, G as pieces };
