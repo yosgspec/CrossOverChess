@@ -4378,7 +4378,7 @@ function se(c) {
   });
 }
 const ie = [...new Set(
-  Object.values(z).flatMap(({ imgSrc: c }) => c ?? []).concat(Object.values(G).flatMap(({ imgSrc: c }) => c ?? []))
+  Object.values(z).flatMap(({ imgSrc: c }) => c ?? []).concat(Object.values(G).flatMap(({ imgSrc: c }) => c != null ? Object.values(c) : []).flat())
 )], T = {
   /** 読み込み済みであるか? */
   imported: !1,
@@ -4618,12 +4618,12 @@ class A {
   }
   /** 駒画像を描写 */
   drawImage() {
-    const { ctx: e, size: t } = this, a = this.imgSrc[this.displayPtn], s = T.images[a];
-    if (!s)
+    const { ctx: e, size: t, deg: a } = this, s = this.imgSrc[a][this.displayPtn] ?? this.imgSrc[0][this.displayPtn], r = T.images[s];
+    if (!r)
       return;
     e.save(), e.translate(this.center, this.middle), this.isRotateImg && e.rotate(this.rad);
-    let r, i;
-    s.width * 0.9 < s.height ? (r = s.width / s.height * t, i = t) : (r = t, i = s.height / s.width * t), e.drawImage(s, -r / 2, -i / 2, r, i), e.restore();
+    let i, n;
+    r.width * 0.9 < r.height ? (i = r.width / r.height * t, n = t) : (i = t, n = r.height / r.width * t), e.drawImage(r, -i / 2, -n / 2, i, n), e.restore();
   }
   /** 駒画像にマスクを描写
    * @param {string} color - カラーエフェクトの色
