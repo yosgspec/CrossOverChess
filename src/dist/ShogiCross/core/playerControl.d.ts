@@ -1,5 +1,6 @@
 /** 操作パネル */
 export class PlayerControl {
+    /** @typedef {Object} PlayerControl */
     static buttonTexts: string;
     /**
      * @param {Board} board ボード

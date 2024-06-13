@@ -17,9 +17,9 @@ declare class _ {
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
-     * @returns Board
+     * @returns {Board}
      */
-    static run(e: any, t: any): _;
+    static run(e: any, t: any): any;
     /**
      * @param {HTMLCanvasElement} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
@@ -57,13 +57,10 @@ declare class _ {
     moveMode: any;
     record: any[];
     turn: number;
-    mouseControl: {
-        removeEvent(): void;
-    };
-    playerControl: any;
     enPassant: fe;
     /** 操作パネルを構築
      * @param {string[]} compList - 表示するコントロールの一覧
+     * @returns {PlayerControl}
      */
     makePlayerControl(e: any): any;
     /** ボードを閉じる */
@@ -98,14 +95,16 @@ declare class _ {
      */
     setTextPieces(e: any): void;
     /** 角度基準のマス目の行を取得する
-     * @param {Panel} panel - マス目
+     * @param {number} pX - マス目の列
+     * @param {number} pY - マス目の行
      * @param {number} deg - 角度
      * @param {number} offsetDeg - 補正角度
      * @returns {number}
      */
     getRow(e: any, t: any, a: any, s?: number): number;
     /** 角度基準のマス目の列を取得する
-     * @param {Panel} panel - マス目
+     * @param {number} pX - マス目の列
+     * @param {number} pY - マス目の行
      * @param {number} deg - 角度
      * @param {number} offsetDeg - 補正角度
      * @returns {number}
@@ -113,6 +112,10 @@ declare class _ {
     getCol(e: any, t: any, a: any, s?: number): number;
     /** プロモーションエリア内であるか判別
      * @param {Panel} panel - マス目
+     * @returns {{
+     * 		canPromo: boolean,
+     * 		forcePromo: boolean
+     * }}
      */
     checkCanPromo(e: any): {
         canPromo: boolean;
@@ -192,6 +195,7 @@ declare class _ {
     #private;
 }
 declare class A {
+    /** @typedef {Object} Piece */
     /** 描写サイズ
      * @type {number}
      */
@@ -225,6 +229,7 @@ declare class A {
     /** 駒データを初期化
      * @param {any} ctx - Canvas描画コンテキスト
      * @param {Piece|PieceInitOption} option - 駒の初期化オプション
+     * @retuens {Object<string, Piece>}
      */
     static getPieces(e: any, t?: {}): {
         [k: string]: any;
@@ -232,10 +237,13 @@ declare class A {
     /** 文字列から駒を取得
      * @param {Piece|PieceInitOption} piece - 駒
      * @param {string} text - 駒文字列
+     * @returns {Piece}
      */
     static stringToPiece(e: any, t: any): any;
-    /** 駒の一覧をリストで取得 */
-    static piecesToList(e: any): [string, any][];
+    /** 駒の一覧をリストで取得
+     * @returns {Piece[]}
+     */
+    static piecesToList(e: any): any[];
     /**
      * @param {any} ctx - Canvas描画コンテキスト
      * @param {Piece|PieceInitOption} piece - 駒
@@ -248,8 +256,10 @@ declare class A {
      * @param {boolean} option.isMoved - 初回移動済みか否か
      */
     constructor(e: any, t: any, a?: {});
-    /** 駒の段階別価値を取得 */
-    get rank(): "KR" | "SR" | "R" | "UC" | "C";
+    /** 駒の段階別価値を取得
+     * @returns {string}
+     */
+    get rank(): string;
     /** 駒の角度(deg/rad)
      * @param {number} value
      */
@@ -277,9 +287,9 @@ declare class A {
     isMoved: any;
     isSelected: boolean;
     /** 駒をクローン
-     * @returns Piece
+     * @returns {Piece}
      */
-    clone(): A;
+    clone(): any;
     /** 駒を表返す */
     turnFront(): void;
     /** プロモーション
@@ -295,10 +305,13 @@ declare class A {
     /** 座標が駒に含まれるか判定
      * @param {number} x - X座標
      * @param {number} y - Y座標
+     * @returns {boolean}
      */
     checkRangeMouse(e: any, t: any): boolean;
-    /** 移動範囲を回転して取得 */
-    getRange(): any;
+    /** 移動範囲を回転して取得
+     * @returns {string[][]}
+     */
+    getRange(): string[][];
     /** 駒/マスクを描写 */
     draw(): Promise<void>;
     /** 駒画像を描写 */
@@ -380,6 +393,12 @@ declare const J: {
     チェス6x6: {
         backgroundColor: string;
         borderColor: string;
+        field: string[];
+    };
+    チェス9x9: {
+        backgroundColor: string;
+        borderColor: string;
+        promoLineOffset: number;
         field: string[];
     };
     チェス10x8: {

@@ -57,6 +57,7 @@ export class Panel {
     /** 座標がマス目に含まれるか判定
      * @param {number} x - X座標
      * @param {number} y - Y座標
+     * @returns {boolean}
      */
     checkRangeMouse(x: number, y: number): boolean;
     /** マス目/マスク/駒を描写 */

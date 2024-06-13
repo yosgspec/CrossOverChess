@@ -1,6 +1,12 @@
 /** アンパッサン情報の管理 */
 export class EnPassant {
-    degs: {};
+    /** @type {Object<string, {panel: Panel, piece: Piece}>} */
+    degs: {
+        [x: string]: {
+            panel: Panel;
+            piece: Piece;
+        };
+    };
     /** アンパッサン情報をクリア
      * @param {number} deg - アンパッサンされうる陣営の角度
      */

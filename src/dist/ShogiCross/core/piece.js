@@ -5,6 +5,7 @@ import {games, pieces, pieceRange, pieceCost} from "./data.js";
 
 /** 駒の管理クラス */
 export class Piece{
+	/** @typedef {Object} Piece */
 	/** 描写サイズ
 	 * @type {number}
 	 */
@@ -48,7 +49,9 @@ export class Piece{
 		"C": 0.865
 	}
 
-	/** 駒の段階別価値を取得 */
+	/** 駒の段階別価値を取得
+	 * @returns {string}
+	 */
 	get rank(){
 		return (
 			this.cost <= 0? "KR":
@@ -63,6 +66,7 @@ export class Piece{
 	/** 駒データを初期化
 	 * @param {any} ctx - Canvas描画コンテキスト
 	 * @param {Piece|PieceInitOption} option - 駒の初期化オプション
+	 * @retuens {Object<string, Piece>}
 	 */
 	static getPieces(ctx, option={}){
 		const exPieces = new Map(Object.entries(JSON.parse(JSON.stringify(pieces))));
@@ -109,6 +113,7 @@ export class Piece{
 	/** 文字列から駒を取得
 	 * @param {Piece|PieceInitOption} piece - 駒
 	 * @param {string} text - 駒文字列
+	 * @returns {Piece}
 	 */
 	static stringToPiece(pieces, text){
 		if (!text) return null;
@@ -120,7 +125,9 @@ export class Piece{
 		return piece;
 	}
 
-	/** 駒の一覧をリストで取得 */
+	/** 駒の一覧をリストで取得
+	 * @returns {Piece[]}
+	 */
 	static piecesToList(pieces){
 		return Object.entries(pieces)
 			.sort(([_,{id:a}], [__,{id:b}])=>
@@ -215,7 +222,7 @@ export class Piece{
 	}
 
 	/** 駒をクローン
-	 * @returns Piece
+	 * @returns {Piece}
 	 */
 	clone(){
 		const {displayPtn, deg, size, isMoved} = this;
@@ -251,6 +258,7 @@ export class Piece{
 	/** 座標が駒に含まれるか判定
 	 * @param {number} x - X座標
 	 * @param {number} y - Y座標
+	 * @returns {boolean}
 	 */
 	checkRangeMouse(x, y){
 		return (
@@ -259,7 +267,9 @@ export class Piece{
 		);
 	}
 
-	/** 移動範囲を回転して取得 */
+	/** 移動範囲を回転して取得
+	 * @returns {string[][]}
+	 */
 	getRange(){
 		const deg = 0|this.deg;
 		const range = JSON.parse(JSON.stringify(this.range));

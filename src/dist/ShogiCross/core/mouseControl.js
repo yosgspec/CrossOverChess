@@ -4,6 +4,7 @@ import {checkTarget} from "./checkTarget.js";
 
 /** マウスコントロール
  * @param {Board} board - 盤
+ * @returns {()=>void}
  */
 export function mouseControl(board){
 	let isClick = false;
@@ -23,7 +24,7 @@ export function mouseControl(board){
 	 *     x: number,
 	 *     y: number,
 	 * )=>void} fnAfter - 後処理のコールバック関数
-     */
+	 */
 	const fieldProc = (e, fnPanel, fnAfter=()=>{})=>{
 		const viewStyle = window.getComputedStyle(canvas);
 		const rect = e.target.getBoundingClientRect();
@@ -52,7 +53,7 @@ export function mouseControl(board){
 
 	/** ドラッグ開始
 	 * @param {Event} e - イベント引数
-     */
+	 */
 	const dragStart = e=>{
 		isClick = true;
 		fieldProc(e,
@@ -134,8 +135,9 @@ export function mouseControl(board){
 	canvas.addEventListener("touchmove", dragMove);
 	canvas.addEventListener("touchend", dragEnd);
 
-	/** イベントリスナーを破棄 */
+
 	return {
+		/** イベントリスナーを破棄 */
 		removeEvent(){
 			canvas.removeEventListener("mousedown", dragStart);
 			canvas.removeEventListener("mousemove", dragMove);

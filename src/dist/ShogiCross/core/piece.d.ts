@@ -1,5 +1,6 @@
 /** 駒の管理クラス */
 export class Piece {
+    /** @typedef {Object} Piece */
     /** 描写サイズ
      * @type {number}
      */
@@ -33,17 +34,21 @@ export class Piece {
     /** 駒データを初期化
      * @param {any} ctx - Canvas描画コンテキスト
      * @param {Piece|PieceInitOption} option - 駒の初期化オプション
+     * @retuens {Object<string, Piece>}
      */
-    static getPieces(ctx: any, option?: Piece | PieceInitOption): {
+    static getPieces(ctx: any, option?: any): {
         [k: string]: any;
     };
     /** 文字列から駒を取得
      * @param {Piece|PieceInitOption} piece - 駒
      * @param {string} text - 駒文字列
+     * @returns {Piece}
      */
     static stringToPiece(pieces: any, text: string): any;
-    /** 駒の一覧をリストで取得 */
-    static piecesToList(pieces: any): [string, any][];
+    /** 駒の一覧をリストで取得
+     * @returns {Piece[]}
+     */
+    static piecesToList(pieces: any): any[];
     /**
      * @param {any} ctx - Canvas描画コンテキスト
      * @param {Piece|PieceInitOption} piece - 駒
@@ -55,7 +60,7 @@ export class Piece {
      * @param {boolean} option.isDrawShadow - 駒の影の描写有無
      * @param {boolean} option.isMoved - 初回移動済みか否か
      */
-    constructor(ctx: any, piece: Piece | PieceInitOption, option?: {
+    constructor(ctx: any, piece: any, option?: {
         displayPtn: number;
         deg: number;
         size: number;
@@ -63,8 +68,10 @@ export class Piece {
         isDrawShadow: boolean;
         isMoved: boolean;
     });
-    /** 駒の段階別価値を取得 */
-    get rank(): "KR" | "SR" | "R" | "UC" | "C";
+    /** 駒の段階別価値を取得
+     * @returns {string}
+     */
+    get rank(): string;
     /** 駒の角度(deg/rad)
      * @param {number} value
      */
@@ -92,9 +99,9 @@ export class Piece {
     isMoved: boolean;
     isSelected: boolean;
     /** 駒をクローン
-     * @returns Piece
+     * @returns {Piece}
      */
-    clone(): Piece;
+    clone(): any;
     /** 駒を表返す */
     turnFront(): void;
     /** プロモーション
@@ -110,10 +117,13 @@ export class Piece {
     /** 座標が駒に含まれるか判定
      * @param {number} x - X座標
      * @param {number} y - Y座標
+     * @returns {boolean}
      */
     checkRangeMouse(x: number, y: number): boolean;
-    /** 移動範囲を回転して取得 */
-    getRange(): any;
+    /** 移動範囲を回転して取得
+     * @returns {string[][]}
+     */
+    getRange(): string[][];
     /** 駒/マスクを描写 */
     draw(): Promise<void>;
     /** 駒画像を描写 */

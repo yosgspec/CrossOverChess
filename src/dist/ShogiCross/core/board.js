@@ -13,6 +13,10 @@ import {boards, games} from "./data.js";
 
 /** 盤の管理クラス */
 export class Board{
+	/** @typedef {Object} Board */
+	#mouseControl
+	#playerControl
+
 	/**
 	 * @typedef {Object} Record - 局面の記録
 	 * @prop {Object} from
@@ -32,7 +36,7 @@ export class Board{
 	/** ゲームを実行する
 	 * @param {HTMLCanvasElement}} canvas - Canvas要素
 	 * @param {BoardInitOption} option - ボードの初期化オプション
-	 * @returns Board
+	 * @returns {Board}
 	 */
 	static run(canvas, option){
 		return new Board(canvas, option);
@@ -180,26 +184,27 @@ export class Board{
 		 * @type {number}
 		 */
 		this.turn = 0;
-		this.mouseControl = mouseControl(this);
+		this.#mouseControl = mouseControl(this);
 		if(usePlayerControl){
-			this.playerControl = this.makePlayerControl();
-			this.playerControl.add();
+			this.#playerControl = this.makePlayerControl();
+			this.#playerControl.add();
 		}
 		this.enPassant = new EnPassant();
 	}
 
 	/** 操作パネルを構築
 	 * @param {string[]} compList - 表示するコントロールの一覧
+	 * @returns {PlayerControl}
 	 */
 	makePlayerControl(compList){
-		this.playerControl = new PlayerControl(this, compList);
-		return this.playerControl;
+		this.#playerControl = new PlayerControl(this, compList);
+		return this.#playerControl;
 	}
 
 	/** ボードを閉じる */
 	close(){
-		this.mouseControl?.removeEvent();
-		this.playerControl?.remove();
+		this.#mouseControl?.removeEvent();
+		this.#playerControl?.remove();
 	}
 
 	/** 角度を正規化
@@ -357,7 +362,8 @@ export class Board{
 	}
 
 	/** 角度基準のマス目の行を取得する
-	 * @param {Panel} panel - マス目
+	 * @param {number} pX - マス目の列
+	 * @param {number} pY - マス目の行
 	 * @param {number} deg - 角度
 	 * @param {number} offsetDeg - 補正角度
 	 * @returns {number}
@@ -376,7 +382,8 @@ export class Board{
 	}
 
 	/** 角度基準のマス目の列を取得する
-	 * @param {Panel} panel - マス目
+	 * @param {number} pX - マス目の列
+	 * @param {number} pY - マス目の行
 	 * @param {number} deg - 角度
 	 * @param {number} offsetDeg - 補正角度
 	 * @returns {number}
@@ -396,6 +403,10 @@ export class Board{
 
 	/** プロモーションエリア内であるか判別
 	 * @param {Panel} panel - マス目
+	 * @returns {{
+	 * 		canPromo: boolean,
+	 * 		forcePromo: boolean
+	 * }}
 	 */
 	checkCanPromo(panel){
 		const {yLen} = this;

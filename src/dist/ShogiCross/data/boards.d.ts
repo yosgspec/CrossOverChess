@@ -54,6 +54,12 @@ declare const _default: {
         borderColor: string;
         field: string[];
     };
+    チェス9x9: {
+        backgroundColor: string;
+        borderColor: string;
+        promoLineOffset: number;
+        field: string[];
+    };
     チェス10x8: {
         backgroundColor: string;
         borderColor: string;

@@ -18,9 +18,9 @@ export class Board {
     /** ゲームを実行する
      * @param {HTMLCanvasElement}} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
-     * @returns Board
+     * @returns {Board}
      */
-    static run(canvas: any, option: BoardInitOption): Board;
+    static run(canvas: any, option: BoardInitOption): any;
     /**
      * @param {HTMLCanvasElement} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
@@ -97,15 +97,12 @@ export class Board {
      * @type {number}
      */
     turn: number;
-    mouseControl: {
-        removeEvent(): void;
-    };
-    playerControl: any;
     enPassant: EnPassant;
     /** 操作パネルを構築
      * @param {string[]} compList - 表示するコントロールの一覧
+     * @returns {PlayerControl}
      */
-    makePlayerControl(compList: string[]): any;
+    makePlayerControl(compList: string[]): PlayerControl;
     /** ボードを閉じる */
     close(): void;
     /** 角度を正規化
@@ -141,21 +138,27 @@ export class Board {
      */
     setTextPieces(text: any): void;
     /** 角度基準のマス目の行を取得する
-     * @param {Panel} panel - マス目
+     * @param {number} pX - マス目の列
+     * @param {number} pY - マス目の行
      * @param {number} deg - 角度
      * @param {number} offsetDeg - 補正角度
      * @returns {number}
      */
-    getRow(pX: any, pY: any, deg: number, offsetDeg?: number): number;
+    getRow(pX: number, pY: number, deg: number, offsetDeg?: number): number;
     /** 角度基準のマス目の列を取得する
-     * @param {Panel} panel - マス目
+     * @param {number} pX - マス目の列
+     * @param {number} pY - マス目の行
      * @param {number} deg - 角度
      * @param {number} offsetDeg - 補正角度
      * @returns {number}
      */
-    getCol(pX: any, pY: any, deg: number, offsetDeg?: number): number;
+    getCol(pX: number, pY: number, deg: number, offsetDeg?: number): number;
     /** プロモーションエリア内であるか判別
      * @param {Panel} panel - マス目
+     * @returns {{
+     * 		canPromo: boolean,
+     * 		forcePromo: boolean
+     * }}
      */
     checkCanPromo(panel: Panel): {
         canPromo: boolean;
@@ -273,4 +276,5 @@ export class Board {
 export type BoardInitOption = import('./data').BoardInitOption;
 import { Stand } from "./stand.js";
 import { EnPassant } from "./enPassant.js";
+import { PlayerControl } from "./playerControl.js";
 import { Panel } from "./panel.js";

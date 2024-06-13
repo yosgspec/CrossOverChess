@@ -29,11 +29,11 @@ export class Bod {
      */
     static "__#23@#num2Kan"(num: number, viewOne?: boolean): string;
     /** 行/持駒用の数字表示(漢数字)
-     * @param {number} num - 数字
+     * @param {string} kan - 漢数字
      * @param {boolean} emptyOne - 空文字を1とする
      * @returns {string}
      */
-    static "__#23@#kan2Num"(kan: any, emptyOne?: boolean): string;
+    static "__#23@#kan2Num"(kan: string, emptyOne?: boolean): string;
     /** 列用の数字表示(全角/2桁)
      * @param {number} num - 数字
      * @returns {string}
