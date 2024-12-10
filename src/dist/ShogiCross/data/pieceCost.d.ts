@@ -38,6 +38,8 @@ declare namespace _default {
     let い: number;
     let 鶴: number;
     let 鰐: number;
+    let 使: number;
+    let 賢: number;
     let 銀: number;
     let 炮: number;
     let ね: number;
@@ -49,6 +51,7 @@ declare namespace _default {
     let 舟: number;
     let 釡: number;
     let 雉: number;
+    let 射: number;
     let 桂: number;
     let 京: number;
     let 銅: number;
@@ -63,6 +66,8 @@ declare namespace _default {
     let き: number;
     let ぞ: number;
     let 同: number;
+    let 佯: number;
+    let 妾: number;
     let 象: number;
     let 士: number;
     let 相: number;
@@ -76,6 +81,7 @@ declare namespace _default {
     let 燕: number;
     let 丘: number;
     let 梹: number;
+    let 鋲: number;
     let 貝: number;
     let 卒: number;
     let 火: number;
@@ -92,6 +98,7 @@ declare namespace _default {
     let 王: number;
     let 国: number;
     let 呈: number;
+    let 閏: number;
     let 君: number;
     let 主: number;
     let 楚: number;
