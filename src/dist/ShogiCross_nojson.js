@@ -2527,10 +2527,11 @@ const O = {
     gameName: "将棋",
     expansion: "禽将棋",
     unit: "車",
-    attr: ["capture"],
+    attr: ["capture", "cantPromotion"],
     range: {
       default: "鶉"
-    }
+    },
+    promo: "左"
   },
   享: {
     name: "鶉(右)",
@@ -2538,10 +2539,11 @@ const O = {
     gameName: "将棋",
     expansion: "禽将棋",
     unit: "車",
-    attr: ["capture"],
+    attr: ["capture", "cantPromotion"],
     range: {
       default: "享"
-    }
+    },
+    promo: "右"
   },
   鷹: {
     name: "鷹",
@@ -3672,7 +3674,7 @@ const O = {
   },
   鵺: {
     name: "Pアンカ",
-    display: ["🦅鴻"],
+    display: ["🦅鵺"],
     range: {
       default: "鴻"
     }
@@ -5556,7 +5558,7 @@ class Q {
    */
   #r(e, t, a, s) {
     const { moveMode: r } = this, { piece: i } = t;
-    if (!i.promo || i.hasAttr("promoted") || !a) {
+    if (!i.promo || i.hasAttr("promoted") || i.hasAttr("cantPromotion") || !a) {
       this.addRecord({ fromPanel: e, toPanel: t });
       return;
     }

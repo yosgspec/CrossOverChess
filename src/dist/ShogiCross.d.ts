@@ -3027,6 +3027,8 @@ declare namespace H {
             export { _default_50 as default };
         }
         export { range_51 as range };
+        let promo_16: string;
+        export { promo_16 as promo };
     }
     export { 鶉_2 as 鶉 };
     export namespace 享_2 {
@@ -3047,6 +3049,8 @@ declare namespace H {
             export { _default_51 as default };
         }
         export { range_52 as range };
+        let promo_17: string;
+        export { promo_17 as promo };
     }
     export { 享_2 as 享 };
     export namespace 鷹_1 {
@@ -3069,8 +3073,8 @@ declare namespace H {
             export { _default_52 as default };
         }
         export { range_53 as range };
-        let promo_16: string;
-        export { promo_16 as promo };
+        let promo_18: string;
+        export { promo_18 as promo };
     }
     export { 鷹_1 as 鷹 };
     export namespace 鵬_1 {
@@ -3113,8 +3117,8 @@ declare namespace H {
             export { _default_54 as default };
         }
         export { range_55 as range };
-        let promo_17: string;
-        export { promo_17 as promo };
+        let promo_19: string;
+        export { promo_19 as promo };
     }
     export { 京_2 as 京 };
     export namespace 銅_2 {
@@ -3135,8 +3139,8 @@ declare namespace H {
             export { _default_55 as default };
         }
         export { range_56 as range };
-        let promo_18: string;
-        export { promo_18 as promo };
+        let promo_20: string;
+        export { promo_20 as promo };
     }
     export { 銅_2 as 銅 };
     export namespace 山_2 {
@@ -3157,8 +3161,8 @@ declare namespace H {
             export { _default_56 as default };
         }
         export { range_57 as range };
-        let promo_19: string;
-        export { promo_19 as promo };
+        let promo_21: string;
+        export { promo_21 as promo };
     }
     export { 山_2 as 山 };
     export namespace 翅_2 {
@@ -3219,8 +3223,8 @@ declare namespace H {
             export { _default_59 as default };
         }
         export { range_60 as range };
-        let promo_20: string;
-        export { promo_20 as promo };
+        let promo_22: string;
+        export { promo_22 as promo };
     }
     export { 跳_1 as 跳 };
     export namespace 返_1 {
@@ -3241,8 +3245,8 @@ declare namespace H {
             export { _default_60 as default };
         }
         export { range_61 as range };
-        let promo_21: string;
-        export { promo_21 as promo };
+        let promo_23: string;
+        export { promo_23 as promo };
     }
     export { 返_1 as 返 };
     export namespace 女_1 {
@@ -3283,8 +3287,8 @@ declare namespace H {
             export { _default_62 as default };
         }
         export { range_63 as range };
-        let promo_22: string;
-        export { promo_22 as promo };
+        let promo_24: string;
+        export { promo_24 as promo };
     }
     export { 醉_2 as 醉 };
     export namespace 丘_1 {
@@ -3307,8 +3311,8 @@ declare namespace H {
             export { attack_8 as attack };
         }
         export { range_64 as range };
-        let promo_23: string;
-        export { promo_23 as promo };
+        let promo_25: string;
+        export { promo_25 as promo };
     }
     export { 丘_1 as 丘 };
     export namespace 浜_1 {
@@ -3335,8 +3339,8 @@ declare namespace H {
             export { attack_9 as attack };
         }
         export { range_65 as range };
-        let promo_24: string;
-        export { promo_24 as promo };
+        let promo_26: string;
+        export { promo_26 as promo };
     }
     export { 浜_1 as 浜 };
     export namespace 駮_2 {
@@ -3419,8 +3423,8 @@ declare namespace H {
             export { attack_10 as attack };
         }
         export { range_69 as range };
-        let promo_25: string;
-        export { promo_25 as promo };
+        let promo_27: string;
+        export { promo_27 as promo };
     }
     export { 矢_1 as 矢 };
     export namespace 本_1 {
@@ -3443,8 +3447,8 @@ declare namespace H {
             export { attack_11 as attack };
         }
         export { range_70 as range };
-        let promo_26: string;
-        export { promo_26 as promo };
+        let promo_28: string;
+        export { promo_28 as promo };
     }
     export { 本_1 as 本 };
     export namespace 舟_1 {
@@ -3501,8 +3505,8 @@ declare namespace H {
             export { _default_72 as default };
         }
         export { range_73 as range };
-        let promo_27: string;
-        export { promo_27 as promo };
+        let promo_29: string;
+        export { promo_29 as promo };
     }
     export { ね_1 as ね };
     export namespace い_1 {
@@ -3561,8 +3565,8 @@ declare namespace H {
             export { _default_75 as default };
         }
         export { range_76 as range };
-        let promo_28: string;
-        export { promo_28 as promo };
+        let promo_30: string;
+        export { promo_30 as promo };
     }
     export { 仲_2 as 仲 };
     export namespace 同_1 {
@@ -3581,8 +3585,8 @@ declare namespace H {
             export { _default_76 as default };
         }
         export { range_77 as range };
-        let promo_29: string;
-        export { promo_29 as promo };
+        let promo_31: string;
+        export { promo_31 as promo };
     }
     export { 同_1 as 同 };
     export namespace 艮 {
@@ -3601,8 +3605,8 @@ declare namespace H {
             export { _default_77 as default };
         }
         export { range_78 as range };
-        let promo_30: string;
-        export { promo_30 as promo };
+        let promo_32: string;
+        export { promo_32 as promo };
     }
     export namespace 釡_1 {
         let name_124: string;
@@ -3620,8 +3624,8 @@ declare namespace H {
             export { _default_78 as default };
         }
         export { range_79 as range };
-        let promo_31: string;
-        export { promo_31 as promo };
+        let promo_33: string;
+        export { promo_33 as promo };
     }
     export { 釡_1 as 釡 };
     export namespace 猛_2 {
@@ -3640,8 +3644,8 @@ declare namespace H {
             export { _default_79 as default };
         }
         export { range_80 as range };
-        let promo_32: string;
-        export { promo_32 as promo };
+        let promo_34: string;
+        export { promo_34 as promo };
     }
     export { 猛_2 as 猛 };
     export namespace 馨_1 {
@@ -3662,8 +3666,8 @@ declare namespace H {
             export { _default_80 as default };
         }
         export { range_81 as range };
-        let promo_33: string;
-        export { promo_33 as promo };
+        let promo_35: string;
+        export { promo_35 as promo };
     }
     export { 馨_1 as 馨 };
     export namespace 反_2 {
@@ -3682,8 +3686,8 @@ declare namespace H {
             export { _default_81 as default };
         }
         export { range_82 as range };
-        let promo_34: string;
-        export { promo_34 as promo };
+        let promo_36: string;
+        export { promo_36 as promo };
     }
     export { 反_2 as 反 };
     export namespace 虎_2 {
@@ -3702,8 +3706,8 @@ declare namespace H {
             export { _default_82 as default };
         }
         export { range_83 as range };
-        let promo_35: string;
-        export { promo_35 as promo };
+        let promo_37: string;
+        export { promo_37 as promo };
     }
     export { 虎_2 as 虎 };
     export namespace 麒_2 {
@@ -3722,8 +3726,8 @@ declare namespace H {
             export { _default_83 as default };
         }
         export { range_84 as range };
-        let promo_36: string;
-        export { promo_36 as promo };
+        let promo_38: string;
+        export { promo_38 as promo };
     }
     export { 麒_2 as 麒 };
     export namespace 鳳_2 {
@@ -3742,8 +3746,8 @@ declare namespace H {
             export { _default_84 as default };
         }
         export { range_85 as range };
-        let promo_37: string;
-        export { promo_37 as promo };
+        let promo_39: string;
+        export { promo_39 as promo };
     }
     export { 鳳_2 as 鳳 };
     export namespace 横_2 {
@@ -3762,8 +3766,8 @@ declare namespace H {
             export { _default_85 as default };
         }
         export { range_86 as range };
-        let promo_38: string;
-        export { promo_38 as promo };
+        let promo_40: string;
+        export { promo_40 as promo };
     }
     export { 横_2 as 横 };
     export namespace 竪_2 {
@@ -3782,8 +3786,8 @@ declare namespace H {
             export { _default_86 as default };
         }
         export { range_87 as range };
-        let promo_39: string;
-        export { promo_39 as promo };
+        let promo_41: string;
+        export { promo_41 as promo };
     }
     export { 竪_2 as 竪 };
     export namespace 碼_1 {
@@ -3802,8 +3806,8 @@ declare namespace H {
             export { _default_87 as default };
         }
         export { range_88 as range };
-        let promo_40: string;
-        export { promo_40 as promo };
+        let promo_42: string;
+        export { promo_42 as promo };
     }
     export { 碼_1 as 碼 };
     export namespace 竜_2 {
@@ -3822,8 +3826,8 @@ declare namespace H {
             export { _default_88 as default };
         }
         export { range_89 as range };
-        let promo_41: string;
-        export { promo_41 as promo };
+        let promo_43: string;
+        export { promo_43 as promo };
     }
     export { 竜_2 as 竜 };
     export namespace 奔_1 {
@@ -3880,8 +3884,8 @@ declare namespace H {
             export { _default_91 as default };
         }
         export { range_92 as range };
-        let promo_42: string;
-        export { promo_42 as promo };
+        let promo_44: string;
+        export { promo_44 as promo };
     }
     export namespace 鉄_1 {
         let name_138: string;
@@ -3903,8 +3907,8 @@ declare namespace H {
             export { _default_92 as default };
         }
         export { range_93 as range };
-        let promo_43: string;
-        export { promo_43 as promo };
+        let promo_45: string;
+        export { promo_45 as promo };
     }
     export { 鉄_1 as 鉄 };
     export namespace 猫 {
@@ -3923,8 +3927,8 @@ declare namespace H {
             export { _default_93 as default };
         }
         export { range_94 as range };
-        let promo_44: string;
-        export { promo_44 as promo };
+        let promo_46: string;
+        export { promo_46 as promo };
     }
     export namespace 瀧_1 {
         let name_140: string;
@@ -3942,8 +3946,8 @@ declare namespace H {
             export { _default_94 as default };
         }
         export { range_95 as range };
-        let promo_45: string;
-        export { promo_45 as promo };
+        let promo_47: string;
+        export { promo_47 as promo };
     }
     export { 瀧_1 as 瀧 };
     export namespace 嗔 {
@@ -3962,8 +3966,8 @@ declare namespace H {
             export { _default_95 as default };
         }
         export { range_96 as range };
-        let promo_46: string;
-        export { promo_46 as promo };
+        let promo_48: string;
+        export { promo_48 as promo };
     }
     export namespace 丑_1 {
         let name_142: string;
@@ -3981,8 +3985,8 @@ declare namespace H {
             export { _default_96 as default };
         }
         export { range_97 as range };
-        let promo_47: string;
-        export { promo_47 as promo };
+        let promo_49: string;
+        export { promo_49 as promo };
     }
     export { 丑_1 as 丑 };
     export namespace 狼_1 {
@@ -4001,8 +4005,8 @@ declare namespace H {
             export { _default_97 as default };
         }
         export { range_98 as range };
-        let promo_48: string;
-        export { promo_48 as promo };
+        let promo_50: string;
+        export { promo_50 as promo };
     }
     export { 狼_1 as 狼 };
     export namespace 梹_1 {
@@ -4025,8 +4029,8 @@ declare namespace H {
             export { attack_12 as attack };
         }
         export { range_99 as range };
-        let promo_49: string;
-        export { promo_49 as promo };
+        let promo_51: string;
+        export { promo_51 as promo };
     }
     export { 梹_1 as 梹 };
     export namespace 師_1 {
@@ -4181,8 +4185,8 @@ declare namespace H {
             export { attack_13 as attack };
         }
         export { range_107 as range };
-        let promo_50: string;
-        export { promo_50 as promo };
+        let promo_52: string;
+        export { promo_52 as promo };
     }
     export { 鋲_1 as 鋲 };
     export namespace 射_1 {
