@@ -166,6 +166,11 @@ declare const _default: {
         borderColor: string;
         field: string[];
     };
+    クロス14x14: {
+        backgroundColor: string;
+        borderColor: string;
+        field: string[];
+    };
     "4\u4EBA\u7528\u30AF\u30ED\u30B98\u5217": {
         backgroundColor: string;
         borderColor: string;
