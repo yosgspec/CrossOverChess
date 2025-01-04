@@ -19,12 +19,12 @@ declare class Q {
      * @param {BoardInitOption} option - ボードの初期化オプション
      * @returns {Board}
      */
-    static run(e: any, t: any): any;
+    static run(e: any, a: any): any;
     /**
      * @param {HTMLCanvasElement} canvas - Canvas要素
      * @param {BoardInitOption} option - ボードの初期化オプション
      */
-    constructor(e: any, t: any);
+    constructor(e: any, a: any);
     name: any;
     variant: any;
     url: any;
@@ -79,7 +79,7 @@ declare class Q {
      * @param {string} gameName - ゲーム名(基準となる駒の配置セット)
      * @param {string} pieceSet - 駒の配置パターン
      */
-    putStartPieces(e: any, t: any, a?: string): void;
+    putStartPieces(e: any, a: any, t?: string): void;
     /** 駒の配置
      * @param {string} piece - 駒の表現文字
      * @param {number} pX - X方向配置位置(マス目基準)
@@ -89,7 +89,7 @@ declare class Q {
      * @param {number} option.displayPtn - 表示文字列を変更(1〜)
      * @param {boolean} option.isMoved - 初回移動済みか否か
      */
-    putNewPiece(e: any, t: any, a: any, s: any, r?: {}): void;
+    putNewPiece(e: any, a: any, t: any, s: any, r?: {}): void;
     /** 文字列から駒を配置
      * {string} text - 駒配置を表す文字列
      */
@@ -101,7 +101,7 @@ declare class Q {
      * @param {number} offsetDeg - 補正角度
      * @returns {number}
      */
-    getRow(e: any, t: any, a: any, s?: number): number;
+    getRow(e: any, a: any, t: any, s?: number): number;
     /** 角度基準のマス目の列を取得する
      * @param {number} pX - マス目の列
      * @param {number} pY - マス目の行
@@ -109,7 +109,7 @@ declare class Q {
      * @param {number} offsetDeg - 補正角度
      * @returns {number}
      */
-    getCol(e: any, t: any, a: any, s?: number): number;
+    getCol(e: any, a: any, t: any, s?: number): number;
     /** プロモーションエリア内であるか判別
      * @param {Panel} panel - マス目
      * @returns {{
@@ -125,7 +125,7 @@ declare class Q {
      * @param {Panel} fromPanel - 移動元のマス目
      * @param {Panel} toPanel - 選択中のマス目
      */
-    movePiece(e: any, t: any): void;
+    movePiece(e: any, a: any): void;
     /** 棋譜を追記
      * @param {Panel} toPanel - 移動先のマス目
      * @param {Object} option - オプション
@@ -137,7 +137,7 @@ declare class Q {
      * @param {string} comment - 棋譜コメント
      * @param {number} shiftTurn - ずらす手数
      */
-    addRecordComment(e: any, t?: number): void;
+    addRecordComment(e: any, a?: number): void;
     /** 記録の手を戻す */
     undoRecord(): void;
     /** 記録の手を進める */
@@ -152,7 +152,7 @@ declare class Q {
      * @param {boolean} isNumOnly - 座標を数字で表現
      * @returns {string}
      */
-    record2String(e: any, t: any, a?: boolean): string;
+    record2String(e: any, a: any, t?: boolean): string;
     /** 表示用の棋譜を取得
      * @param {boolean} isNumOnly - 座標を数字で表現
      * @returns {string}
@@ -167,7 +167,7 @@ declare class Q {
      * @param {string} record - 棋譜データ
      * @param {number} turn - 手数
      */
-    setJsonRecord(e: any, t: any): void;
+    setJsonRecord(e: any, a: any): void;
     /** 盤を描写 */
     draw(): void;
     /** 駒配置をテキストで取得
@@ -175,7 +175,7 @@ declare class Q {
      * @param {boolean} isAlias - エイリアス表示
      * @returns {string}
      */
-    getTextPieces(e?: string, t?: boolean): string;
+    getTextPieces(e?: string, a?: boolean): string;
     /** 棋譜コメントを取得
      * @param {number} shiftTurn - ずらす手数
      * @returns {string}
@@ -185,13 +185,13 @@ declare class Q {
      * @param {boolean} isCompact - コンパクト表示
      * @param {boolean} isAlias - エイリアス表示
      */
-    toString(e?: boolean, t?: boolean): string;
+    toString(e?: boolean, a?: boolean): string;
     /** 画像を取得
      * @param {string} fileName - ファイル名
      * @param {string} ext - 拡張子
      * @returns {Promise<void>}
      */
-    downloadImage(e: any, t: any, a: any): Promise<void>;
+    downloadImage(e: any, a: any, t: any): Promise<void>;
     #private;
 }
 declare class A {
@@ -231,7 +231,7 @@ declare class A {
      * @param {Piece|PieceInitOption} option - 駒の初期化オプション
      * @retuens {Object<string, Piece>}
      */
-    static getPieces(e: any, t?: {}): {
+    static getPieces(e: any, a?: {}): {
         [k: string]: any;
     };
     /** 文字列から駒を取得
@@ -239,7 +239,7 @@ declare class A {
      * @param {string} text - 駒文字列
      * @returns {Piece}
      */
-    static stringToPiece(e: any, t: any): any;
+    static stringToPiece(e: any, a: any): any;
     /** 駒の一覧をリストで取得
      * @returns {Piece[]}
      */
@@ -255,7 +255,7 @@ declare class A {
      * @param {boolean} option.isDrawShadow - 駒の影の描写有無
      * @param {boolean} option.isMoved - 初回移動済みか否か
      */
-    constructor(e: any, t: any, a?: {});
+    constructor(e: any, a: any, t?: {});
     /** 駒の段階別価値を取得
      * @returns {string}
      */
@@ -307,7 +307,7 @@ declare class A {
      * @param {number} y - Y座標
      * @returns {boolean}
      */
-    checkRangeMouse(e: any, t: any): boolean;
+    checkRangeMouse(e: any, a: any): boolean;
     /** 移動範囲を回転して取得
      * @returns {string[][]}
      */
@@ -446,7 +446,11 @@ declare const H: {
     古将棋10x10: {
         backgroundColor: string;
         borderColor: string;
-        promoLineOffset: number;
+        field: string[];
+    };
+    古将棋11x11: {
+        backgroundColor: string;
+        borderColor: string;
         field: string[];
     };
     古将棋12x12: {
@@ -535,7 +539,7 @@ declare namespace T {
      */
     function importAsync(): Promise<void>;
 }
-declare function ae(c: any): void;
+declare function te(c: any): void;
 declare namespace ee {
     namespace shogi {
         let name: string;
@@ -701,7 +705,7 @@ declare namespace ee {
         }[];
         export { playPieces_8 as playPieces };
     }
-    namespace grantAcedrex {
+    namespace waShogi {
         let name_9: string;
         export { name_9 as name };
         let variant_9: string;
@@ -720,7 +724,7 @@ declare namespace ee {
         }[];
         export { playPieces_9 as playPieces };
     }
-    namespace courierChessAdvanced {
+    namespace grantAcedrex {
         let name_10: string;
         export { name_10 as name };
         let variant_10: string;
@@ -739,7 +743,7 @@ declare namespace ee {
         }[];
         export { playPieces_10 as playPieces };
     }
-    namespace gogoShogi {
+    namespace courierChessAdvanced {
         let name_11: string;
         export { name_11 as name };
         let variant_11: string;
@@ -758,7 +762,7 @@ declare namespace ee {
         }[];
         export { playPieces_11 as playPieces };
     }
-    namespace asakuraShogi {
+    namespace gogoShogi {
         let name_12: string;
         export { name_12 as name };
         let variant_12: string;
@@ -777,7 +781,7 @@ declare namespace ee {
         }[];
         export { playPieces_12 as playPieces };
     }
-    namespace shoShogi {
+    namespace asakuraShogi {
         let name_13: string;
         export { name_13 as name };
         let variant_13: string;
@@ -796,7 +800,7 @@ declare namespace ee {
         }[];
         export { playPieces_13 as playPieces };
     }
-    namespace heianShogi8x8 {
+    namespace shoShogi {
         let name_14: string;
         export { name_14 as name };
         let variant_14: string;
@@ -815,7 +819,7 @@ declare namespace ee {
         }[];
         export { playPieces_14 as playPieces };
     }
-    namespace heianShogi9x8 {
+    namespace heianShogi8x8 {
         let name_15: string;
         export { name_15 as name };
         let variant_15: string;
@@ -834,7 +838,7 @@ declare namespace ee {
         }[];
         export { playPieces_15 as playPieces };
     }
-    namespace heianShogi9x9 {
+    namespace heianShogi9x8 {
         let name_16: string;
         export { name_16 as name };
         let variant_16: string;
@@ -853,7 +857,7 @@ declare namespace ee {
         }[];
         export { playPieces_16 as playPieces };
     }
-    namespace kyoShogiLeft {
+    namespace heianShogi9x9 {
         let name_17: string;
         export { name_17 as name };
         let variant_17: string;
@@ -872,7 +876,7 @@ declare namespace ee {
         }[];
         export { playPieces_17 as playPieces };
     }
-    namespace kyoShogiRight {
+    namespace kyoShogiLeft {
         let name_18: string;
         export { name_18 as name };
         let variant_18: string;
@@ -891,7 +895,7 @@ declare namespace ee {
         }[];
         export { playPieces_18 as playPieces };
     }
-    namespace shoKyoShogiLeft {
+    namespace kyoShogiRight {
         let name_19: string;
         export { name_19 as name };
         let variant_19: string;
@@ -910,7 +914,7 @@ declare namespace ee {
         }[];
         export { playPieces_19 as playPieces };
     }
-    namespace shoKyoShogiRight {
+    namespace shoKyoShogiLeft {
         let name_20: string;
         export { name_20 as name };
         let variant_20: string;
@@ -929,7 +933,7 @@ declare namespace ee {
         }[];
         export { playPieces_20 as playPieces };
     }
-    namespace sanshaShogiLeft {
+    namespace shoKyoShogiRight {
         let name_21: string;
         export { name_21 as name };
         let variant_21: string;
@@ -948,7 +952,7 @@ declare namespace ee {
         }[];
         export { playPieces_21 as playPieces };
     }
-    namespace sanshaShogiRight {
+    namespace sanshaShogiLeft {
         let name_22: string;
         export { name_22 as name };
         let variant_22: string;
@@ -967,7 +971,7 @@ declare namespace ee {
         }[];
         export { playPieces_22 as playPieces };
     }
-    namespace doShogiLeft {
+    namespace sanshaShogiRight {
         let name_23: string;
         export { name_23 as name };
         let variant_23: string;
@@ -986,7 +990,7 @@ declare namespace ee {
         }[];
         export { playPieces_23 as playPieces };
     }
-    namespace doShogiRight {
+    namespace doShogiLeft {
         let name_24: string;
         export { name_24 as name };
         let variant_24: string;
@@ -1005,7 +1009,7 @@ declare namespace ee {
         }[];
         export { playPieces_24 as playPieces };
     }
-    namespace kinshiShogiLeft {
+    namespace doShogiRight {
         let name_25: string;
         export { name_25 as name };
         let variant_25: string;
@@ -1024,7 +1028,7 @@ declare namespace ee {
         }[];
         export { playPieces_25 as playPieces };
     }
-    namespace kinshiShogiRight {
+    namespace kinshiShogiLeft {
         let name_26: string;
         export { name_26 as name };
         let variant_26: string;
@@ -1043,7 +1047,7 @@ declare namespace ee {
         }[];
         export { playPieces_26 as playPieces };
     }
-    namespace kintoShogiLeft {
+    namespace kinshiShogiRight {
         let name_27: string;
         export { name_27 as name };
         let variant_27: string;
@@ -1062,7 +1066,7 @@ declare namespace ee {
         }[];
         export { playPieces_27 as playPieces };
     }
-    namespace kintoShogiRight {
+    namespace kintoShogiLeft {
         let name_28: string;
         export { name_28 as name };
         let variant_28: string;
@@ -1081,7 +1085,7 @@ declare namespace ee {
         }[];
         export { playPieces_28 as playPieces };
     }
-    namespace shogi30AllLeft {
+    namespace kintoShogiRight {
         let name_29: string;
         export { name_29 as name };
         let variant_29: string;
@@ -1100,7 +1104,7 @@ declare namespace ee {
         }[];
         export { playPieces_29 as playPieces };
     }
-    namespace shogi30AllRight {
+    namespace shogi30AllLeft {
         let name_30: string;
         export { name_30 as name };
         let variant_30: string;
@@ -1119,7 +1123,7 @@ declare namespace ee {
         }[];
         export { playPieces_30 as playPieces };
     }
-    namespace okisakiShogi {
+    namespace shogi30AllRight {
         let name_31: string;
         export { name_31 as name };
         let variant_31: string;
@@ -1138,7 +1142,7 @@ declare namespace ee {
         }[];
         export { playPieces_31 as playPieces };
     }
-    namespace crazyHouse {
+    namespace okisakiShogi {
         let name_32: string;
         export { name_32 as name };
         let variant_32: string;
@@ -1157,7 +1161,7 @@ declare namespace ee {
         }[];
         export { playPieces_32 as playPieces };
     }
-    namespace losAlamosChess {
+    namespace crazyHouse {
         let name_33: string;
         export { name_33 as name };
         let variant_33: string;
@@ -1176,7 +1180,7 @@ declare namespace ee {
         }[];
         export { playPieces_33 as playPieces };
     }
-    namespace capablancaChess {
+    namespace losAlamosChess {
         let name_34: string;
         export { name_34 as name };
         let variant_34: string;
@@ -1195,7 +1199,7 @@ declare namespace ee {
         }[];
         export { playPieces_34 as playPieces };
     }
-    namespace grandChess {
+    namespace capablancaChess {
         let name_35: string;
         export { name_35 as name };
         let variant_35: string;
@@ -1214,7 +1218,7 @@ declare namespace ee {
         }[];
         export { playPieces_35 as playPieces };
     }
-    namespace gorogoroDobutsuShogi {
+    namespace grandChess {
         let name_36: string;
         export { name_36 as name };
         let variant_36: string;
@@ -1233,7 +1237,7 @@ declare namespace ee {
         }[];
         export { playPieces_36 as playPieces };
     }
-    namespace shishiShogi {
+    namespace gorogoroDobutsuShogi {
         let name_37: string;
         export { name_37 as name };
         let variant_37: string;
@@ -1252,7 +1256,7 @@ declare namespace ee {
         }[];
         export { playPieces_37 as playPieces };
     }
-    namespace heiseiShogi {
+    namespace shishiShogi {
         let name_38: string;
         export { name_38 as name };
         let variant_38: string;
@@ -1271,7 +1275,7 @@ declare namespace ee {
         }[];
         export { playPieces_38 as playPieces };
     }
-    namespace daiShogi {
+    namespace heiseiShogi {
         let name_39: string;
         export { name_39 as name };
         let variant_39: string;
@@ -1290,7 +1294,7 @@ declare namespace ee {
         }[];
         export { playPieces_39 as playPieces };
     }
-    namespace courierChess {
+    namespace daiShogi {
         let name_40: string;
         export { name_40 as name };
         let variant_40: string;
@@ -1309,7 +1313,7 @@ declare namespace ee {
         }[];
         export { playPieces_40 as playPieces };
     }
-    namespace p4Shogi {
+    namespace courierChess {
         let name_41: string;
         export { name_41 as name };
         let variant_41: string;
@@ -1328,7 +1332,7 @@ declare namespace ee {
         }[];
         export { playPieces_41 as playPieces };
     }
-    namespace p4Chess {
+    namespace p4Shogi {
         let name_42: string;
         export { name_42 as name };
         let variant_42: string;
@@ -1347,7 +1351,7 @@ declare namespace ee {
         }[];
         export { playPieces_42 as playPieces };
     }
-    namespace g4Shogi {
+    namespace p4Chess {
         let name_43: string;
         export { name_43 as name };
         let variant_43: string;
@@ -1366,7 +1370,7 @@ declare namespace ee {
         }[];
         export { playPieces_43 as playPieces };
     }
-    namespace chaturaji {
+    namespace g4Shogi {
         let name_44: string;
         export { name_44 as name };
         let variant_44: string;
@@ -1384,6 +1388,25 @@ declare namespace ee {
             pieceSet: string;
         }[];
         export { playPieces_44 as playPieces };
+    }
+    namespace chaturaji {
+        let name_45: string;
+        export { name_45 as name };
+        let variant_45: string;
+        export { variant_45 as variant };
+        let url_45: string;
+        export { url_45 as url };
+        let desc_45: string;
+        export { desc_45 as desc };
+        let playBoard_45: string;
+        export { playBoard_45 as playBoard };
+        let useStand_45: boolean;
+        export { useStand_45 as useStand };
+        let playPieces_45: {
+            gameName: string;
+            pieceSet: string;
+        }[];
+        export { playPieces_45 as playPieces };
     }
 }
 declare namespace U {
@@ -1449,6 +1472,9 @@ declare namespace U {
                 平成将棋2p: string[];
                 御妃将棋: string[];
                 御妃将棋2p: string[];
+            };
+            11: {
+                和将棋: string[];
             };
             12: {
                 中将棋: string[];
@@ -1815,16 +1841,16 @@ declare namespace J {
     let 女: number;
     let 獅: number;
     let 后: number;
-    let 奔: number;
     let 駆: number;
+    let 奔: number;
     let 駮: number;
-    let 麟: number;
     let 鴻: number;
     let 飛: number;
     let 竜: number;
     let 碼: number;
     let 塔: number;
     let 車: number;
+    let 雲: number;
     let 俥: number;
     let 船: number;
     let 戦: number;
@@ -1832,39 +1858,53 @@ declare namespace J {
     let 角: number;
     let 跳: number;
     let 砦: number;
+    let 狐: number;
+    let 犀: number;
     let 醉: number;
     let 鷹: number;
-    let 鶉: number;
-    let 享: number;
+    let 鷙: number;
     let 翅: number;
     let 斗: number;
     let 返: number;
+    let 師: number;
+    let 麟: number;
+    let 鶉: number;
+    let 享: number;
+    let 兎: number;
     let 聖: number;
     let 騎: number;
     let 瑪: number;
     let 午: number;
     let 金: number;
+    let い: number;
     let 横: number;
     let 竪: number;
     let 麒: number;
     let 鳳: number;
-    let い: number;
     let 鶴: number;
     let 鰐: number;
     let 使: number;
     let 賢: number;
+    let 羽: number;
     let 銀: number;
     let 炮: number;
     let ね: number;
     let 反: number;
     let 虎: number;
+    let 瀧: number;
+    let 丑: number;
     let 包: number;
-    let 根: number;
     let 像: number;
     let 舟: number;
     let 釡: number;
     let 雉: number;
     let 射: number;
+    let 狽: number;
+    let 風: number;
+    let 根: number;
+    let 狼: number;
+    let 艮: number;
+    let 麁: number;
     let 桂: number;
     let 京: number;
     let 銅: number;
@@ -1873,25 +1913,37 @@ declare namespace J {
     let 馭: number;
     let 馨: number;
     let 猛: number;
+    let 犇: number;
+    let 犬: number;
     let 香: number;
     let 種: number;
-    let 臣: number;
     let き: number;
     let ぞ: number;
-    let 同: number;
+    let 臣: number;
     let 佯: number;
     let 妾: number;
+    let 同: number;
+    let 猫: number;
+    let 嗔: number;
+    let 鳫: number;
+    let 猿: number;
+    let 鶏: number;
     let 象: number;
     let 士: number;
+    let 鴟: number;
+    let 烏: number;
+    let 仲: number;
     let 相: number;
     let 仕: number;
     let 卆: number;
-    let 仲: number;
+    let 鉄: number;
     let 歩: number;
     let 兵: number;
     let 浜: number;
     let ひ: number;
     let 燕: number;
+    let 石: number;
+    let 雀: number;
     let 丘: number;
     let 梹: number;
     let 鋲: number;
@@ -1914,6 +1966,7 @@ declare namespace J {
     let 閏: number;
     let 君: number;
     let 主: number;
+    let 霍: number;
     let 楚: number;
     let 帥: number;
 }
@@ -1924,6 +1977,8 @@ declare namespace V {
     let 兵_1: string[];
     export { 兵_1 as 兵 };
     export let 二: string[];
+    let 烏_1: string[];
+    export { 烏_1 as 烏 };
     export let 通: string[];
     export let 弐: string[];
     let 卒_1: string[];
@@ -1931,19 +1986,23 @@ declare namespace V {
     export let 鴈: string[];
     let 仲_1: string[];
     export { 仲_1 as 仲 };
-    export let 鉄: string[];
+    let 鉄_1: string[];
+    export { 鉄_1 as 鉄 };
     let 桂_1: string[];
     export { 桂_1 as 桂 };
     let 京_1: string[];
     export { 京_1 as 京 };
     let 騎_1: string[];
     export { 騎_1 as 騎 };
+    export let 騰: string[];
     let 馮_1: string[];
     export { 馮_1 as 馮 };
     let 雉_1: string[];
     export { 雉_1 as 雉 };
-    export let 師: string[];
-    export let 犀: string[];
+    let 師_1: string[];
+    export { 師_1 as 師 };
+    let 犀_1: string[];
+    export { 犀_1 as 犀 };
     let ぞ_1: string[];
     export { ぞ_1 as ぞ };
     let 銀_1: string[];
@@ -1960,9 +2019,12 @@ declare namespace V {
     export { 鳳_1 as 鳳 };
     let 聖_1: string[];
     export { 聖_1 as 聖 };
+    let 鷙_1: string[];
+    export { 鷙_1 as 鷙 };
     let 麟_1: string[];
     export { 麟_1 as 麟 };
-    export let 瀧: string[];
+    let 瀧_1: string[];
+    export { 瀧_1 as 瀧 };
     let き_1: string[];
     export { き_1 as き };
     let 香_1: string[];
@@ -1973,6 +2035,8 @@ declare namespace V {
     export let 弓: string[];
     let 反_1: string[];
     export { 反_1 as 反 };
+    let 風_1: string[];
+    export { 風_1 as 風 };
     let 鶉_1: string[];
     export { 鶉_1 as 鶉 };
     let 享_1: string[];
@@ -1981,9 +2045,13 @@ declare namespace V {
     export { 横_1 as 横 };
     let 竪_1: string[];
     export { 竪_1 as 竪 };
-    export let 丑: string[];
+    export let 延: string[];
+    let 丑_1: string[];
+    export { 丑_1 as 丑 };
     let 山_1: string[];
     export { 山_1 as 山 };
+    let 兎_1: string[];
+    export { 兎_1 as 兎 };
     let 鴻_1: string[];
     export { 鴻_1 as 鴻 };
     let 金_1: string[];
@@ -2002,6 +2070,10 @@ declare namespace V {
     let 駮_1: string[];
     export { 駮_1 as 駮 };
     export let 雕: string[];
+    let 鶏_1: string[];
+    export { 鶏_1 as 鶏 };
+    let 犬_1: string[];
+    export { 犬_1 as 犬 };
     let 猛_1: string[];
     export { 猛_1 as 猛 };
     let 虎_1: string[];
@@ -2011,17 +2083,23 @@ declare namespace V {
     export let 駒: string[];
     export let 鯨: string[];
     export let 鹿: string[];
+    export let 鷄: string[];
     export let 猪: string[];
     export let 牛: string[];
     export let 鷂: string[];
     export let 鷲: string[];
-    export let 狼: string[];
+    let 狼_1: string[];
+    export { 狼_1 as 狼 };
     let 翅_1: string[];
     export { 翅_1 as 翅 };
     let 斗_1: string[];
     export { 斗_1 as 斗 };
     let 王_1: string[];
     export { 王_1 as 王 };
+    let 狐_1: string[];
+    export { 狐_1 as 狐 };
+    let 雲_1: string[];
+    export { 雲_1 as 雲 };
     export let 城: string[];
     let 国_1: string[];
     export { 国_1 as 国 };
@@ -2032,8 +2110,8 @@ declare namespace V {
 }
 declare namespace G {
     export namespace 歩_2 {
-        let name_45: string;
-        export { name_45 as name };
+        let name_46: string;
+        export { name_46 as name };
         export let display: string[];
         export let gameName: string;
         export let unit: string;
@@ -2047,8 +2125,8 @@ declare namespace G {
     }
     export { 歩_2 as 歩 };
     export namespace 桂_2 {
-        let name_46: string;
-        export { name_46 as name };
+        let name_47: string;
+        export { name_47 as name };
         let display_1: string[];
         export { display_1 as display };
         let gameName_1: string;
@@ -2069,8 +2147,8 @@ declare namespace G {
     }
     export { 桂_2 as 桂 };
     export namespace 銀_2 {
-        let name_47: string;
-        export { name_47 as name };
+        let name_48: string;
+        export { name_48 as name };
         let display_2: string[];
         export { display_2 as display };
         let gameName_2: string;
@@ -2089,8 +2167,8 @@ declare namespace G {
     }
     export { 銀_2 as 銀 };
     export namespace 角_1 {
-        let name_48: string;
-        export { name_48 as name };
+        let name_49: string;
+        export { name_49 as name };
         let display_3: string[];
         export { display_3 as display };
         let gameName_3: string;
@@ -2109,8 +2187,8 @@ declare namespace G {
     }
     export { 角_1 as 角 };
     export namespace 香_2 {
-        let name_49: string;
-        export { name_49 as name };
+        let name_50: string;
+        export { name_50 as name };
         let display_4: string[];
         export { display_4 as display };
         let gameName_4: string;
@@ -2131,8 +2209,8 @@ declare namespace G {
     }
     export { 香_2 as 香 };
     export namespace 飛_1 {
-        let name_50: string;
-        export { name_50 as name };
+        let name_51: string;
+        export { name_51 as name };
         let display_5: string[];
         export { display_5 as display };
         let gameName_5: string;
@@ -2151,8 +2229,8 @@ declare namespace G {
     }
     export { 飛_1 as 飛 };
     export namespace 金_2 {
-        let name_51: string;
-        export { name_51 as name };
+        let name_52: string;
+        export { name_52 as name };
         let display_6: string[];
         export { display_6 as display };
         let gameName_6: string;
@@ -2169,8 +2247,8 @@ declare namespace G {
     }
     export { 金_2 as 金 };
     export namespace 玉_1 {
-        let name_52: string;
-        export { name_52 as name };
+        let name_53: string;
+        export { name_53 as name };
         let display_7: string[];
         export { display_7 as display };
         export let alias: string;
@@ -2188,8 +2266,8 @@ declare namespace G {
     }
     export { 玉_1 as 玉 };
     export namespace 兵_2 {
-        let name_53: string;
-        export { name_53 as name };
+        let name_54: string;
+        export { name_54 as name };
         let display_8: string[];
         export { display_8 as display };
         let gameName_8: string;
@@ -2213,8 +2291,8 @@ declare namespace G {
     }
     export { 兵_2 as 兵 };
     export namespace 騎_2 {
-        let name_54: string;
-        export { name_54 as name };
+        let name_55: string;
+        export { name_55 as name };
         let display_9: string[];
         export { display_9 as display };
         let gameName_9: string;
@@ -2229,8 +2307,8 @@ declare namespace G {
     }
     export { 騎_2 as 騎 };
     export namespace 聖_2 {
-        let name_55: string;
-        export { name_55 as name };
+        let name_56: string;
+        export { name_56 as name };
         let display_10: string[];
         export { display_10 as display };
         let gameName_10: string;
@@ -2245,8 +2323,8 @@ declare namespace G {
     }
     export { 聖_2 as 聖 };
     export namespace 塔_2 {
-        let name_56: string;
-        export { name_56 as name };
+        let name_57: string;
+        export { name_57 as name };
         let display_11: string[];
         export { display_11 as display };
         let gameName_11: string;
@@ -2264,8 +2342,8 @@ declare namespace G {
     }
     export { 塔_2 as 塔 };
     export namespace 后_2 {
-        let name_57: string;
-        export { name_57 as name };
+        let name_58: string;
+        export { name_58 as name };
         let display_12: string[];
         export { display_12 as display };
         let gameName_12: string;
@@ -2280,8 +2358,8 @@ declare namespace G {
     }
     export { 后_2 as 后 };
     export namespace 王_2 {
-        let name_58: string;
-        export { name_58 as name };
+        let name_59: string;
+        export { name_59 as name };
         let display_13: string[];
         export { display_13 as display };
         let alias_1: string;
@@ -2302,8 +2380,8 @@ declare namespace G {
     }
     export { 王_2 as 王 };
     export namespace 卒_2 {
-        let name_59: string;
-        export { name_59 as name };
+        let name_60: string;
+        export { name_60 as name };
         let display_14: string[];
         export { display_14 as display };
         let gameName_14: string;
@@ -2322,8 +2400,8 @@ declare namespace G {
     }
     export { 卒_2 as 卒 };
     export namespace 炮_1 {
-        let name_60: string;
-        export { name_60 as name };
+        let name_61: string;
+        export { name_61 as name };
         let display_15: string[];
         export { display_15 as display };
         let alias_2: string;
@@ -2344,8 +2422,8 @@ declare namespace G {
     }
     export { 炮_1 as 炮 };
     export namespace 馮_2 {
-        let name_61: string;
-        export { name_61 as name };
+        let name_62: string;
+        export { name_62 as name };
         let display_16: string[];
         export { display_16 as display };
         let alias_3: string;
@@ -2362,8 +2440,8 @@ declare namespace G {
     }
     export { 馮_2 as 馮 };
     export namespace 相_2 {
-        let name_62: string;
-        export { name_62 as name };
+        let name_63: string;
+        export { name_63 as name };
         let display_17: string[];
         export { display_17 as display };
         let gameName_17: string;
@@ -2380,8 +2458,8 @@ declare namespace G {
     }
     export { 相_2 as 相 };
     export namespace 俥_1 {
-        let name_63: string;
-        export { name_63 as name };
+        let name_64: string;
+        export { name_64 as name };
         let display_18: string[];
         export { display_18 as display };
         let gameName_18: string;
@@ -2396,8 +2474,8 @@ declare namespace G {
     }
     export { 俥_1 as 俥 };
     export namespace 仕_1 {
-        let name_64: string;
-        export { name_64 as name };
+        let name_65: string;
+        export { name_65 as name };
         let display_19: string[];
         export { display_19 as display };
         let gameName_19: string;
@@ -2413,8 +2491,8 @@ declare namespace G {
     }
     export { 仕_1 as 仕 };
     export namespace 帥_1 {
-        let name_65: string;
-        export { name_65 as name };
+        let name_66: string;
+        export { name_66 as name };
         let display_20: string[];
         export { display_20 as display };
         let alias_4: string;
@@ -2433,8 +2511,8 @@ declare namespace G {
     }
     export { 帥_1 as 帥 };
     export namespace 卆_1 {
-        let name_66: string;
-        export { name_66 as name };
+        let name_67: string;
+        export { name_67 as name };
         let display_21: string[];
         export { display_21 as display };
         let gameName_21: string;
@@ -2451,8 +2529,8 @@ declare namespace G {
     }
     export { 卆_1 as 卆 };
     export namespace 包_1 {
-        let name_67: string;
-        export { name_67 as name };
+        let name_68: string;
+        export { name_68 as name };
         let display_22: string[];
         export { display_22 as display };
         let gameName_22: string;
@@ -2471,8 +2549,8 @@ declare namespace G {
     }
     export { 包_1 as 包 };
     export namespace 馭_1 {
-        let name_68: string;
-        export { name_68 as name };
+        let name_69: string;
+        export { name_69 as name };
         let display_23: string[];
         export { display_23 as display };
         let alias_5: string;
@@ -2489,8 +2567,8 @@ declare namespace G {
     }
     export { 馭_1 as 馭 };
     export namespace 象_2 {
-        let name_69: string;
-        export { name_69 as name };
+        let name_70: string;
+        export { name_70 as name };
         let display_24: string[];
         export { display_24 as display };
         let gameName_24: string;
@@ -2505,8 +2583,8 @@ declare namespace G {
     }
     export { 象_2 as 象 };
     export namespace 車_2 {
-        let name_70: string;
-        export { name_70 as name };
+        let name_71: string;
+        export { name_71 as name };
         let display_25: string[];
         export { display_25 as display };
         let alias_6: string;
@@ -2525,8 +2603,8 @@ declare namespace G {
     }
     export { 車_2 as 車 };
     export namespace 士_1 {
-        let name_71: string;
-        export { name_71 as name };
+        let name_72: string;
+        export { name_72 as name };
         let display_26: string[];
         export { display_26 as display };
         let gameName_26: string;
@@ -2545,8 +2623,8 @@ declare namespace G {
     }
     export { 士_1 as 士 };
     export namespace 楚_1 {
-        let name_72: string;
-        export { name_72 as name };
+        let name_73: string;
+        export { name_73 as name };
         let display_27: string[];
         export { display_27 as display };
         let alias_7: string;
@@ -2567,8 +2645,8 @@ declare namespace G {
     }
     export { 楚_1 as 楚 };
     export namespace 貝_1 {
-        let name_73: string;
-        export { name_73 as name };
+        let name_74: string;
+        export { name_74 as name };
         let display_28: string[];
         export { display_28 as display };
         let gameName_28: string;
@@ -2589,8 +2667,8 @@ declare namespace G {
     }
     export { 貝_1 as 貝 };
     export namespace 瑪_1 {
-        let name_74: string;
-        export { name_74 as name };
+        let name_75: string;
+        export { name_75 as name };
         let display_29: string[];
         export { display_29 as display };
         let gameName_29: string;
@@ -2605,8 +2683,8 @@ declare namespace G {
     }
     export { 瑪_1 as 瑪 };
     export namespace 根_1 {
-        let name_75: string;
-        export { name_75 as name };
+        let name_76: string;
+        export { name_76 as name };
         let display_30: string[];
         export { display_30 as display };
         let gameName_30: string;
@@ -2621,8 +2699,8 @@ declare namespace G {
     }
     export { 根_1 as 根 };
     export namespace 船_1 {
-        let name_76: string;
-        export { name_76 as name };
+        let name_77: string;
+        export { name_77 as name };
         let display_31: string[];
         export { display_31 as display };
         let gameName_31: string;
@@ -2637,8 +2715,8 @@ declare namespace G {
     }
     export { 船_1 as 船 };
     export namespace 種_1 {
-        let name_77: string;
-        export { name_77 as name };
+        let name_78: string;
+        export { name_78 as name };
         let display_32: string[];
         export { display_32 as display };
         let gameName_32: string;
@@ -2655,8 +2733,8 @@ declare namespace G {
     }
     export { 種_1 as 種 };
     export namespace 君_1 {
-        let name_78: string;
-        export { name_78 as name };
+        let name_79: string;
+        export { name_79 as name };
         let gameName_33: string;
         export { gameName_33 as gameName };
         let display_33: string[];
@@ -2675,8 +2753,8 @@ declare namespace G {
     }
     export { 君_1 as 君 };
     export namespace 火_1 {
-        let name_79: string;
-        export { name_79 as name };
+        let name_80: string;
+        export { name_80 as name };
         let display_34: string[];
         export { display_34 as display };
         let gameName_34: string;
@@ -2697,8 +2775,8 @@ declare namespace G {
     }
     export { 火_1 as 火 };
     export namespace 天_1 {
-        let name_80: string;
-        export { name_80 as name };
+        let name_81: string;
+        export { name_81 as name };
         let display_35: string[];
         export { display_35 as display };
         let gameName_35: string;
@@ -2719,8 +2797,8 @@ declare namespace G {
     }
     export { 天_1 as 天 };
     export namespace 木_1 {
-        let name_81: string;
-        export { name_81 as name };
+        let name_82: string;
+        export { name_82 as name };
         let display_36: string[];
         export { display_36 as display };
         let gameName_36: string;
@@ -2741,8 +2819,8 @@ declare namespace G {
     }
     export { 木_1 as 木 };
     export namespace 大_1 {
-        let name_82: string;
-        export { name_82 as name };
+        let name_83: string;
+        export { name_83 as name };
         let display_37: string[];
         export { display_37 as display };
         let gameName_37: string;
@@ -2763,8 +2841,8 @@ declare namespace G {
     }
     export { 大_1 as 大 };
     export namespace 央_1 {
-        let name_83: string;
-        export { name_83 as name };
+        let name_84: string;
+        export { name_84 as name };
         let display_38: string[];
         export { display_38 as display };
         let alias_9: string;
@@ -2787,8 +2865,8 @@ declare namespace G {
     }
     export { 央_1 as 央 };
     export namespace 午_1 {
-        let name_84: string;
-        export { name_84 as name };
+        let name_85: string;
+        export { name_85 as name };
         let display_39: string[];
         export { display_39 as display };
         let gameName_39: string;
@@ -2803,8 +2881,8 @@ declare namespace G {
     }
     export { 午_1 as 午 };
     export namespace 像_2 {
-        let name_85: string;
-        export { name_85 as name };
+        let name_86: string;
+        export { name_86 as name };
         let display_40: string[];
         export { display_40 as display };
         let gameName_40: string;
@@ -2819,8 +2897,8 @@ declare namespace G {
     }
     export { 像_2 as 像 };
     export namespace 戦_1 {
-        let name_86: string;
-        export { name_86 as name };
+        let name_87: string;
+        export { name_87 as name };
         let display_41: string[];
         export { display_41 as display };
         let gameName_41: string;
@@ -2835,8 +2913,8 @@ declare namespace G {
     }
     export { 戦_1 as 戦 };
     export namespace 臣_1 {
-        let name_87: string;
-        export { name_87 as name };
+        let name_88: string;
+        export { name_88 as name };
         let display_42: string[];
         export { display_42 as display };
         let gameName_42: string;
@@ -2851,8 +2929,8 @@ declare namespace G {
     }
     export { 臣_1 as 臣 };
     export namespace 主_1 {
-        let name_88: string;
-        export { name_88 as name };
+        let name_89: string;
+        export { name_89 as name };
         let gameName_43: string;
         export { gameName_43 as gameName };
         let display_43: string[];
@@ -2871,8 +2949,8 @@ declare namespace G {
     }
     export { 主_1 as 主 };
     export namespace ひ_1 {
-        let name_89: string;
-        export { name_89 as name };
+        let name_90: string;
+        export { name_90 as name };
         let display_44: string[];
         export { display_44 as display };
         let gameName_44: string;
@@ -2893,8 +2971,8 @@ declare namespace G {
     }
     export { ひ_1 as ひ };
     export namespace ぞ_2 {
-        let name_90: string;
-        export { name_90 as name };
+        let name_91: string;
+        export { name_91 as name };
         let display_45: string[];
         export { display_45 as display };
         let gameName_45: string;
@@ -2911,8 +2989,8 @@ declare namespace G {
     }
     export { ぞ_2 as ぞ };
     export namespace き_2 {
-        let name_91: string;
-        export { name_91 as name };
+        let name_92: string;
+        export { name_92 as name };
         let display_46: string[];
         export { display_46 as display };
         let gameName_46: string;
@@ -2929,8 +3007,8 @@ declare namespace G {
     }
     export { き_2 as き };
     export namespace ラ_1 {
-        let name_92: string;
-        export { name_92 as name };
+        let name_93: string;
+        export { name_93 as name };
         let display_47: string[];
         export { display_47 as display };
         let gameName_47: string;
@@ -2947,8 +3025,8 @@ declare namespace G {
     }
     export { ラ_1 as ラ };
     export namespace 燕_1 {
-        let name_93: string;
-        export { name_93 as name };
+        let name_94: string;
+        export { name_94 as name };
         let display_48: string[];
         export { display_48 as display };
         let gameName_48: string;
@@ -2970,8 +3048,8 @@ declare namespace G {
     }
     export { 燕_1 as 燕 };
     export namespace 雉_2 {
-        let name_94: string;
-        export { name_94 as name };
+        let name_95: string;
+        export { name_95 as name };
         let display_49: string[];
         export { display_49 as display };
         let gameName_49: string;
@@ -2990,8 +3068,8 @@ declare namespace G {
     }
     export { 雉_2 as 雉 };
     export namespace 鶴_1 {
-        let name_95: string;
-        export { name_95 as name };
+        let name_96: string;
+        export { name_96 as name };
         let display_50: string[];
         export { display_50 as display };
         let gameName_50: string;
@@ -3010,8 +3088,8 @@ declare namespace G {
     }
     export { 鶴_1 as 鶴 };
     export namespace 鶉_2 {
-        let name_96: string;
-        export { name_96 as name };
+        let name_97: string;
+        export { name_97 as name };
         let display_51: string[];
         export { display_51 as display };
         let gameName_51: string;
@@ -3032,8 +3110,8 @@ declare namespace G {
     }
     export { 鶉_2 as 鶉 };
     export namespace 享_2 {
-        let name_97: string;
-        export { name_97 as name };
+        let name_98: string;
+        export { name_98 as name };
         let display_52: string[];
         export { display_52 as display };
         let gameName_52: string;
@@ -3054,8 +3132,8 @@ declare namespace G {
     }
     export { 享_2 as 享 };
     export namespace 鷹_1 {
-        let name_98: string;
-        export { name_98 as name };
+        let name_99: string;
+        export { name_99 as name };
         let display_53: string[];
         export { display_53 as display };
         let gameName_53: string;
@@ -3078,8 +3156,8 @@ declare namespace G {
     }
     export { 鷹_1 as 鷹 };
     export namespace 鵬_1 {
-        let name_99: string;
-        export { name_99 as name };
+        let name_100: string;
+        export { name_100 as name };
         let display_54: string[];
         export { display_54 as display };
         let gameName_54: string;
@@ -3098,8 +3176,8 @@ declare namespace G {
     }
     export { 鵬_1 as 鵬 };
     export namespace 京_2 {
-        let name_100: string;
-        export { name_100 as name };
+        let name_101: string;
+        export { name_101 as name };
         let display_55: string[];
         export { display_55 as display };
         let gameName_55: string;
@@ -3122,8 +3200,8 @@ declare namespace G {
     }
     export { 京_2 as 京 };
     export namespace 銅_2 {
-        let name_101: string;
-        export { name_101 as name };
+        let name_102: string;
+        export { name_102 as name };
         let display_56: string[];
         export { display_56 as display };
         let gameName_56: string;
@@ -3144,8 +3222,8 @@ declare namespace G {
     }
     export { 銅_2 as 銅 };
     export namespace 山_2 {
-        let name_102: string;
-        export { name_102 as name };
+        let name_103: string;
+        export { name_103 as name };
         let display_57: string[];
         export { display_57 as display };
         let gameName_57: string;
@@ -3166,8 +3244,8 @@ declare namespace G {
     }
     export { 山_2 as 山 };
     export namespace 翅_2 {
-        let name_103: string;
-        export { name_103 as name };
+        let name_104: string;
+        export { name_104 as name };
         let display_58: string[];
         export { display_58 as display };
         let gameName_58: string;
@@ -3186,8 +3264,8 @@ declare namespace G {
     }
     export { 翅_2 as 翅 };
     export namespace 斗_2 {
-        let name_104: string;
-        export { name_104 as name };
+        let name_105: string;
+        export { name_105 as name };
         let display_59: string[];
         export { display_59 as display };
         let gameName_59: string;
@@ -3206,8 +3284,8 @@ declare namespace G {
     }
     export { 斗_2 as 斗 };
     export namespace 跳_1 {
-        let name_105: string;
-        export { name_105 as name };
+        let name_106: string;
+        export { name_106 as name };
         let display_60: string[];
         export { display_60 as display };
         let gameName_60: string;
@@ -3228,8 +3306,8 @@ declare namespace G {
     }
     export { 跳_1 as 跳 };
     export namespace 返_1 {
-        let name_106: string;
-        export { name_106 as name };
+        let name_107: string;
+        export { name_107 as name };
         let display_61: string[];
         export { display_61 as display };
         let gameName_61: string;
@@ -3250,8 +3328,8 @@ declare namespace G {
     }
     export { 返_1 as 返 };
     export namespace 女_1 {
-        let name_107: string;
-        export { name_107 as name };
+        let name_108: string;
+        export { name_108 as name };
         let display_62: string[];
         export { display_62 as display };
         let gameName_62: string;
@@ -3270,8 +3348,8 @@ declare namespace G {
     }
     export { 女_1 as 女 };
     export namespace 醉_2 {
-        let name_108: string;
-        export { name_108 as name };
+        let name_109: string;
+        export { name_109 as name };
         let display_63: string[];
         export { display_63 as display };
         let expansion_15: string;
@@ -3292,8 +3370,8 @@ declare namespace G {
     }
     export { 醉_2 as 醉 };
     export namespace 丘_1 {
-        let name_109: string;
-        export { name_109 as name };
+        let name_110: string;
+        export { name_110 as name };
         let display_64: string[];
         export { display_64 as display };
         let gameName_64: string;
@@ -3316,8 +3394,8 @@ declare namespace G {
     }
     export { 丘_1 as 丘 };
     export namespace 浜_1 {
-        let name_110: string;
-        export { name_110 as name };
+        let name_111: string;
+        export { name_111 as name };
         let display_65: string[];
         export { display_65 as display };
         let gameName_65: string;
@@ -3344,8 +3422,8 @@ declare namespace G {
     }
     export { 浜_1 as 浜 };
     export namespace 駮_2 {
-        let name_111: string;
-        export { name_111 as name };
+        let name_112: string;
+        export { name_112 as name };
         let display_66: string[];
         export { display_66 as display };
         let gameName_66: string;
@@ -3362,8 +3440,8 @@ declare namespace G {
     }
     export { 駮_2 as 駮 };
     export namespace 駆_2 {
-        let name_112: string;
-        export { name_112 as name };
+        let name_113: string;
+        export { name_113 as name };
         let display_67: string[];
         export { display_67 as display };
         let gameName_67: string;
@@ -3380,8 +3458,8 @@ declare namespace G {
     }
     export { 駆_2 as 駆 };
     export namespace 国_2 {
-        let name_113: string;
-        export { name_113 as name };
+        let name_114: string;
+        export { name_114 as name };
         let display_68: string[];
         export { display_68 as display };
         let alias_11: string;
@@ -3404,8 +3482,8 @@ declare namespace G {
     }
     export { 国_2 as 国 };
     export namespace 矢_1 {
-        let name_114: string;
-        export { name_114 as name };
+        let name_115: string;
+        export { name_115 as name };
         let display_69: string[];
         export { display_69 as display };
         let gameName_69: string;
@@ -3428,8 +3506,8 @@ declare namespace G {
     }
     export { 矢_1 as 矢 };
     export namespace 本_1 {
-        let name_115: string;
-        export { name_115 as name };
+        let name_116: string;
+        export { name_116 as name };
         let display_70: string[];
         export { display_70 as display };
         let gameName_70: string;
@@ -3452,8 +3530,8 @@ declare namespace G {
     }
     export { 本_1 as 本 };
     export namespace 舟_1 {
-        let name_116: string;
-        export { name_116 as name };
+        let name_117: string;
+        export { name_117 as name };
         let display_71: string[];
         export { display_71 as display };
         let gameName_71: string;
@@ -3470,8 +3548,8 @@ declare namespace G {
     }
     export { 舟_1 as 舟 };
     export namespace 豕_1 {
-        let name_117: string;
-        export { name_117 as name };
+        let name_118: string;
+        export { name_118 as name };
         let display_72: string[];
         export { display_72 as display };
         let gameName_72: string;
@@ -3488,8 +3566,8 @@ declare namespace G {
     }
     export { 豕_1 as 豕 };
     export namespace ね_1 {
-        let name_118: string;
-        export { name_118 as name };
+        let name_119: string;
+        export { name_119 as name };
         let display_73: string[];
         export { display_73 as display };
         let gameName_73: string;
@@ -3510,8 +3588,8 @@ declare namespace G {
     }
     export { ね_1 as ね };
     export namespace い_1 {
-        let name_119: string;
-        export { name_119 as name };
+        let name_120: string;
+        export { name_120 as name };
         let display_74: string[];
         export { display_74 as display };
         let gameName_74: string;
@@ -3530,8 +3608,8 @@ declare namespace G {
     }
     export { い_1 as い };
     export namespace ら_1 {
-        let name_120: string;
-        export { name_120 as name };
+        let name_121: string;
+        export { name_121 as name };
         let display_75: string[];
         export { display_75 as display };
         let gameName_75: string;
@@ -3550,8 +3628,8 @@ declare namespace G {
     }
     export { ら_1 as ら };
     export namespace 仲_2 {
-        let name_121: string;
-        export { name_121 as name };
+        let name_122: string;
+        export { name_122 as name };
         let display_76: string[];
         export { display_76 as display };
         let gameName_76: string;
@@ -3570,8 +3648,8 @@ declare namespace G {
     }
     export { 仲_2 as 仲 };
     export namespace 同_1 {
-        let name_122: string;
-        export { name_122 as name };
+        let name_123: string;
+        export { name_123 as name };
         let display_77: string[];
         export { display_77 as display };
         let gameName_77: string;
@@ -3589,9 +3667,9 @@ declare namespace G {
         export { promo_31 as promo };
     }
     export { 同_1 as 同 };
-    export namespace 艮 {
-        let name_123: string;
-        export { name_123 as name };
+    export namespace 艮_1 {
+        let name_124: string;
+        export { name_124 as name };
         let display_78: string[];
         export { display_78 as display };
         let gameName_78: string;
@@ -3608,9 +3686,10 @@ declare namespace G {
         let promo_32: string;
         export { promo_32 as promo };
     }
+    export { 艮_1 as 艮 };
     export namespace 釡_1 {
-        let name_124: string;
-        export { name_124 as name };
+        let name_125: string;
+        export { name_125 as name };
         let display_79: string[];
         export { display_79 as display };
         let gameName_79: string;
@@ -3629,8 +3708,8 @@ declare namespace G {
     }
     export { 釡_1 as 釡 };
     export namespace 猛_2 {
-        let name_125: string;
-        export { name_125 as name };
+        let name_126: string;
+        export { name_126 as name };
         let display_80: string[];
         export { display_80 as display };
         let gameName_80: string;
@@ -3649,8 +3728,8 @@ declare namespace G {
     }
     export { 猛_2 as 猛 };
     export namespace 馨_1 {
-        let name_126: string;
-        export { name_126 as name };
+        let name_127: string;
+        export { name_127 as name };
         let display_81: string[];
         export { display_81 as display };
         let gameName_81: string;
@@ -3671,8 +3750,8 @@ declare namespace G {
     }
     export { 馨_1 as 馨 };
     export namespace 反_2 {
-        let name_127: string;
-        export { name_127 as name };
+        let name_128: string;
+        export { name_128 as name };
         let display_82: string[];
         export { display_82 as display };
         let gameName_82: string;
@@ -3691,8 +3770,8 @@ declare namespace G {
     }
     export { 反_2 as 反 };
     export namespace 虎_2 {
-        let name_128: string;
-        export { name_128 as name };
+        let name_129: string;
+        export { name_129 as name };
         let display_83: string[];
         export { display_83 as display };
         let gameName_83: string;
@@ -3711,8 +3790,8 @@ declare namespace G {
     }
     export { 虎_2 as 虎 };
     export namespace 麒_2 {
-        let name_129: string;
-        export { name_129 as name };
+        let name_130: string;
+        export { name_130 as name };
         let display_84: string[];
         export { display_84 as display };
         let gameName_84: string;
@@ -3731,8 +3810,8 @@ declare namespace G {
     }
     export { 麒_2 as 麒 };
     export namespace 鳳_2 {
-        let name_130: string;
-        export { name_130 as name };
+        let name_131: string;
+        export { name_131 as name };
         let display_85: string[];
         export { display_85 as display };
         let gameName_85: string;
@@ -3751,8 +3830,8 @@ declare namespace G {
     }
     export { 鳳_2 as 鳳 };
     export namespace 横_2 {
-        let name_131: string;
-        export { name_131 as name };
+        let name_132: string;
+        export { name_132 as name };
         let display_86: string[];
         export { display_86 as display };
         let gameName_86: string;
@@ -3771,8 +3850,8 @@ declare namespace G {
     }
     export { 横_2 as 横 };
     export namespace 竪_2 {
-        let name_132: string;
-        export { name_132 as name };
+        let name_133: string;
+        export { name_133 as name };
         let display_87: string[];
         export { display_87 as display };
         let gameName_87: string;
@@ -3791,8 +3870,8 @@ declare namespace G {
     }
     export { 竪_2 as 竪 };
     export namespace 碼_1 {
-        let name_133: string;
-        export { name_133 as name };
+        let name_134: string;
+        export { name_134 as name };
         let display_88: string[];
         export { display_88 as display };
         let gameName_88: string;
@@ -3811,8 +3890,8 @@ declare namespace G {
     }
     export { 碼_1 as 碼 };
     export namespace 竜_2 {
-        let name_134: string;
-        export { name_134 as name };
+        let name_135: string;
+        export { name_135 as name };
         let display_89: string[];
         export { display_89 as display };
         let gameName_89: string;
@@ -3831,8 +3910,8 @@ declare namespace G {
     }
     export { 竜_2 as 竜 };
     export namespace 奔_1 {
-        let name_135: string;
-        export { name_135 as name };
+        let name_136: string;
+        export { name_136 as name };
         let display_90: string[];
         export { display_90 as display };
         let gameName_90: string;
@@ -3849,8 +3928,8 @@ declare namespace G {
     }
     export { 奔_1 as 奔 };
     export namespace 獅_2 {
-        let name_136: string;
-        export { name_136 as name };
+        let name_137: string;
+        export { name_137 as name };
         let display_91: string[];
         export { display_91 as display };
         let gameName_91: string;
@@ -3866,9 +3945,9 @@ declare namespace G {
         export { range_91 as range };
     }
     export { 獅_2 as 獅 };
-    export namespace 石 {
-        let name_137: string;
-        export { name_137 as name };
+    export namespace 石_1 {
+        let name_138: string;
+        export { name_138 as name };
         let display_92: string[];
         export { display_92 as display };
         let gameName_92: string;
@@ -3887,9 +3966,10 @@ declare namespace G {
         let promo_44: string;
         export { promo_44 as promo };
     }
-    export namespace 鉄_1 {
-        let name_138: string;
-        export { name_138 as name };
+    export { 石_1 as 石 };
+    export namespace 鉄_2 {
+        let name_139: string;
+        export { name_139 as name };
         let display_93: string[];
         export { display_93 as display };
         let alias_12: string;
@@ -3910,10 +3990,10 @@ declare namespace G {
         let promo_45: string;
         export { promo_45 as promo };
     }
-    export { 鉄_1 as 鉄 };
-    export namespace 猫 {
-        let name_139: string;
-        export { name_139 as name };
+    export { 鉄_2 as 鉄 };
+    export namespace 猫_1 {
+        let name_140: string;
+        export { name_140 as name };
         let display_94: string[];
         export { display_94 as display };
         let gameName_94: string;
@@ -3930,9 +4010,10 @@ declare namespace G {
         let promo_46: string;
         export { promo_46 as promo };
     }
-    export namespace 瀧_1 {
-        let name_140: string;
-        export { name_140 as name };
+    export { 猫_1 as 猫 };
+    export namespace 瀧_2 {
+        let name_141: string;
+        export { name_141 as name };
         let display_95: string[];
         export { display_95 as display };
         let gameName_95: string;
@@ -3949,10 +4030,10 @@ declare namespace G {
         let promo_47: string;
         export { promo_47 as promo };
     }
-    export { 瀧_1 as 瀧 };
-    export namespace 嗔 {
-        let name_141: string;
-        export { name_141 as name };
+    export { 瀧_2 as 瀧 };
+    export namespace 嗔_1 {
+        let name_142: string;
+        export { name_142 as name };
         let display_96: string[];
         export { display_96 as display };
         let gameName_96: string;
@@ -3969,9 +4050,10 @@ declare namespace G {
         let promo_48: string;
         export { promo_48 as promo };
     }
-    export namespace 丑_1 {
-        let name_142: string;
-        export { name_142 as name };
+    export { 嗔_1 as 嗔 };
+    export namespace 丑_2 {
+        let name_143: string;
+        export { name_143 as name };
         let display_97: string[];
         export { display_97 as display };
         let gameName_97: string;
@@ -3988,10 +4070,10 @@ declare namespace G {
         let promo_49: string;
         export { promo_49 as promo };
     }
-    export { 丑_1 as 丑 };
-    export namespace 狼_1 {
-        let name_143: string;
-        export { name_143 as name };
+    export { 丑_2 as 丑 };
+    export namespace 狼_2 {
+        let name_144: string;
+        export { name_144 as name };
         let display_98: string[];
         export { display_98 as display };
         let gameName_98: string;
@@ -4008,10 +4090,10 @@ declare namespace G {
         let promo_50: string;
         export { promo_50 as promo };
     }
-    export { 狼_1 as 狼 };
-    export namespace 梹_1 {
-        let name_144: string;
-        export { name_144 as name };
+    export { 狼_2 as 狼 };
+    export namespace 雀_1 {
+        let name_145: string;
+        export { name_145 as name };
         let display_99: string[];
         export { display_99 as display };
         let gameName_99: string;
@@ -4025,17 +4107,15 @@ declare namespace G {
         export namespace range_99 {
             let _default_98: string;
             export { _default_98 as default };
-            let attack_12: string;
-            export { attack_12 as attack };
         }
         export { range_99 as range };
         let promo_51: string;
         export { promo_51 as promo };
     }
-    export { 梹_1 as 梹 };
-    export namespace 師_1 {
-        let name_145: string;
-        export { name_145 as name };
+    export { 雀_1 as 雀 };
+    export namespace 烏_2 {
+        let name_146: string;
+        export { name_146 as name };
         let display_100: string[];
         export { display_100 as display };
         let gameName_100: string;
@@ -4049,11 +4129,13 @@ declare namespace G {
             export { _default_99 as default };
         }
         export { range_100 as range };
+        let promo_52: string;
+        export { promo_52 as promo };
     }
-    export { 師_1 as 師 };
-    export namespace 犀_1 {
-        let name_146: string;
-        export { name_146 as name };
+    export { 烏_2 as 烏 };
+    export namespace 鴟_1 {
+        let name_147: string;
+        export { name_147 as name };
         let display_101: string[];
         export { display_101 as display };
         let gameName_101: string;
@@ -4067,11 +4149,13 @@ declare namespace G {
             export { _default_100 as default };
         }
         export { range_101 as range };
+        let promo_53: string;
+        export { promo_53 as promo };
     }
-    export { 犀_1 as 犀 };
-    export namespace 麟_2 {
-        let name_147: string;
-        export { name_147 as name };
+    export { 鴟_1 as 鴟 };
+    export namespace 鶏_2 {
+        let name_148: string;
+        export { name_148 as name };
         let display_102: string[];
         export { display_102 as display };
         let gameName_102: string;
@@ -4085,11 +4169,13 @@ declare namespace G {
             export { _default_101 as default };
         }
         export { range_102 as range };
+        let promo_54: string;
+        export { promo_54 as promo };
     }
-    export { 麟_2 as 麟 };
-    export namespace 鰐_1 {
-        let name_148: string;
-        export { name_148 as name };
+    export { 鶏_2 as 鶏 };
+    export namespace 犬_2 {
+        let name_149: string;
+        export { name_149 as name };
         let display_103: string[];
         export { display_103 as display };
         let gameName_103: string;
@@ -4103,11 +4189,13 @@ declare namespace G {
             export { _default_102 as default };
         }
         export { range_103 as range };
+        let promo_55: string;
+        export { promo_55 as promo };
     }
-    export { 鰐_1 as 鰐 };
-    export namespace 砦_1 {
-        let name_149: string;
-        export { name_149 as name };
+    export { 犬_2 as 犬 };
+    export namespace 麁_1 {
+        let name_150: string;
+        export { name_150 as name };
         let display_104: string[];
         export { display_104 as display };
         let gameName_104: string;
@@ -4121,11 +4209,13 @@ declare namespace G {
             export { _default_103 as default };
         }
         export { range_104 as range };
+        let promo_56: string;
+        export { promo_56 as promo };
     }
-    export { 砦_1 as 砦 };
-    export namespace 鴻_2 {
-        let name_150: string;
-        export { name_150 as name };
+    export { 麁_1 as 麁 };
+    export namespace 鷙_2 {
+        let name_151: string;
+        export { name_151 as name };
         let display_105: string[];
         export { display_105 as display };
         let gameName_105: string;
@@ -4139,35 +4229,35 @@ declare namespace G {
             export { _default_104 as default };
         }
         export { range_105 as range };
+        let promo_57: string;
+        export { promo_57 as promo };
     }
-    export { 鴻_2 as 鴻 };
-    export namespace 呈_2 {
-        let name_151: string;
-        export { name_151 as name };
+    export { 鷙_2 as 鷙 };
+    export namespace 犇_1 {
+        let name_152: string;
+        export { name_152 as name };
         let display_106: string[];
         export { display_106 as display };
-        let alias_13: string;
-        export { alias_13 as alias };
         let gameName_106: string;
         export { gameName_106 as gameName };
         let expansion_58: string;
         export { expansion_58 as expansion };
         let unit_106: string;
         export { unit_106 as unit };
-        let attr_45: string[];
-        export { attr_45 as attr };
+        let forcePromoLine_23: number;
+        export { forcePromoLine_23 as forcePromoLine };
         export namespace range_106 {
             let _default_105: string;
             export { _default_105 as default };
-            let start_3: string;
-            export { start_3 as start };
         }
         export { range_106 as range };
+        let promo_58: string;
+        export { promo_58 as promo };
     }
-    export { 呈_2 as 呈 };
-    export namespace 鋲_1 {
-        let name_152: string;
-        export { name_152 as name };
+    export { 犇_1 as 犇 };
+    export namespace 風_2 {
+        let name_153: string;
+        export { name_153 as name };
         let display_107: string[];
         export { display_107 as display };
         let gameName_107: string;
@@ -4176,22 +4266,18 @@ declare namespace G {
         export { expansion_59 as expansion };
         let unit_107: string;
         export { unit_107 as unit };
-        let forcePromoLine_23: number;
-        export { forcePromoLine_23 as forcePromoLine };
         export namespace range_107 {
             let _default_106: string;
             export { _default_106 as default };
-            let attack_13: string;
-            export { attack_13 as attack };
         }
         export { range_107 as range };
-        let promo_52: string;
-        export { promo_52 as promo };
+        let promo_59: string;
+        export { promo_59 as promo };
     }
-    export { 鋲_1 as 鋲 };
-    export namespace 射_1 {
-        let name_153: string;
-        export { name_153 as name };
+    export { 風_2 as 風 };
+    export namespace 羽_1 {
+        let name_154: string;
+        export { name_154 as name };
         let display_108: string[];
         export { display_108 as display };
         let gameName_108: string;
@@ -4205,11 +4291,13 @@ declare namespace G {
             export { _default_107 as default };
         }
         export { range_108 as range };
+        let promo_60: string;
+        export { promo_60 as promo };
     }
-    export { 射_1 as 射 };
-    export namespace 使_1 {
-        let name_154: string;
-        export { name_154 as name };
+    export { 羽_1 as 羽 };
+    export namespace 兎_2 {
+        let name_155: string;
+        export { name_155 as name };
         let display_109: string[];
         export { display_109 as display };
         let gameName_109: string;
@@ -4223,11 +4311,13 @@ declare namespace G {
             export { _default_108 as default };
         }
         export { range_109 as range };
+        let promo_61: string;
+        export { promo_61 as promo };
     }
-    export { 使_1 as 使 };
-    export namespace 佯_1 {
-        let name_155: string;
-        export { name_155 as name };
+    export { 兎_2 as 兎 };
+    export namespace 猿_1 {
+        let name_156: string;
+        export { name_156 as name };
         let display_110: string[];
         export { display_110 as display };
         let gameName_110: string;
@@ -4241,11 +4331,13 @@ declare namespace G {
             export { _default_109 as default };
         }
         export { range_110 as range };
+        let promo_62: string;
+        export { promo_62 as promo };
     }
-    export { 佯_1 as 佯 };
-    export namespace 賢_1 {
-        let name_156: string;
-        export { name_156 as name };
+    export { 猿_1 as 猿 };
+    export namespace 鳫_1 {
+        let name_157: string;
+        export { name_157 as name };
         let display_111: string[];
         export { display_111 as display };
         let gameName_111: string;
@@ -4259,11 +4351,13 @@ declare namespace G {
             export { _default_110 as default };
         }
         export { range_111 as range };
+        let promo_63: string;
+        export { promo_63 as promo };
     }
-    export { 賢_1 as 賢 };
-    export namespace 妾_1 {
-        let name_157: string;
-        export { name_157 as name };
+    export { 鳫_1 as 鳫 };
+    export namespace 狽_1 {
+        let name_158: string;
+        export { name_158 as name };
         let display_112: string[];
         export { display_112 as display };
         let gameName_112: string;
@@ -4277,408 +4371,517 @@ declare namespace G {
             export { _default_111 as default };
         }
         export { range_112 as range };
+        let promo_64: string;
+        export { promo_64 as promo };
     }
-    export { 妾_1 as 妾 };
-    export namespace 閏_1 {
-        let name_158: string;
-        export { name_158 as name };
+    export { 狽_1 as 狽 };
+    export namespace 狐_2 {
+        let name_159: string;
+        export { name_159 as name };
         let display_113: string[];
         export { display_113 as display };
-        let alias_14: string;
-        export { alias_14 as alias };
         let gameName_113: string;
         export { gameName_113 as gameName };
         let expansion_65: string;
         export { expansion_65 as expansion };
         let unit_113: string;
         export { unit_113 as unit };
-        let attr_46: string[];
-        export { attr_46 as attr };
         export namespace range_113 {
             let _default_112: string;
             export { _default_112 as default };
         }
         export { range_113 as range };
     }
-    export { 閏_1 as 閏 };
-    export namespace と {
-        let name_159: string;
-        export { name_159 as name };
+    export { 狐_2 as 狐 };
+    export namespace 雲_2 {
+        let name_160: string;
+        export { name_160 as name };
         let display_114: string[];
         export { display_114 as display };
-        let alias_15: string;
-        export { alias_15 as alias };
-        let attr_47: string[];
-        export { attr_47 as attr };
+        let gameName_114: string;
+        export { gameName_114 as gameName };
+        let expansion_66: string;
+        export { expansion_66 as expansion };
+        let unit_114: string;
+        export { unit_114 as unit };
         export namespace range_114 {
             let _default_113: string;
             export { _default_113 as default };
         }
         export { range_114 as range };
     }
-    export namespace 杏 {
-        let name_160: string;
-        export { name_160 as name };
+    export { 雲_2 as 雲 };
+    export namespace 霍_1 {
+        let name_161: string;
+        export { name_161 as name };
         let display_115: string[];
         export { display_115 as display };
-        let alias_16: string;
-        export { alias_16 as alias };
-        let attr_48: string[];
-        export { attr_48 as attr };
+        let alias_13: string;
+        export { alias_13 as alias };
+        let gameName_115: string;
+        export { gameName_115 as gameName };
+        let expansion_67: string;
+        export { expansion_67 as expansion };
+        let unit_115: string;
+        export { unit_115 as unit };
+        let attr_45: string[];
+        export { attr_45 as attr };
         export namespace range_115 {
             let _default_114: string;
             export { _default_114 as default };
         }
         export { range_115 as range };
     }
-    export namespace 圭 {
-        let name_161: string;
-        export { name_161 as name };
+    export { 霍_1 as 霍 };
+    export namespace 梹_1 {
+        let name_162: string;
+        export { name_162 as name };
         let display_116: string[];
         export { display_116 as display };
-        let alias_17: string;
-        export { alias_17 as alias };
-        let attr_49: string[];
-        export { attr_49 as attr };
+        let gameName_116: string;
+        export { gameName_116 as gameName };
+        let expansion_68: string;
+        export { expansion_68 as expansion };
+        let unit_116: string;
+        export { unit_116 as unit };
+        let forcePromoLine_24: number;
+        export { forcePromoLine_24 as forcePromoLine };
         export namespace range_116 {
             let _default_115: string;
             export { _default_115 as default };
+            let attack_12: string;
+            export { attack_12 as attack };
         }
         export { range_116 as range };
+        let promo_65: string;
+        export { promo_65 as promo };
     }
-    export namespace 全 {
-        let name_162: string;
-        export { name_162 as name };
+    export { 梹_1 as 梹 };
+    export namespace 師_2 {
+        let name_163: string;
+        export { name_163 as name };
         let display_117: string[];
         export { display_117 as display };
-        let attr_50: string[];
-        export { attr_50 as attr };
+        let gameName_117: string;
+        export { gameName_117 as gameName };
+        let expansion_69: string;
+        export { expansion_69 as expansion };
+        let unit_117: string;
+        export { unit_117 as unit };
         export namespace range_117 {
             let _default_116: string;
             export { _default_116 as default };
         }
         export { range_117 as range };
     }
-    export namespace 馬_1 {
-        let name_163: string;
-        export { name_163 as name };
+    export { 師_2 as 師 };
+    export namespace 犀_2 {
+        let name_164: string;
+        export { name_164 as name };
         let display_118: string[];
         export { display_118 as display };
-        let attr_51: string[];
-        export { attr_51 as attr };
+        let gameName_118: string;
+        export { gameName_118 as gameName };
+        let expansion_70: string;
+        export { expansion_70 as expansion };
+        let unit_118: string;
+        export { unit_118 as unit };
         export namespace range_118 {
             let _default_117: string;
             export { _default_117 as default };
         }
         export { range_118 as range };
     }
-    export { 馬_1 as 馬 };
-    export namespace 龍 {
-        let name_164: string;
-        export { name_164 as name };
+    export { 犀_2 as 犀 };
+    export namespace 麟_2 {
+        let name_165: string;
+        export { name_165 as name };
         let display_119: string[];
         export { display_119 as display };
-        let attr_52: string[];
-        export { attr_52 as attr };
+        let gameName_119: string;
+        export { gameName_119 as gameName };
+        let expansion_71: string;
+        export { expansion_71 as expansion };
+        let unit_119: string;
+        export { unit_119 as unit };
         export namespace range_119 {
             let _default_118: string;
             export { _default_118 as default };
         }
         export { range_119 as range };
     }
-    export namespace 妃 {
-        let name_165: string;
-        export { name_165 as name };
+    export { 麟_2 as 麟 };
+    export namespace 鰐_1 {
+        let name_166: string;
+        export { name_166 as name };
         let display_120: string[];
         export { display_120 as display };
+        let gameName_120: string;
+        export { gameName_120 as gameName };
+        let expansion_72: string;
+        export { expansion_72 as expansion };
+        let unit_120: string;
+        export { unit_120 as unit };
         export namespace range_120 {
             let _default_119: string;
             export { _default_119 as default };
         }
         export { range_120 as range };
     }
-    export namespace 騏 {
-        let name_166: string;
-        export { name_166 as name };
+    export { 鰐_1 as 鰐 };
+    export namespace 砦_1 {
+        let name_167: string;
+        export { name_167 as name };
         let display_121: string[];
         export { display_121 as display };
+        let gameName_121: string;
+        export { gameName_121 as gameName };
+        let expansion_73: string;
+        export { expansion_73 as expansion };
+        let unit_121: string;
+        export { unit_121 as unit };
         export namespace range_121 {
             let _default_120: string;
             export { _default_120 as default };
         }
         export { range_121 as range };
     }
-    export namespace 城_1 {
-        let name_167: string;
-        export { name_167 as name };
+    export { 砦_1 as 砦 };
+    export namespace 鴻_2 {
+        let name_168: string;
+        export { name_168 as name };
         let display_122: string[];
         export { display_122 as display };
+        let gameName_122: string;
+        export { gameName_122 as gameName };
+        let expansion_74: string;
+        export { expansion_74 as expansion };
+        let unit_122: string;
+        export { unit_122 as unit };
         export namespace range_122 {
             let _default_121: string;
             export { _default_121 as default };
         }
         export { range_122 as range };
     }
-    export { 城_1 as 城 };
-    export namespace 僧 {
-        let name_168: string;
-        export { name_168 as name };
+    export { 鴻_2 as 鴻 };
+    export namespace 呈_2 {
+        let name_169: string;
+        export { name_169 as name };
         let display_123: string[];
         export { display_123 as display };
+        let alias_14: string;
+        export { alias_14 as alias };
+        let gameName_123: string;
+        export { gameName_123 as gameName };
+        let expansion_75: string;
+        export { expansion_75 as expansion };
+        let unit_123: string;
+        export { unit_123 as unit };
+        let attr_46: string[];
+        export { attr_46 as attr };
         export namespace range_123 {
             let _default_122: string;
             export { _default_122 as default };
+            let start_3: string;
+            export { start_3 as start };
         }
         export { range_123 as range };
     }
-    export namespace 率 {
-        let name_169: string;
-        export { name_169 as name };
+    export { 呈_2 as 呈 };
+    export namespace 鋲_1 {
+        let name_170: string;
+        export { name_170 as name };
         let display_124: string[];
         export { display_124 as display };
+        let gameName_124: string;
+        export { gameName_124 as gameName };
+        let expansion_76: string;
+        export { expansion_76 as expansion };
+        let unit_124: string;
+        export { unit_124 as unit };
+        let forcePromoLine_25: number;
+        export { forcePromoLine_25 as forcePromoLine };
         export namespace range_124 {
             let _default_123: string;
             export { _default_123 as default };
+            let attack_13: string;
+            export { attack_13 as attack };
         }
         export { range_124 as range };
+        let promo_66: string;
+        export { promo_66 as promo };
     }
-    export namespace 貴 {
-        let name_170: string;
-        export { name_170 as name };
+    export { 鋲_1 as 鋲 };
+    export namespace 射_1 {
+        let name_171: string;
+        export { name_171 as name };
         let display_125: string[];
         export { display_125 as display };
-        let alias_18: string;
-        export { alias_18 as alias };
+        let gameName_125: string;
+        export { gameName_125 as gameName };
+        let expansion_77: string;
+        export { expansion_77 as expansion };
+        let unit_125: string;
+        export { unit_125 as unit };
         export namespace range_125 {
             let _default_124: string;
             export { _default_124 as default };
         }
         export { range_125 as range };
     }
-    export namespace 杵 {
-        let name_171: string;
-        export { name_171 as name };
+    export { 射_1 as 射 };
+    export namespace 使_1 {
+        let name_172: string;
+        export { name_172 as name };
         let display_126: string[];
         export { display_126 as display };
+        let gameName_126: string;
+        export { gameName_126 as gameName };
+        let expansion_78: string;
+        export { expansion_78 as expansion };
+        let unit_126: string;
+        export { unit_126 as unit };
         export namespace range_126 {
             let _default_125: string;
             export { _default_125 as default };
         }
         export { range_126 as range };
     }
-    export namespace 橡 {
-        let name_172: string;
-        export { name_172 as name };
+    export { 使_1 as 使 };
+    export namespace 佯_1 {
+        let name_173: string;
+        export { name_173 as name };
         let display_127: string[];
         export { display_127 as display };
+        let gameName_127: string;
+        export { gameName_127 as gameName };
+        let expansion_79: string;
+        export { expansion_79 as expansion };
+        let unit_127: string;
+        export { unit_127 as unit };
         export namespace range_127 {
             let _default_126: string;
             export { _default_126 as default };
         }
         export { range_127 as range };
     }
-    export namespace 戰 {
-        let name_173: string;
-        export { name_173 as name };
+    export { 佯_1 as 佯 };
+    export namespace 賢_1 {
+        let name_174: string;
+        export { name_174 as name };
         let display_128: string[];
         export { display_128 as display };
+        let gameName_128: string;
+        export { gameName_128 as gameName };
+        let expansion_80: string;
+        export { expansion_80 as expansion };
+        let unit_128: string;
+        export { unit_128 as unit };
         export namespace range_128 {
             let _default_127: string;
             export { _default_127 as default };
         }
         export { range_128 as range };
     }
-    export namespace 巨 {
-        let name_174: string;
-        export { name_174 as name };
+    export { 賢_1 as 賢 };
+    export namespace 妾_1 {
+        let name_175: string;
+        export { name_175 as name };
         let display_129: string[];
         export { display_129 as display };
+        let gameName_129: string;
+        export { gameName_129 as gameName };
+        let expansion_81: string;
+        export { expansion_81 as expansion };
+        let unit_129: string;
+        export { unit_129 as unit };
         export namespace range_129 {
             let _default_128: string;
             export { _default_128 as default };
         }
         export { range_129 as range };
     }
-    export namespace 往 {
-        let name_175: string;
-        export { name_175 as name };
+    export { 妾_1 as 妾 };
+    export namespace 閏_1 {
+        let name_176: string;
+        export { name_176 as name };
         let display_130: string[];
         export { display_130 as display };
+        let alias_15: string;
+        export { alias_15 as alias };
+        let gameName_130: string;
+        export { gameName_130 as gameName };
+        let expansion_82: string;
+        export { expansion_82 as expansion };
+        let unit_130: string;
+        export { unit_130 as unit };
+        let attr_47: string[];
+        export { attr_47 as attr };
         export namespace range_130 {
             let _default_129: string;
             export { _default_129 as default };
         }
         export { range_130 as range };
     }
-    export namespace に {
-        let name_176: string;
-        export { name_176 as name };
+    export { 閏_1 as 閏 };
+    export namespace と {
+        let name_177: string;
+        export { name_177 as name };
         let display_131: string[];
         export { display_131 as display };
-        let attr_53: string[];
-        export { attr_53 as attr };
+        let alias_16: string;
+        export { alias_16 as alias };
+        let attr_48: string[];
+        export { attr_48 as attr };
         export namespace range_131 {
             let _default_130: string;
             export { _default_130 as default };
         }
         export { range_131 as range };
     }
-    export namespace 鴈_1 {
-        let name_177: string;
-        export { name_177 as name };
+    export namespace 杏 {
+        let name_178: string;
+        export { name_178 as name };
         let display_132: string[];
         export { display_132 as display };
-        let attr_54: string[];
-        export { attr_54 as attr };
+        let alias_17: string;
+        export { alias_17 as alias };
+        let attr_49: string[];
+        export { attr_49 as attr };
         export namespace range_132 {
             let _default_131: string;
             export { _default_131 as default };
         }
         export { range_132 as range };
     }
-    export { 鴈_1 as 鴈 };
-    export namespace 左 {
-        let name_178: string;
-        export { name_178 as name };
+    export namespace 圭 {
+        let name_179: string;
+        export { name_179 as name };
         let display_133: string[];
         export { display_133 as display };
-        let gameName_114: string;
-        export { gameName_114 as gameName };
-        let unit_114: string;
-        export { unit_114 as unit };
-        let attr_55: string[];
-        export { attr_55 as attr };
+        let alias_18: string;
+        export { alias_18 as alias };
+        let attr_50: string[];
+        export { attr_50 as attr };
         export namespace range_133 {
             let _default_132: string;
             export { _default_132 as default };
         }
         export { range_133 as range };
     }
-    export namespace 右 {
-        let name_179: string;
-        export { name_179 as name };
+    export namespace 全 {
+        let name_180: string;
+        export { name_180 as name };
         let display_134: string[];
         export { display_134 as display };
-        let gameName_115: string;
-        export { gameName_115 as gameName };
-        let unit_115: string;
-        export { unit_115 as unit };
-        let attr_56: string[];
-        export { attr_56 as attr };
+        let attr_51: string[];
+        export { attr_51 as attr };
         export namespace range_134 {
             let _default_133: string;
             export { _default_133 as default };
         }
         export { range_134 as range };
     }
-    export namespace 雕_1 {
-        let name_180: string;
-        export { name_180 as name };
+    export namespace 馬_1 {
+        let name_181: string;
+        export { name_181 as name };
         let display_135: string[];
         export { display_135 as display };
-        let alias_19: string;
-        export { alias_19 as alias };
-        let attr_57: string[];
-        export { attr_57 as attr };
+        let attr_52: string[];
+        export { attr_52 as attr };
         export namespace range_135 {
             let _default_134: string;
             export { _default_134 as default };
         }
         export { range_135 as range };
     }
-    export { 雕_1 as 雕 };
-    export namespace 幾 {
-        let name_181: string;
-        export { name_181 as name };
+    export { 馬_1 as 馬 };
+    export namespace 龍 {
+        let name_182: string;
+        export { name_182 as name };
         let display_136: string[];
         export { display_136 as display };
-        let attr_58: string[];
-        export { attr_58 as attr };
+        let attr_53: string[];
+        export { attr_53 as attr };
         export namespace range_136 {
             let _default_135: string;
             export { _default_135 as default };
         }
         export { range_136 as range };
     }
-    export namespace う {
-        let name_182: string;
-        export { name_182 as name };
+    export namespace 妃 {
+        let name_183: string;
+        export { name_183 as name };
         let display_137: string[];
         export { display_137 as display };
-        let attr_59: string[];
-        export { attr_59 as attr };
         export namespace range_137 {
             let _default_136: string;
             export { _default_136 as default };
         }
         export { range_137 as range };
     }
-    export namespace さ {
-        let name_183: string;
-        export { name_183 as name };
+    export namespace 騏 {
+        let name_184: string;
+        export { name_184 as name };
         let display_138: string[];
         export { display_138 as display };
-        let attr_60: string[];
-        export { attr_60 as attr };
         export namespace range_138 {
             let _default_137: string;
             export { _default_137 as default };
         }
         export { range_138 as range };
     }
-    export namespace 太 {
-        let name_184: string;
-        export { name_184 as name };
+    export namespace 城_1 {
+        let name_185: string;
+        export { name_185 as name };
         let display_139: string[];
         export { display_139 as display };
-        let attr_61: string[];
-        export { attr_61 as attr };
         export namespace range_139 {
             let _default_138: string;
             export { _default_138 as default };
         }
         export { range_139 as range };
     }
-    export namespace 余 {
-        let name_185: string;
-        export { name_185 as name };
+    export { 城_1 as 城 };
+    export namespace 僧 {
+        let name_186: string;
+        export { name_186 as name };
         let display_140: string[];
         export { display_140 as display };
-        let attr_62: string[];
-        export { attr_62 as attr };
         export namespace range_140 {
             let _default_139: string;
             export { _default_139 as default };
         }
         export { range_140 as range };
     }
-    export namespace 含 {
-        let name_186: string;
-        export { name_186 as name };
+    export namespace 率 {
+        let name_187: string;
+        export { name_187 as name };
         let display_141: string[];
         export { display_141 as display };
-        let attr_63: string[];
-        export { attr_63 as attr };
         export namespace range_141 {
             let _default_140: string;
             export { _default_140 as default };
         }
         export { range_141 as range };
     }
-    export namespace 駁 {
-        let name_187: string;
-        export { name_187 as name };
+    export namespace 貴 {
+        let name_188: string;
+        export { name_188 as name };
         let display_142: string[];
         export { display_142 as display };
+        let alias_19: string;
+        export { alias_19 as alias };
         export namespace range_142 {
             let _default_141: string;
             export { _default_141 as default };
         }
         export { range_142 as range };
     }
-    export namespace 駈 {
-        let name_188: string;
-        export { name_188 as name };
+    export namespace 杵 {
+        let name_189: string;
+        export { name_189 as name };
         let display_143: string[];
         export { display_143 as display };
         export namespace range_143 {
@@ -4687,9 +4890,9 @@ declare namespace G {
         }
         export { range_143 as range };
     }
-    export namespace 舶 {
-        let name_189: string;
-        export { name_189 as name };
+    export namespace 橡 {
+        let name_190: string;
+        export { name_190 as name };
         let display_144: string[];
         export { display_144 as display };
         export namespace range_144 {
@@ -4698,9 +4901,9 @@ declare namespace G {
         }
         export { range_144 as range };
     }
-    export namespace 豪 {
-        let name_190: string;
-        export { name_190 as name };
+    export namespace 戰 {
+        let name_191: string;
+        export { name_191 as name };
         let display_145: string[];
         export { display_145 as display };
         export namespace range_145 {
@@ -4709,22 +4912,20 @@ declare namespace G {
         }
         export { range_145 as range };
     }
-    export namespace ネ {
-        let name_191: string;
-        export { name_191 as name };
+    export namespace 巨 {
+        let name_192: string;
+        export { name_192 as name };
         let display_146: string[];
         export { display_146 as display };
-        let attr_64: string[];
-        export { attr_64 as attr };
         export namespace range_146 {
             let _default_145: string;
             export { _default_145 as default };
         }
         export { range_146 as range };
     }
-    export namespace 升 {
-        let name_192: string;
-        export { name_192 as name };
+    export namespace 往 {
+        let name_193: string;
+        export { name_193 as name };
         let display_147: string[];
         export { display_147 as display };
         export namespace range_147 {
@@ -4733,135 +4934,164 @@ declare namespace G {
         }
         export { range_147 as range };
     }
-    export namespace 堅 {
-        let name_193: string;
-        export { name_193 as name };
+    export namespace に {
+        let name_194: string;
+        export { name_194 as name };
         let display_148: string[];
         export { display_148 as display };
+        let attr_54: string[];
+        export { attr_54 as attr };
         export namespace range_148 {
             let _default_147: string;
             export { _default_147 as default };
         }
         export { range_148 as range };
     }
-    export namespace 黄 {
-        let name_194: string;
-        export { name_194 as name };
+    export namespace 鴈_1 {
+        let name_195: string;
+        export { name_195 as name };
         let display_149: string[];
         export { display_149 as display };
+        let attr_55: string[];
+        export { attr_55 as attr };
         export namespace range_149 {
             let _default_148: string;
             export { _default_148 as default };
         }
         export { range_149 as range };
     }
-    export namespace 桷 {
-        let name_195: string;
-        export { name_195 as name };
+    export { 鴈_1 as 鴈 };
+    export namespace 左 {
+        let name_196: string;
+        export { name_196 as name };
         let display_150: string[];
         export { display_150 as display };
+        let gameName_131: string;
+        export { gameName_131 as gameName };
+        let unit_131: string;
+        export { unit_131 as unit };
+        let attr_56: string[];
+        export { attr_56 as attr };
         export namespace range_150 {
             let _default_149: string;
             export { _default_149 as default };
         }
         export { range_150 as range };
     }
-    export namespace 駒_1 {
-        let name_196: string;
-        export { name_196 as name };
+    export namespace 右 {
+        let name_197: string;
+        export { name_197 as name };
         let display_151: string[];
         export { display_151 as display };
+        let gameName_132: string;
+        export { gameName_132 as gameName };
+        let unit_132: string;
+        export { unit_132 as unit };
+        let attr_57: string[];
+        export { attr_57 as attr };
         export namespace range_151 {
             let _default_150: string;
             export { _default_150 as default };
         }
         export { range_151 as range };
     }
-    export { 駒_1 as 駒 };
-    export namespace 鯨_1 {
-        let name_197: string;
-        export { name_197 as name };
+    export namespace 雕_1 {
+        let name_198: string;
+        export { name_198 as name };
         let display_152: string[];
         export { display_152 as display };
+        let alias_20: string;
+        export { alias_20 as alias };
+        let attr_58: string[];
+        export { attr_58 as attr };
         export namespace range_152 {
             let _default_151: string;
             export { _default_151 as default };
         }
         export { range_152 as range };
     }
-    export { 鯨_1 as 鯨 };
-    export namespace 鹿_1 {
-        let name_198: string;
-        export { name_198 as name };
+    export { 雕_1 as 雕 };
+    export namespace 幾 {
+        let name_199: string;
+        export { name_199 as name };
         let display_153: string[];
         export { display_153 as display };
+        let attr_59: string[];
+        export { attr_59 as attr };
         export namespace range_153 {
             let _default_152: string;
             export { _default_152 as default };
         }
         export { range_153 as range };
     }
-    export { 鹿_1 as 鹿 };
-    export namespace 鰤 {
-        let name_199: string;
-        export { name_199 as name };
+    export namespace う {
+        let name_200: string;
+        export { name_200 as name };
         let display_154: string[];
         export { display_154 as display };
+        let attr_60: string[];
+        export { attr_60 as attr };
         export namespace range_154 {
             let _default_153: string;
             export { _default_153 as default };
         }
         export { range_154 as range };
     }
-    export namespace 卉 {
-        let name_200: string;
-        export { name_200 as name };
+    export namespace さ {
+        let name_201: string;
+        export { name_201 as name };
         let display_155: string[];
         export { display_155 as display };
+        let attr_61: string[];
+        export { attr_61 as attr };
         export namespace range_155 {
             let _default_154: string;
             export { _default_154 as default };
         }
         export { range_155 as range };
     }
-    export namespace 酔 {
-        let name_201: string;
-        export { name_201 as name };
+    export namespace 太 {
+        let name_202: string;
+        export { name_202 as name };
         let display_156: string[];
         export { display_156 as display };
+        let attr_62: string[];
+        export { attr_62 as attr };
         export namespace range_156 {
             let _default_155: string;
             export { _default_155 as default };
         }
         export { range_156 as range };
     }
-    export namespace 猪_1 {
-        let name_202: string;
-        export { name_202 as name };
+    export namespace 余 {
+        let name_203: string;
+        export { name_203 as name };
         let display_157: string[];
         export { display_157 as display };
+        let attr_63: string[];
+        export { attr_63 as attr };
         export namespace range_157 {
             let _default_156: string;
             export { _default_156 as default };
         }
         export { range_157 as range };
     }
-    export { 猪_1 as 猪 };
-    export namespace 牛_1 {
-        let name_203: string;
-        export { name_203 as name };
+    export namespace 含 {
+        let name_204: string;
+        export { name_204 as name };
         let display_158: string[];
         export { display_158 as display };
+        let attr_64: string[];
+        export { attr_64 as attr };
         export namespace range_158 {
             let _default_157: string;
             export { _default_157 as default };
         }
         export { range_158 as range };
     }
-    export { 牛_1 as 牛 };
-    export namespace 鷂_1 {
-        let name_204: string;
-        export { name_204 as name };
+    export namespace 駁 {
+        let name_205: string;
+        export { name_205 as name };
         let display_159: string[];
         export { display_159 as display };
         export namespace range_159 {
@@ -4870,10 +5100,9 @@ declare namespace G {
         }
         export { range_159 as range };
     }
-    export { 鷂_1 as 鷂 };
-    export namespace 鷲_1 {
-        let name_205: string;
-        export { name_205 as name };
+    export namespace 駈 {
+        let name_206: string;
+        export { name_206 as name };
         let display_160: string[];
         export { display_160 as display };
         export namespace range_160 {
@@ -4882,10 +5111,9 @@ declare namespace G {
         }
         export { range_160 as range };
     }
-    export { 鷲_1 as 鷲 };
-    export namespace 鉐 {
-        let name_206: string;
-        export { name_206 as name };
+    export namespace 舶 {
+        let name_207: string;
+        export { name_207 as name };
         let display_161: string[];
         export { display_161 as display };
         export namespace range_161 {
@@ -4894,9 +5122,9 @@ declare namespace G {
         }
         export { range_161 as range };
     }
-    export namespace 鋼 {
-        let name_207: string;
-        export { name_207 as name };
+    export namespace 豪 {
+        let name_208: string;
+        export { name_208 as name };
         let display_162: string[];
         export { display_162 as display };
         export namespace range_162 {
@@ -4905,20 +5133,22 @@ declare namespace G {
         }
         export { range_162 as range };
     }
-    export namespace 錨 {
-        let name_208: string;
-        export { name_208 as name };
+    export namespace ネ {
+        let name_209: string;
+        export { name_209 as name };
         let display_163: string[];
         export { display_163 as display };
+        let attr_65: string[];
+        export { attr_65 as attr };
         export namespace range_163 {
             let _default_162: string;
             export { _default_162 as default };
         }
         export { range_163 as range };
     }
-    export namespace 錆 {
-        let name_209: string;
-        export { name_209 as name };
+    export namespace 升 {
+        let name_210: string;
+        export { name_210 as name };
         let display_164: string[];
         export { display_164 as display };
         export namespace range_164 {
@@ -4927,9 +5157,9 @@ declare namespace G {
         }
         export { range_164 as range };
     }
-    export namespace 鎭 {
-        let name_210: string;
-        export { name_210 as name };
+    export namespace 堅 {
+        let name_211: string;
+        export { name_211 as name };
         let display_165: string[];
         export { display_165 as display };
         export namespace range_165 {
@@ -4938,9 +5168,9 @@ declare namespace G {
         }
         export { range_165 as range };
     }
-    export namespace 鈕 {
-        let name_211: string;
-        export { name_211 as name };
+    export namespace 黄 {
+        let name_212: string;
+        export { name_212 as name };
         let display_166: string[];
         export { display_166 as display };
         export namespace range_166 {
@@ -4949,9 +5179,9 @@ declare namespace G {
         }
         export { range_166 as range };
     }
-    export namespace 狂 {
-        let name_212: string;
-        export { name_212 as name };
+    export namespace 桷 {
+        let name_213: string;
+        export { name_213 as name };
         let display_167: string[];
         export { display_167 as display };
         export namespace range_167 {
@@ -4960,9 +5190,9 @@ declare namespace G {
         }
         export { range_167 as range };
     }
-    export namespace 篩 {
-        let name_213: string;
-        export { name_213 as name };
+    export namespace 駒_1 {
+        let name_214: string;
+        export { name_214 as name };
         let display_168: string[];
         export { display_168 as display };
         export namespace range_168 {
@@ -4971,9 +5201,10 @@ declare namespace G {
         }
         export { range_168 as range };
     }
-    export namespace 遲 {
-        let name_214: string;
-        export { name_214 as name };
+    export { 駒_1 as 駒 };
+    export namespace 鯨_1 {
+        let name_215: string;
+        export { name_215 as name };
         let display_169: string[];
         export { display_169 as display };
         export namespace range_169 {
@@ -4982,9 +5213,10 @@ declare namespace G {
         }
         export { range_169 as range };
     }
-    export namespace 麋 {
-        let name_215: string;
-        export { name_215 as name };
+    export { 鯨_1 as 鯨 };
+    export namespace 鹿_1 {
+        let name_216: string;
+        export { name_216 as name };
         let display_170: string[];
         export { display_170 as display };
         export namespace range_170 {
@@ -4993,9 +5225,10 @@ declare namespace G {
         }
         export { range_170 as range };
     }
-    export namespace 齶 {
-        let name_216: string;
-        export { name_216 as name };
+    export { 鹿_1 as 鹿 };
+    export namespace 鰤 {
+        let name_217: string;
+        export { name_217 as name };
         let display_171: string[];
         export { display_171 as display };
         export namespace range_171 {
@@ -5004,9 +5237,9 @@ declare namespace G {
         }
         export { range_171 as range };
     }
-    export namespace 塞 {
-        let name_217: string;
-        export { name_217 as name };
+    export namespace 卉 {
+        let name_218: string;
+        export { name_218 as name };
         let display_172: string[];
         export { display_172 as display };
         export namespace range_172 {
@@ -5015,9 +5248,9 @@ declare namespace G {
         }
         export { range_172 as range };
     }
-    export namespace 鵺 {
-        let name_218: string;
-        export { name_218 as name };
+    export namespace 酔 {
+        let name_219: string;
+        export { name_219 as name };
         let display_173: string[];
         export { display_173 as display };
         export namespace range_173 {
@@ -5026,9 +5259,9 @@ declare namespace G {
         }
         export { range_173 as range };
     }
-    export namespace 童 {
-        let name_219: string;
-        export { name_219 as name };
+    export namespace 猪_1 {
+        let name_220: string;
+        export { name_220 as name };
         let display_174: string[];
         export { display_174 as display };
         export namespace range_174 {
@@ -5036,6 +5269,354 @@ declare namespace G {
             export { _default_173 as default };
         }
         export { range_174 as range };
+    }
+    export { 猪_1 as 猪 };
+    export namespace 牛_1 {
+        let name_221: string;
+        export { name_221 as name };
+        let display_175: string[];
+        export { display_175 as display };
+        export namespace range_175 {
+            let _default_174: string;
+            export { _default_174 as default };
+        }
+        export { range_175 as range };
+    }
+    export { 牛_1 as 牛 };
+    export namespace 鷂_1 {
+        let name_222: string;
+        export { name_222 as name };
+        let display_176: string[];
+        export { display_176 as display };
+        export namespace range_176 {
+            let _default_175: string;
+            export { _default_175 as default };
+        }
+        export { range_176 as range };
+    }
+    export { 鷂_1 as 鷂 };
+    export namespace 鷲_1 {
+        let name_223: string;
+        export { name_223 as name };
+        let display_177: string[];
+        export { display_177 as display };
+        export namespace range_177 {
+            let _default_176: string;
+            export { _default_176 as default };
+        }
+        export { range_177 as range };
+    }
+    export { 鷲_1 as 鷲 };
+    export namespace 鉐 {
+        let name_224: string;
+        export { name_224 as name };
+        let display_178: string[];
+        export { display_178 as display };
+        export namespace range_178 {
+            let _default_177: string;
+            export { _default_177 as default };
+        }
+        export { range_178 as range };
+    }
+    export namespace 鋼 {
+        let name_225: string;
+        export { name_225 as name };
+        let display_179: string[];
+        export { display_179 as display };
+        export namespace range_179 {
+            let _default_178: string;
+            export { _default_178 as default };
+        }
+        export { range_179 as range };
+    }
+    export namespace 錨 {
+        let name_226: string;
+        export { name_226 as name };
+        let display_180: string[];
+        export { display_180 as display };
+        export namespace range_180 {
+            let _default_179: string;
+            export { _default_179 as default };
+        }
+        export { range_180 as range };
+    }
+    export namespace 錆 {
+        let name_227: string;
+        export { name_227 as name };
+        let display_181: string[];
+        export { display_181 as display };
+        export namespace range_181 {
+            let _default_180: string;
+            export { _default_180 as default };
+        }
+        export { range_181 as range };
+    }
+    export namespace 鎭 {
+        let name_228: string;
+        export { name_228 as name };
+        let display_182: string[];
+        export { display_182 as display };
+        export namespace range_182 {
+            let _default_181: string;
+            export { _default_181 as default };
+        }
+        export { range_182 as range };
+    }
+    export namespace 鈕 {
+        let name_229: string;
+        export { name_229 as name };
+        let display_183: string[];
+        export { display_183 as display };
+        export namespace range_183 {
+            let _default_182: string;
+            export { _default_182 as default };
+        }
+        export { range_183 as range };
+    }
+    export namespace 狂 {
+        let name_230: string;
+        export { name_230 as name };
+        let display_184: string[];
+        export { display_184 as display };
+        export namespace range_184 {
+            let _default_183: string;
+            export { _default_183 as default };
+        }
+        export { range_184 as range };
+    }
+    export namespace 錐 {
+        let name_231: string;
+        export { name_231 as name };
+        let display_185: string[];
+        export { display_185 as display };
+        export namespace range_185 {
+            let _default_184: string;
+            export { _default_184 as default };
+        }
+        export { range_185 as range };
+    }
+    export namespace 鳶 {
+        let name_232: string;
+        export { name_232 as name };
+        let display_186: string[];
+        export { display_186 as display };
+        export namespace range_186 {
+            let _default_185: string;
+            export { _default_185 as default };
+        }
+        export { range_186 as range };
+    }
+    export namespace 曇 {
+        let name_233: string;
+        export { name_233 as name };
+        let display_187: string[];
+        export { display_187 as display };
+        export namespace range_187 {
+            let _default_186: string;
+            export { _default_186 as default };
+        }
+        export { range_187 as range };
+    }
+    export namespace 延_1 {
+        let name_234: string;
+        export { name_234 as name };
+        let display_188: string[];
+        export { display_188 as display };
+        export namespace range_188 {
+            let _default_187: string;
+            export { _default_187 as default };
+        }
+        export { range_188 as range };
+    }
+    export { 延_1 as 延 };
+    export namespace 狛 {
+        let name_235: string;
+        export { name_235 as name };
+        let display_189: string[];
+        export { display_189 as display };
+        export namespace range_189 {
+            let _default_188: string;
+            export { _default_188 as default };
+        }
+        export { range_189 as range };
+    }
+    export namespace 豬 {
+        let name_236: string;
+        export { name_236 as name };
+        let display_190: string[];
+        export { display_190 as display };
+        export namespace range_190 {
+            let _default_189: string;
+            export { _default_189 as default };
+        }
+        export { range_190 as range };
+    }
+    export namespace 鷄_1 {
+        let name_237: string;
+        export { name_237 as name };
+        let display_191: string[];
+        export { display_191 as display };
+        export namespace range_191 {
+            let _default_190: string;
+            export { _default_190 as default };
+        }
+        export { range_191 as range };
+    }
+    export { 鷄_1 as 鷄 };
+    export namespace 前 {
+        let name_238: string;
+        export { name_238 as name };
+        let display_192: string[];
+        export { display_192 as display };
+        export namespace range_192 {
+            let _default_191: string;
+            export { _default_191 as default };
+        }
+        export { range_192 as range };
+    }
+    export namespace 騰_1 {
+        let name_239: string;
+        export { name_239 as name };
+        let display_193: string[];
+        export { display_193 as display };
+        export namespace range_193 {
+            let _default_192: string;
+            export { _default_192 as default };
+        }
+        export { range_193 as range };
+    }
+    export { 騰_1 as 騰 };
+    export namespace 行 {
+        let name_240: string;
+        export { name_240 as name };
+        let display_194: string[];
+        export { display_194 as display };
+        export namespace range_194 {
+            let _default_193: string;
+            export { _default_193 as default };
+        }
+        export { range_194 as range };
+    }
+    export namespace 瓜 {
+        let name_241: string;
+        export { name_241 as name };
+        let display_195: string[];
+        export { display_195 as display };
+        export namespace range_195 {
+            let _default_194: string;
+            export { _default_194 as default };
+        }
+        export { range_195 as range };
+    }
+    export namespace 麈 {
+        let name_242: string;
+        export { name_242 as name };
+        let display_196: string[];
+        export { display_196 as display };
+        export namespace range_196 {
+            let _default_195: string;
+            export { _default_195 as default };
+        }
+        export { range_196 as range };
+    }
+    export namespace 羽 {
+        let name_243: string;
+        export { name_243 as name };
+        let display_197: string[];
+        export { display_197 as display };
+        export namespace range_197 {
+            let _default_196: string;
+            export { _default_196 as default };
+        }
+        export { range_197 as range };
+    }
+    export namespace 熊 {
+        let name_244: string;
+        export { name_244 as name };
+        let display_198: string[];
+        export { display_198 as display };
+        export namespace range_198 {
+            let _default_197: string;
+            export { _default_197 as default };
+        }
+        export { range_198 as range };
+    }
+    export namespace 篩 {
+        let name_245: string;
+        export { name_245 as name };
+        let display_199: string[];
+        export { display_199 as display };
+        export namespace range_199 {
+            let _default_198: string;
+            export { _default_198 as default };
+        }
+        export { range_199 as range };
+    }
+    export namespace 遲 {
+        let name_246: string;
+        export { name_246 as name };
+        let display_200: string[];
+        export { display_200 as display };
+        export namespace range_200 {
+            let _default_199: string;
+            export { _default_199 as default };
+        }
+        export { range_200 as range };
+    }
+    export namespace 麋 {
+        let name_247: string;
+        export { name_247 as name };
+        let display_201: string[];
+        export { display_201 as display };
+        export namespace range_201 {
+            let _default_200: string;
+            export { _default_200 as default };
+        }
+        export { range_201 as range };
+    }
+    export namespace 齶 {
+        let name_248: string;
+        export { name_248 as name };
+        let display_202: string[];
+        export { display_202 as display };
+        export namespace range_202 {
+            let _default_201: string;
+            export { _default_201 as default };
+        }
+        export { range_202 as range };
+    }
+    export namespace 塞 {
+        let name_249: string;
+        export { name_249 as name };
+        let display_203: string[];
+        export { display_203 as display };
+        export namespace range_203 {
+            let _default_202: string;
+            export { _default_202 as default };
+        }
+        export { range_203 as range };
+    }
+    export namespace 鵺 {
+        let name_250: string;
+        export { name_250 as name };
+        let display_204: string[];
+        export { display_204 as display };
+        export namespace range_204 {
+            let _default_203: string;
+            export { _default_203 as default };
+        }
+        export { range_204 as range };
+    }
+    export namespace 童 {
+        let name_251: string;
+        export { name_251 as name };
+        let display_205: string[];
+        export { display_205 as display };
+        export namespace range_205 {
+            let _default_204: string;
+            export { _default_204 as default };
+        }
+        export { range_205 as range };
     }
 }
 declare class Y {
@@ -5067,7 +5648,7 @@ declare class Y {
      * @param {number} option.deg - 角度
      * @param {number} option.i - 配置する持ち駒のインデックス
      */
-    releasePiece(e: any, t?: {}): void;
+    releasePiece(e: any, a?: {}): void;
     /** 駒台に追加する
      * @param {Piece} piece - 追加する駒
      */
@@ -5078,7 +5659,7 @@ declare class Y {
      * @param {boolean} forceCapture - 属性を無視して捕縛する
      * @param {boolean} forceCantCapture - 属性を無視して捕縛しない
      */
-    capturePiece(e: any, t: any, a?: boolean, s?: boolean): void;
+    capturePiece(e: any, a: any, t?: boolean, s?: boolean): void;
     /** 持ち駒の所有権を回転
      * @param {number} deg - 回転角 (90の倍数)
      */
@@ -5089,7 +5670,7 @@ declare class Y {
      * @param {boolean} isCompact - コンパクト表示
      * @param {boolean} isAlias - エイリアス表示
      */
-    toString(e?: boolean, t?: boolean): string;
+    toString(e?: boolean, a?: boolean): string;
 }
 declare class ue {
     degs: {};
@@ -5101,7 +5682,7 @@ declare class ue {
      * @param {Panel} panel - アンパッサン対象と成りうるマス目
      * @param {Piece} piece - アンパッサン対象と成りうる駒
      */
-    setTarget(e: any, t: any): void;
+    setTarget(e: any, a: any): void;
     /** アンパッサン対象と成りうる駒情報を記録
      * @param {Panel} toPanel - アンパッサン対象か確認するマス目
      */
@@ -5111,6 +5692,6 @@ declare class ue {
      * @param {Piece} piece - アンパッサン対象と成りうる駒
      * @returns {boolean}
      */
-    isTarget(e: any, t: any): boolean;
+    isTarget(e: any, a: any): boolean;
 }
-export { Q as Board, A as Piece, H as boards, O as canvasFont, T as canvasImage, ae as extendData, ee as gameSoft, U as games, z as panels, J as pieceCost, V as pieceRange, G as pieces };
+export { Q as Board, A as Piece, H as boards, O as canvasFont, T as canvasImage, te as extendData, ee as gameSoft, U as games, z as panels, J as pieceCost, V as pieceRange, G as pieces };

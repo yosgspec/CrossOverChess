@@ -62,6 +62,9 @@ declare namespace _default {
                 御妃将棋: string[];
                 御妃将棋2p: string[];
             };
+            "11": {
+                和将棋: string[];
+            };
             "12": {
                 中将棋: string[];
                 中将棋2p: string[];

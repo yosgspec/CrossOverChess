@@ -163,7 +163,7 @@ declare namespace _default {
         }[];
         export { playPieces_8 as playPieces };
     }
-    namespace grantAcedrex {
+    namespace waShogi {
         let name_9: string;
         export { name_9 as name };
         let variant_9: string;
@@ -182,7 +182,7 @@ declare namespace _default {
         }[];
         export { playPieces_9 as playPieces };
     }
-    namespace courierChessAdvanced {
+    namespace grantAcedrex {
         let name_10: string;
         export { name_10 as name };
         let variant_10: string;
@@ -201,7 +201,7 @@ declare namespace _default {
         }[];
         export { playPieces_10 as playPieces };
     }
-    namespace gogoShogi {
+    namespace courierChessAdvanced {
         let name_11: string;
         export { name_11 as name };
         let variant_11: string;
@@ -220,7 +220,7 @@ declare namespace _default {
         }[];
         export { playPieces_11 as playPieces };
     }
-    namespace asakuraShogi {
+    namespace gogoShogi {
         let name_12: string;
         export { name_12 as name };
         let variant_12: string;
@@ -239,7 +239,7 @@ declare namespace _default {
         }[];
         export { playPieces_12 as playPieces };
     }
-    namespace shoShogi {
+    namespace asakuraShogi {
         let name_13: string;
         export { name_13 as name };
         let variant_13: string;
@@ -258,7 +258,7 @@ declare namespace _default {
         }[];
         export { playPieces_13 as playPieces };
     }
-    namespace heianShogi8x8 {
+    namespace shoShogi {
         let name_14: string;
         export { name_14 as name };
         let variant_14: string;
@@ -277,7 +277,7 @@ declare namespace _default {
         }[];
         export { playPieces_14 as playPieces };
     }
-    namespace heianShogi9x8 {
+    namespace heianShogi8x8 {
         let name_15: string;
         export { name_15 as name };
         let variant_15: string;
@@ -296,7 +296,7 @@ declare namespace _default {
         }[];
         export { playPieces_15 as playPieces };
     }
-    namespace heianShogi9x9 {
+    namespace heianShogi9x8 {
         let name_16: string;
         export { name_16 as name };
         let variant_16: string;
@@ -315,7 +315,7 @@ declare namespace _default {
         }[];
         export { playPieces_16 as playPieces };
     }
-    namespace kyoShogiLeft {
+    namespace heianShogi9x9 {
         let name_17: string;
         export { name_17 as name };
         let variant_17: string;
@@ -334,7 +334,7 @@ declare namespace _default {
         }[];
         export { playPieces_17 as playPieces };
     }
-    namespace kyoShogiRight {
+    namespace kyoShogiLeft {
         let name_18: string;
         export { name_18 as name };
         let variant_18: string;
@@ -353,7 +353,7 @@ declare namespace _default {
         }[];
         export { playPieces_18 as playPieces };
     }
-    namespace shoKyoShogiLeft {
+    namespace kyoShogiRight {
         let name_19: string;
         export { name_19 as name };
         let variant_19: string;
@@ -372,7 +372,7 @@ declare namespace _default {
         }[];
         export { playPieces_19 as playPieces };
     }
-    namespace shoKyoShogiRight {
+    namespace shoKyoShogiLeft {
         let name_20: string;
         export { name_20 as name };
         let variant_20: string;
@@ -391,7 +391,7 @@ declare namespace _default {
         }[];
         export { playPieces_20 as playPieces };
     }
-    namespace sanshaShogiLeft {
+    namespace shoKyoShogiRight {
         let name_21: string;
         export { name_21 as name };
         let variant_21: string;
@@ -410,7 +410,7 @@ declare namespace _default {
         }[];
         export { playPieces_21 as playPieces };
     }
-    namespace sanshaShogiRight {
+    namespace sanshaShogiLeft {
         let name_22: string;
         export { name_22 as name };
         let variant_22: string;
@@ -429,7 +429,7 @@ declare namespace _default {
         }[];
         export { playPieces_22 as playPieces };
     }
-    namespace doShogiLeft {
+    namespace sanshaShogiRight {
         let name_23: string;
         export { name_23 as name };
         let variant_23: string;
@@ -448,7 +448,7 @@ declare namespace _default {
         }[];
         export { playPieces_23 as playPieces };
     }
-    namespace doShogiRight {
+    namespace doShogiLeft {
         let name_24: string;
         export { name_24 as name };
         let variant_24: string;
@@ -467,7 +467,7 @@ declare namespace _default {
         }[];
         export { playPieces_24 as playPieces };
     }
-    namespace kinshiShogiLeft {
+    namespace doShogiRight {
         let name_25: string;
         export { name_25 as name };
         let variant_25: string;
@@ -486,7 +486,7 @@ declare namespace _default {
         }[];
         export { playPieces_25 as playPieces };
     }
-    namespace kinshiShogiRight {
+    namespace kinshiShogiLeft {
         let name_26: string;
         export { name_26 as name };
         let variant_26: string;
@@ -505,7 +505,7 @@ declare namespace _default {
         }[];
         export { playPieces_26 as playPieces };
     }
-    namespace kintoShogiLeft {
+    namespace kinshiShogiRight {
         let name_27: string;
         export { name_27 as name };
         let variant_27: string;
@@ -524,7 +524,7 @@ declare namespace _default {
         }[];
         export { playPieces_27 as playPieces };
     }
-    namespace kintoShogiRight {
+    namespace kintoShogiLeft {
         let name_28: string;
         export { name_28 as name };
         let variant_28: string;
@@ -543,7 +543,7 @@ declare namespace _default {
         }[];
         export { playPieces_28 as playPieces };
     }
-    namespace shogi30AllLeft {
+    namespace kintoShogiRight {
         let name_29: string;
         export { name_29 as name };
         let variant_29: string;
@@ -562,7 +562,7 @@ declare namespace _default {
         }[];
         export { playPieces_29 as playPieces };
     }
-    namespace shogi30AllRight {
+    namespace shogi30AllLeft {
         let name_30: string;
         export { name_30 as name };
         let variant_30: string;
@@ -581,7 +581,7 @@ declare namespace _default {
         }[];
         export { playPieces_30 as playPieces };
     }
-    namespace okisakiShogi {
+    namespace shogi30AllRight {
         let name_31: string;
         export { name_31 as name };
         let variant_31: string;
@@ -600,7 +600,7 @@ declare namespace _default {
         }[];
         export { playPieces_31 as playPieces };
     }
-    namespace crazyHouse {
+    namespace okisakiShogi {
         let name_32: string;
         export { name_32 as name };
         let variant_32: string;
@@ -619,7 +619,7 @@ declare namespace _default {
         }[];
         export { playPieces_32 as playPieces };
     }
-    namespace losAlamosChess {
+    namespace crazyHouse {
         let name_33: string;
         export { name_33 as name };
         let variant_33: string;
@@ -638,7 +638,7 @@ declare namespace _default {
         }[];
         export { playPieces_33 as playPieces };
     }
-    namespace capablancaChess {
+    namespace losAlamosChess {
         let name_34: string;
         export { name_34 as name };
         let variant_34: string;
@@ -657,7 +657,7 @@ declare namespace _default {
         }[];
         export { playPieces_34 as playPieces };
     }
-    namespace grandChess {
+    namespace capablancaChess {
         let name_35: string;
         export { name_35 as name };
         let variant_35: string;
@@ -676,7 +676,7 @@ declare namespace _default {
         }[];
         export { playPieces_35 as playPieces };
     }
-    namespace gorogoroDobutsuShogi {
+    namespace grandChess {
         let name_36: string;
         export { name_36 as name };
         let variant_36: string;
@@ -695,7 +695,7 @@ declare namespace _default {
         }[];
         export { playPieces_36 as playPieces };
     }
-    namespace shishiShogi {
+    namespace gorogoroDobutsuShogi {
         let name_37: string;
         export { name_37 as name };
         let variant_37: string;
@@ -714,7 +714,7 @@ declare namespace _default {
         }[];
         export { playPieces_37 as playPieces };
     }
-    namespace heiseiShogi {
+    namespace shishiShogi {
         let name_38: string;
         export { name_38 as name };
         let variant_38: string;
@@ -733,7 +733,7 @@ declare namespace _default {
         }[];
         export { playPieces_38 as playPieces };
     }
-    namespace daiShogi {
+    namespace heiseiShogi {
         let name_39: string;
         export { name_39 as name };
         let variant_39: string;
@@ -752,7 +752,7 @@ declare namespace _default {
         }[];
         export { playPieces_39 as playPieces };
     }
-    namespace courierChess {
+    namespace daiShogi {
         let name_40: string;
         export { name_40 as name };
         let variant_40: string;
@@ -771,7 +771,7 @@ declare namespace _default {
         }[];
         export { playPieces_40 as playPieces };
     }
-    namespace p4Shogi {
+    namespace courierChess {
         let name_41: string;
         export { name_41 as name };
         let variant_41: string;
@@ -790,7 +790,7 @@ declare namespace _default {
         }[];
         export { playPieces_41 as playPieces };
     }
-    namespace p4Chess {
+    namespace p4Shogi {
         let name_42: string;
         export { name_42 as name };
         let variant_42: string;
@@ -809,7 +809,7 @@ declare namespace _default {
         }[];
         export { playPieces_42 as playPieces };
     }
-    namespace g4Shogi {
+    namespace p4Chess {
         let name_43: string;
         export { name_43 as name };
         let variant_43: string;
@@ -828,7 +828,7 @@ declare namespace _default {
         }[];
         export { playPieces_43 as playPieces };
     }
-    namespace chaturaji {
+    namespace g4Shogi {
         let name_44: string;
         export { name_44 as name };
         let variant_44: string;
@@ -846,6 +846,25 @@ declare namespace _default {
             pieceSet: string;
         }[];
         export { playPieces_44 as playPieces };
+    }
+    namespace chaturaji {
+        let name_45: string;
+        export { name_45 as name };
+        let variant_45: string;
+        export { variant_45 as variant };
+        let url_45: string;
+        export { url_45 as url };
+        let desc_45: string;
+        export { desc_45 as desc };
+        let playBoard_45: string;
+        export { playBoard_45 as playBoard };
+        let useStand_45: boolean;
+        export { useStand_45 as useStand };
+        let playPieces_45: {
+            gameName: string;
+            pieceSet: string;
+        }[];
+        export { playPieces_45 as playPieces };
     }
 }
 export default _default;

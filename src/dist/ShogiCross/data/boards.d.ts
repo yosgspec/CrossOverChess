@@ -105,7 +105,11 @@ declare const _default: {
     古将棋10x10: {
         backgroundColor: string;
         borderColor: string;
-        promoLineOffset: number;
+        field: string[];
+    };
+    古将棋11x11: {
+        backgroundColor: string;
+        borderColor: string;
         field: string[];
     };
     古将棋12x12: {
